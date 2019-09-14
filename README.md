@@ -1,2 +1,5 @@
+# Fantasy-Bike
+ Projects and resources for my electric "fantasy bike".
+ 
 # EVOS
- Projects and resources for my electric bike's operating system
+ The "Electric Vehicle Operating System". This is the software responsible for monitoring sensors, controlling components, and displaying the user interface.
