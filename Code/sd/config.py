@@ -273,7 +273,7 @@ def loadDefaults():
                        "[0xFF: 0000000000000000]"]
 
     print("Writing defaults...")
-    f = open("/sd/settings.config","a")
+    f = open("/sd/settings.config","w")
     for i in range(len(defaultSettings)):
         f.write(defaultSettings[i])
     f.close()
@@ -303,7 +303,7 @@ def format(configRead):
         os.remove("/sd/settings.config")
         raise Exception("Configuration file is empty or incorrectly formatted, please reboot.")
 
-    print("Configuration read formatted successfully.")
+    print("Configuration values formatted successfully.")
     return configSettings
 
 def getValue(register,position,configValues):
@@ -324,11 +324,10 @@ def sendValue(register,position,value,configValues):
             print("Changed register "+str(register)+" value "+str(position)+" from "+str(oldValue)+" to "+str(value))
             configValues[i] = "["+register+": "+pulledValue+"]"
 
-def saveConfig(configValues):
+def save(configValues):
     import os
     print("Saving...")
-    os.remove("/sd/settings.config")
-    f = open("/sd/settings.config", "a")
+    f = open("/sd/settings.config", "w")
     for i in range(len(configValues)):
         f.write(configValues[i])
     f.close()

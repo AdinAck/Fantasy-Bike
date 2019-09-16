@@ -47,7 +47,7 @@ import config
 configValues = config.init()
 config.sendValue("0xAA",[12,16],"1111",configValues)
 print(config.getValue("0xAA",[12,16],configValues))
-config.saveConfig(configValues)
+config.save(configValues)
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)
