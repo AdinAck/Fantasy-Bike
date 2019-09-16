@@ -39,29 +39,15 @@ except:
     print("SD Card exception:")
     print("     ["+str(errCount)+"] SD Card error occured.")
 
-# Third party module imports
-import permvar
+    print("CPU Temp: "+str(microcontroller.cpu.temperature))
 
-print("CPU Temp: "+str(microcontroller.cpu.temperature))
+# Using the configuration file:
+import config
 
-# Detect config file and load values to memory
-# If config file DNE, generate config file and load default values.
-try:
-    f = open("/sd/settings.config","r")
-    configRead = f.read()
-    f.close()
-    print("Configuration file copied to memory.")
-except:
-    errCount += 1
-    print("     ["+str(errCount)+"] Configuration file does not exist, creating a new one.")
-    configRead = permvar.loadDefaults()
-
-config = permvar.format(configRead)
-permvar.sendValue("0xAA",[12,16],"1111",config)
-
-print(permvar.getValue("0xAA",[12,16],config))
-
-permvar.saveConfig(config)
+configValues = config.init()
+config.sendValue("0xAA",[12,16],"1111",configValues)
+print(config.getValue("0xAA",[12,16],configValues))
+config.saveConfig(configValues)
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)

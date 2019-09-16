@@ -1,3 +1,18 @@
+def init():
+    # Detect config file and load values to memory
+    # If config file DNE, generate config file and load default values.
+    try:
+        f = open("/sd/settings.config","r")
+        configRead = f.read()
+        f.close()
+        print("Configuration file copied to memory.")
+    except:
+        print("Configuration file does not exist, creating a new one.")
+        configRead = loadDefaults()
+
+    configValues = format(configRead)
+    return configValues
+
 def loadDefaults():
     import os
     defaultSettings = ["[0x00: 0000000000000000]",
@@ -258,7 +273,6 @@ def loadDefaults():
                        "[0xFF: 0000000000000000]"]
 
     print("Writing defaults...")
-    os.remove("/sd/settings.config")
     f = open("/sd/settings.config","a")
     for i in range(len(defaultSettings)):
         f.write(defaultSettings[i])
@@ -292,29 +306,29 @@ def format(configRead):
     print("Configuration read formatted successfully.")
     return configSettings
 
-def getValue(register,position,config):
-    for i in range(len(config)):
-        if register in config[i]:
-            value = config[i][7:23]
+def getValue(register,position,configValues):
+    for i in range(len(configValues)):
+        if register in configValues[i]:
+            value = configValues[i][7:23]
             position = 16-position[1], 16-position[0]
             return value[position[0]:position[1]]
 
-def sendValue(register,position,value,config):
+def sendValue(register,position,value,configValues):
     import os
-    oldValue = getValue(register,position,config)
-    for i in range(len(config)):
-        if register in config[i]:
+    oldValue = getValue(register,position,configValues)
+    for i in range(len(configValues)):
+        if register in configValues[i]:
             position = 16-position[1], 16-position[0]
-            pulledValue = config[i][7:23]
+            pulledValue = configValues[i][7:23]
             pulledValue = pulledValue[0:position[0]]+value+pulledValue[position[1]:]
             print("Changed register "+str(register)+" value "+str(position)+" from "+str(oldValue)+" to "+str(value))
-            config[i] = "["+register+": "+pulledValue+"]"
+            configValues[i] = "["+register+": "+pulledValue+"]"
 
-def saveConfig(config):
+def saveConfig(configValues):
     import os
     print("Saving...")
     os.remove("/sd/settings.config")
     f = open("/sd/settings.config", "a")
-    for i in range(len(config)):
-        f.write(config[i])
+    for i in range(len(configValues)):
+        f.write(configValues[i])
     f.close()
