@@ -9,6 +9,8 @@ try:
     import storage
     import adafruit_sdcard
     import microcontroller
+    import os
+    import sys
     import math
     import time
 except (ImportError, OSError, ValueError, AttributeError) as importerr:
@@ -28,6 +30,7 @@ try:
     sdcard = adafruit_sdcard.SDCard(spi, cs)
     vfs = storage.VfsFat(sdcard)
     storage.mount(vfs, "/sd")
+    sys.path.append("/sd")
 except (OSError, ValueError, AttributeError) as sderr:
     errCount += 1
     print("     ["+str(errCount)+"] SD Card exception -- "+str(sderr)+".")
@@ -36,21 +39,29 @@ except:
     print("SD Card exception:")
     print("     ["+str(errCount)+"] SD Card error occured.")
 
+# Third party module imports
+import permvar
+
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
 
-# Read and write files to SD Card
+# Detect config file and load values to memory
+# If config file DNE, generate config file and load default values.
 try:
-    f = open("/sd/test.log", "w")
-    for i in range(10):
-        f.write("line "+str(i)+"\n")
+    f = open("/sd/settings.config","r")
+    configRead = f.read()
     f.close()
-    f = open("/sd/test.log", "r")
-    file = f.read()
-    f.close
-    print(file)
+    print("Configuration file copied to memory.")
 except:
     errCount += 1
-    print("     ["+str(errCount)+"] File read/write error occured.")
+    print("     ["+str(errCount)+"] Configuration file does not exist, creating a new one.")
+    configRead = permvar.loadDefaults()
+
+config = permvar.format(configRead)
+permvar.sendValue("0xAA",[12,16],"1111",config)
+
+print(permvar.getValue("0xAA",[12,16],config))
+
+permvar.saveConfig(config)
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)
