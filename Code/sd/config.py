@@ -81,6 +81,8 @@ def getValue(register,position,configValues):
         if register in configValues[i]:
             value = configValues[i][7:23]
             position = 15-position[0], 16-position[1]
+            if value == None or value == "None":
+                raise Exception("Encountered Nonetype object which is an invalid register value array. Try reformatting.")
             return value[position[0]:position[1]]
 
 def sendValue(register,position,value,configValues):

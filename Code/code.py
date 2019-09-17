@@ -1,30 +1,32 @@
 # imports and initialization stuff
-try:
-    import board
-    import digitalio
-    import busio
-    import storage
-    import SD
-    import microcontroller
-    import os
-    import sys
-    import math
-    import time
-except (ImportError, OSError, ValueError, AttributeError) as importerr:
-    print("Module import error: "+str(importerr)+".")
-except:
-    print("Module import exception:")
-    print("Module import error occured.")
+import board
+import digitalio
+import busio
+import storage
+import sd
+import microcontroller
+import os
+import sys
+import math
+import time
 
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
 
 # Using the configuration file:
 import config
 
-# configValues = config.init()
-# config.sendValue("0xAA",[3,0],"1111",configValues)
-# print(config.getValue("0xAA",[3,0],configValues))
-# config.save(configValues)
+# Test config register system is working:
+print("▼▼▼[CONFIG REGISTER SYSTEM CHECK]▼▼▼")
+configValues = config.init()
+if config.getValue("0x00",[3,0],configValues) != "1111":
+    print("Register 0x00 [3:0] watchdog unconfigured, sending...")
+    config.sendValue("0x00",[3,0],"1111",configValues)
+if config.getValue("0x00",[3,0],configValues) == "1111":
+    print("Success!")
+    config.save(configValues)
+    print("▲▲▲[CONFIG REGISTER SYSTEM CHECK]▲▲▲")
+else:
+    raise Exception("Config value system is non operational.")
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)
