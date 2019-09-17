@@ -15,18 +15,25 @@ print("CPU Temp: "+str(microcontroller.cpu.temperature))
 # Using the configuration file:
 import config
 
-# Test config register system is working:
-print("▼▼▼[CONFIG REGISTER SYSTEM CHECK]▼▼▼")
-configValues = config.init()
-if config.getValue("0x00",[3,0],configValues) != "1111":
-    print("Register 0x00 [3:0] watchdog unconfigured, sending...")
-    config.sendValue("0x00",[3,0],"1111",configValues)
-if config.getValue("0x00",[3,0],configValues) == "1111":
-    print("Success!")
+# Test config register system is working: WILL DELETE STORED REGISTER VALUES
+configRegisterTest = True
+if configRegisterTest == True:
+    print("▼▼▼[CONFIG REGISTER SYSTEM CHECK]▼▼▼")
+    configValues = config.init()
+    if config.getValue("0x00",[3,0],configValues) != "1111":
+        print("Performing register value persistence check...")
+        config.sendValue("0x00",[3,0],"1111",configValues)
+    else:
+        raise Exception("Register values were not reset or were overwritten.")
     config.save(configValues)
-    print("▲▲▲[CONFIG REGISTER SYSTEM CHECK]▲▲▲")
-else:
-    raise Exception("Config value system is non operational.")
+    config.freshWriteDefaults()
+    if config.getValue("0x00",[3,0],configValues) == "1111":
+        print("Success!")
+        config.loadDefaults(configValues)
+        config.save(configValues)
+        print("▲▲▲[CONFIG REGISTER SYSTEM CHECK]▲▲▲")
+    else:
+        raise Exception("Config value system is not operational.")
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)

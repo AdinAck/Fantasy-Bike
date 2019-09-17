@@ -1,7 +1,7 @@
-var = "[1,2,3]"
+list = ["fat","boom","lit"]
 
-def test(thing):
-    thing[0] = "test"
+sub = "a"
 
-test(var)
-print(var)
+value = [i for i in list if sub in i]
+
+print(value)
