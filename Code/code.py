@@ -45,10 +45,10 @@ from RegX import *
 
 # Test config register system is working: WILL DELETE STORED REGISTER VALUES
 cfg = RegX()
-cfg2 = RegX("test2")
-cfg.test()
-cfg2.test()
-cfg2.purge()
+cfg.debug()
+# cfg2 = RegX("test2")
+# cfg2.test()
+# cfg2.purge()
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)

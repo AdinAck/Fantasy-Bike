@@ -4,8 +4,6 @@ class RegX:
             self.name = name
         else:
             self.name = "temp"
-        # Detect register file and load values to memory
-        # If register file DNE, generate register file and load default values.
         try:
             f = open("/sd/"+self.name+".reg","r")
             regRead = f.read()
@@ -13,29 +11,13 @@ class RegX:
             print("["+self.name+"] "+"Registers copied to memory.")
         except:
             print("["+self.name+"] "+"Register file does not exist, creating a new one.")
-            regRead = self.freshWriteDefaults()
+            regRead = self.returnDefaults()
+            f = open("/sd/"+self.name+".reg","r")
+            regRead = f.read()
+            f.close()
+            print("["+self.name+"] "+"Registers copied to memory.")
 
-        regValues = self.format(regRead)
-        self.regValues = regValues
-
-    def freshWriteDefaults(self):
-        import os
-        global defaultSettings
-
-        print("["+self.name+"] "+"Writing defaults...")
-        f = open("/sd/"+self.name+".reg","w")
-        for i in range(len(defaultSettings)):
-            f.write(defaultSettings[i])
-        f.close()
-        print("["+self.name+"] "+"Written...")
-
-        print("["+self.name+"] "+"Refreshing memory...")
-        f = open("/sd/"+self.name+".reg","r")
-        regRead = f.read()
-        f.close()
-        print("["+self.name+"] "+"Read...")
-
-        return regRead
+        self.regValues = self.format(regRead)
 
     def loadDefaults(self):
         import os
@@ -54,12 +36,31 @@ class RegX:
         f.close()
         print("["+self.name+"] "+"Read...")
 
-        regSettings = format(regRead)
+        tempRegValues = self.format(regRead)
 
-        for i in range(len(self.regValues)):
+        for i in range(len(tempRegValues)):
             self.regValues.pop(0)
-        for i in range(len(regSettings)):
-            self.regValues.append(regSettings[i])
+        for i in range(len(tempRegValues)):
+            self.regValues.append(tempRegValues[i])
+
+    def returnDefaults(self):
+        import os
+        global defaultSettings
+
+        print("["+self.name+"] "+"Writing defaults...")
+        f = open("/sd/"+self.name+".reg","w")
+        for i in range(len(defaultSettings)):
+            f.write(defaultSettings[i])
+        f.close()
+        print("["+self.name+"] "+"Written...")
+
+        print("["+self.name+"] "+"Refreshing memory...")
+        f = open("/sd/"+self.name+".reg","r")
+        regRead = f.read()
+        f.close()
+        print("["+self.name+"] "+"Read...")
+
+        return regRead
 
     def format(self,regRead):
         import os
@@ -124,21 +125,36 @@ class RegX:
         print("["+self.name+"] "+"Purging...")
         os.remove("/sd/"+self.name+".reg")
 
-    def test(self):
+    def debug(self):
         print("["+self.name+"] "+"[TEST] Performing functionality test...")
-        if self.getValue("0x00",[3,0]) != "1111":
-            print("["+self.name+"] "+"[TEST] Persistence OK.")
-            self.sendValue("0x00","1111",[3,0])
+        if len(self.regValues) == 256:
+            for i in range(len(self.regValues)):
+                if len(self.regValues[i]) != 24:
+                    raise Exception("["+self.name+"] "+"[TEST] Format exception.")
+            print("["+self.name+"] "+"[TEST] Formatting is probably OK")
         else:
-            raise Exception("["+self.name+"] "+"[TEST] Register values were not reset or were overwritten.")
-        self.save()
-        self.sendValue("0x00","0000",[3,0])
-        if self.getValue("0x00",[3,0]) == "0000":
-            print("["+self.name+"] "+"[TEST] R/W OK.")
+            raise Exception("["+self.name+"] "+"[TEST] Format exception.")
+        self.sendValue("0x00","1111",[3,0])
+        if self.getValue("0x00",[3,0]) == "1111":
+            print("["+self.name+"] "+"[TEST] RAM R/W OK.")
             self.save()
-            print("["+self.name+"] "+"[TEST] Complete.")
         else:
-            raise Exception("["+self.name+"] "+"Config value system is not operational.")
+            raise Exception("["+self.name+"] "+"[TEST] RAM read/write exception.")
+        self.regValues = [0]
+        f = open("/sd/"+self.name+".reg","r")
+        regRead = f.read()
+        f.close()
+        self.regValues = self.format(regRead)
+        if self.getValue("0x00",[3,0]) == "1111":
+            print("["+self.name+"] "+"[TEST] Saving OK")
+        else:
+            raise Exception("["+self.name+"] "+"[TEST] Register file save/update exception")
+        self.loadDefaults()
+        if self.getValue("0x00",[3,0]) == "0000":
+            print("["+self.name+"] "+"[TEST] Default loader OK.")
+        else:
+            raise Exception("["+self.name+"] "+"[TEST] Default loader exception.")
+        print("["+self.name+"] "+"[TEST] Complete")
 
 defaultSettings = ["[0x00: 0000000000000000]",
                    "[0x01: 0000000000000000]",
