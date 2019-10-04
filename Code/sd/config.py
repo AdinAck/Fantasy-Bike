@@ -1,9 +1,13 @@
 class Config:
-    def __init__(self):
+    def __init__(self,name=None):
+        if name is not None:
+            self.name = name
+        else:
+            self.name = "temp"
         # Detect config file and load values to memory
         # If config file DNE, generate config file and load default values.
         try:
-            f = open("/sd/settings.config","r")
+            f = open("/sd/"+self.name+".config","r")
             configRead = f.read()
             f.close()
             print("Configuration file copied to memory.")
@@ -11,7 +15,7 @@ class Config:
             print("Configuration file does not exist, creating a new one.")
             configRead = self.freshWriteDefaults()
 
-        configValues = Config.format(configRead)
+        configValues = self.format(configRead)
         self.configValues = configValues
 
     def freshWriteDefaults(self):
@@ -19,14 +23,14 @@ class Config:
         global defaultSettings
 
         print("Writing defaults...")
-        f = open("/sd/settings.config","w")
+        f = open("/sd/"+self.name+".config","w")
         for i in range(len(defaultSettings)):
             f.write(defaultSettings[i])
         f.close()
         print("Written...")
 
         print("Refreshing memory...")
-        f = open("/sd/settings.config","r")
+        f = open("/sd/"+self.name+".config","r")
         configRead = f.read()
         f.close()
         print("Read...")
@@ -38,14 +42,14 @@ class Config:
         global defaultSettings
 
         print("Writing defaults...")
-        f = open("/sd/settings.config","w")
+        f = open("/sd/"+self.name+".config","w")
         for i in range(len(defaultSettings)):
             f.write(defaultSettings[i])
         f.close()
         print("Written...")
 
         print("Refreshing memory...")
-        f = open("/sd/settings.config","r")
+        f = open("/sd/"+self.name+".config","r")
         configRead = f.read()
         f.close()
         print("Read...")
@@ -57,7 +61,7 @@ class Config:
         for i in range(len(configSettings)):
             self.configValues.append(configSettings[i])
 
-    def format(configRead):
+    def format(self,configRead):
         import os
         configSettings = []
 
@@ -71,7 +75,7 @@ class Config:
                 if configSettings[i] == "":
                     raise Exception("Incorrectly formatted.")
         except:
-            os.remove("/sd/settings.config")
+            os.remove("/sd/"+self.name+".config")
             raise Exception("Configuration file is empty or incorrectly formatted, please reboot.")
 
         print("Configuration values formatted successfully.")
@@ -110,7 +114,7 @@ class Config:
     def save(self):
         import os
         print("Saving...")
-        f = open("/sd/settings.config", "w")
+        f = open("/sd/"+self.name+".config", "w")
         for i in range(len(self.configValues)):
             f.write(self.configValues[i])
         f.close()
