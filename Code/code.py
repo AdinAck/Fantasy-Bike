@@ -40,27 +40,15 @@ d = adafruit_ssd1322.SSD1322(display_bus, width=256, height=66, colstart=28)
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
 
 # Using the configuration file:
-import config
-from config import *
+import RegX
+from RegX import *
 
 # Test config register system is working: WILL DELETE STORED REGISTER VALUES
-configRegisterTest = True
-if configRegisterTest == True:
-    print("▼▼▼[CONFIG REGISTER SYSTEM CHECK]▼▼▼")
-    cfg = Config()
-    if cfg.getValue("0x00",[3,0]) != "1111":
-        print("Performing register value persistence check...")
-        cfg.sendValue("0x00","1111",[3,0])
-    else:
-        raise Exception("Register values were not reset or were overwritten.")
-    cfg.save()
-    cfg.sendValue("0x00","0000",[3,0])
-    if cfg.getValue("0x00",[3,0]) == "0000":
-        print("Success!")
-        cfg.save()
-        print("▲▲▲[CONFIG REGISTER SYSTEM CHECK]▲▲▲")
-    else:
-        raise Exception("Config value system is not operational.")
+cfg = RegX()
+cfg2 = RegX("test2")
+cfg.test()
+cfg2.test()
+cfg2.purge()
 
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)

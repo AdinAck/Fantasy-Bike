@@ -1,94 +1,94 @@
-class Config:
+class RegX:
     def __init__(self,name=None):
         if name is not None:
             self.name = name
         else:
             self.name = "temp"
-        # Detect config file and load values to memory
-        # If config file DNE, generate config file and load default values.
+        # Detect register file and load values to memory
+        # If register file DNE, generate register file and load default values.
         try:
-            f = open("/sd/"+self.name+".config","r")
-            configRead = f.read()
+            f = open("/sd/"+self.name+".reg","r")
+            regRead = f.read()
             f.close()
-            print("Configuration file copied to memory.")
+            print("["+self.name+"] "+"Registers copied to memory.")
         except:
-            print("Configuration file does not exist, creating a new one.")
-            configRead = self.freshWriteDefaults()
+            print("["+self.name+"] "+"Register file does not exist, creating a new one.")
+            regRead = self.freshWriteDefaults()
 
-        configValues = self.format(configRead)
-        self.configValues = configValues
+        regValues = self.format(regRead)
+        self.regValues = regValues
 
     def freshWriteDefaults(self):
         import os
         global defaultSettings
 
-        print("Writing defaults...")
-        f = open("/sd/"+self.name+".config","w")
+        print("["+self.name+"] "+"Writing defaults...")
+        f = open("/sd/"+self.name+".reg","w")
         for i in range(len(defaultSettings)):
             f.write(defaultSettings[i])
         f.close()
-        print("Written...")
+        print("["+self.name+"] "+"Written...")
 
-        print("Refreshing memory...")
-        f = open("/sd/"+self.name+".config","r")
-        configRead = f.read()
+        print("["+self.name+"] "+"Refreshing memory...")
+        f = open("/sd/"+self.name+".reg","r")
+        regRead = f.read()
         f.close()
-        print("Read...")
+        print("["+self.name+"] "+"Read...")
 
-        return configRead
+        return regRead
 
     def loadDefaults(self):
         import os
         global defaultSettings
 
-        print("Writing defaults...")
-        f = open("/sd/"+self.name+".config","w")
+        print("["+self.name+"] "+"Writing defaults...")
+        f = open("/sd/"+self.name+".reg","w")
         for i in range(len(defaultSettings)):
             f.write(defaultSettings[i])
         f.close()
-        print("Written...")
+        print("["+self.name+"] "+"Written...")
 
-        print("Refreshing memory...")
-        f = open("/sd/"+self.name+".config","r")
-        configRead = f.read()
+        print("["+self.name+"] "+"Refreshing memory...")
+        f = open("/sd/"+self.name+".reg","r")
+        regRead = f.read()
         f.close()
-        print("Read...")
+        print("["+self.name+"] "+"Read...")
 
-        configSettings = format(configRead)
+        regSettings = format(regRead)
 
-        for i in range(len(self.configValues)):
-            self.configValues.pop(0)
-        for i in range(len(configSettings)):
-            self.configValues.append(configSettings[i])
+        for i in range(len(self.regValues)):
+            self.regValues.pop(0)
+        for i in range(len(regSettings)):
+            self.regValues.append(regSettings[i])
 
-    def format(self,configRead):
+    def format(self,regRead):
         import os
-        configSettings = []
+        regSettings = []
 
         for i in range(256):
-            configSettings.append(configRead[24*i:(24*i)+24])
+            regSettings.append(regRead[24*i:(24*i)+24])
 
         try:
-            if len(configRead) == 0:
-                raise Exception("Configuration length 0.")
-            for i in range(len(configSettings)):
-                if configSettings[i] == "":
-                    raise Exception("Incorrectly formatted.")
+            if len(regRead) == 0:
+                raise Exception("["+self.name+"] "+"Configuration length 0.")
+            for i in range(len(regSettings)):
+                if regSettings[i] == "":
+                    raise Exception("["+self.name+"] "+"Incorrectly formatted.")
         except:
-            os.remove("/sd/"+self.name+".config")
-            raise Exception("Configuration file is empty or incorrectly formatted, please reboot.")
+            os.remove("/sd/"+self.name+".reg")
+            raise Exception("["+self.name+"] "+"Register file is empty or incorrectly formatted, please reboot.")
 
-        print("Configuration values formatted successfully.")
-        return configSettings
+        print("["+self.name+"] "+"Configuration values formatted successfully.")
+        return regSettings
 
     def getValue(self,register,position=None):
-        for i in range(len(self.configValues)):
-            if register in self.configValues[i]:
-                value = self.configValues[i][7:23]
+        for i in range(len(self.regValues)):
+            if register in self.regValues[i]:
+                value = self.regValues[i][7:23]
                 if position is not None:
                     position = 15-position[0], 16-position[1]
                     if value == None or value == "None":
-                        raise Exception("Encountered Nonetype object which is an invalid register value array. Try reformatting.")
+                        raise Exception("["+self.name+"] "+"Encountered Nonetype object which is an invalid register value array. Try reformatting.")
                     return value[position[0]:position[1]]
                 else:
                     return value
@@ -100,24 +100,45 @@ class Config:
             oldValue = self.getValue(register,position)
         else:
             oldValue = self.getValue(register,[15,0])
-        for i in range(len(self.configValues)):
-            if register in self.configValues[i]:
+        for i in range(len(self.regValues)):
+            if register in self.regValues[i]:
                 if position is not None:
                     position = 15-position[0], 16-position[1]
                 else:
                     position = 0,16
-                pulledValue = self.configValues[i][7:23]
+                pulledValue = self.regValues[i][7:23]
                 pulledValue = pulledValue[0:position[0]]+value+pulledValue[position[1]:]
-                print("Changed register "+str(register)+" value "+"["+str(15-position[0])+":"+str(16-position[1])+"]"+" from "+str(oldValue)+" to "+str(value))
-                self.configValues[i] = "["+register+": "+pulledValue+"]"
+                print("["+self.name+"] "+"Changed register "+str(register)+" value "+"["+str(15-position[0])+":"+str(16-position[1])+"]"+" from "+str(oldValue)+" to "+str(value))
+                self.regValues[i] = "["+register+": "+pulledValue+"]"
 
     def save(self):
         import os
-        print("Saving...")
-        f = open("/sd/"+self.name+".config", "w")
-        for i in range(len(self.configValues)):
-            f.write(self.configValues[i])
+        print("["+self.name+"] "+"Saving...")
+        f = open("/sd/"+self.name+".reg", "w")
+        for i in range(len(self.regValues)):
+            f.write(self.regValues[i])
         f.close()
+
+    def purge(self):
+        import os
+        print("["+self.name+"] "+"Purging...")
+        os.remove("/sd/"+self.name+".reg")
+
+    def test(self):
+        print("["+self.name+"] "+"[TEST] Performing functionality test...")
+        if self.getValue("0x00",[3,0]) != "1111":
+            print("["+self.name+"] "+"[TEST] Persistence OK.")
+            self.sendValue("0x00","1111",[3,0])
+        else:
+            raise Exception("["+self.name+"] "+"[TEST] Register values were not reset or were overwritten.")
+        self.save()
+        self.sendValue("0x00","0000",[3,0])
+        if self.getValue("0x00",[3,0]) == "0000":
+            print("["+self.name+"] "+"[TEST] R/W OK.")
+            self.save()
+            print("["+self.name+"] "+"[TEST] Complete.")
+        else:
+            raise Exception("["+self.name+"] "+"Config value system is not operational.")
 
 defaultSettings = ["[0x00: 0000000000000000]",
                    "[0x01: 0000000000000000]",
