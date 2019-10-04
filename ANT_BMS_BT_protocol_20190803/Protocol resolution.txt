@@ -1,0 +1,866 @@
+public void batt_update()
+        {
+            int temp=0;
+            int temp1 = 0;
+
+            
+
+            temp = read_data_140byte[6 + 0 * 2] * 256 + read_data_140byte[7 + 0 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt1.Text = "单体01：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt1.Text = "Cell01：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 1 * 2] * 256 + read_data_140byte[7 + 1 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt2.Text = "单体02：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt2.Text = "Cell02：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 2 * 2] * 256 + read_data_140byte[7 + 2 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt3.Text = "单体03：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt3.Text = "Cell03：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 3 * 2] * 256 + read_data_140byte[7 + 3 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt4.Text = "单体04：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt4.Text = "Cell04：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 4 * 2] * 256 + read_data_140byte[7 + 4 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt5.Text = "单体05：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt5.Text = "Cell05：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 5 * 2] * 256 + read_data_140byte[7 + 5 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt6.Text = "单体06：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt6.Text = "Cell06：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 6 * 2] * 256 + read_data_140byte[7 + 6 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt7.Text = "单体07：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt7.Text = "Cell07：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 7 * 2] * 256 + read_data_140byte[7 + 7 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt8.Text = "单体08：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt8.Text = "Cell08：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 8 * 2] * 256 + read_data_140byte[7 + 8 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt9.Text = "单体09：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt9.Text = "Cell09：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 9 * 2] * 256 + read_data_140byte[7 + 9 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt10.Text = "单体10：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt10.Text = "Cell10：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 10 * 2] * 256 + read_data_140byte[7 + 10 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt11.Text = "单体11：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt11.Text = "Cell11：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 11 * 2] * 256 + read_data_140byte[7 + 11 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt12.Text = "单体12：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt12.Text = "Cell12：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 12 * 2] * 256 + read_data_140byte[7 + 12 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt13.Text = "单体13：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt13.Text = "Cell13：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 13 * 2] * 256 + read_data_140byte[7 + 13 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt14.Text = "单体14：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt14.Text = "Cell14：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 14 * 2] * 256 + read_data_140byte[7 + 14 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt15.Text = "单体15：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt15.Text = "Cell15：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 15 * 2] * 256 + read_data_140byte[7 + 15 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt16.Text = "单体16：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt16.Text = "Cell16：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 16 * 2] * 256 + read_data_140byte[7 + 16 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt17.Text = "单体17：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt17.Text = "Cell17：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 17 * 2] * 256 + read_data_140byte[7 + 17 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt18.Text = "单体18：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt18.Text = "Cell18：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 18 * 2] * 256 + read_data_140byte[7 + 18 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt19.Text = "单体19：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt19.Text = "Cell19：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 19 * 2] * 256 + read_data_140byte[7 + 19 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt20.Text = "单体20：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt20.Text = "Cell20：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 20 * 2] * 256 + read_data_140byte[7 + 20 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt21.Text = "单体21：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt21.Text = "Cell21：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 21 * 2] * 256 + read_data_140byte[7 + 21 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt22.Text = "单体22：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt22.Text = "Cell22：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 22 * 2] * 256 + read_data_140byte[7 + 22 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt23.Text = "单体23：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt23.Text = "Cell23：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 23 * 2] * 256 + read_data_140byte[7 + 23 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt24.Text = "单体24：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt24.Text = "Cell24：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 24 * 2] * 256 + read_data_140byte[7 + 24 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt25.Text = "单体25：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt25.Text = "Cell25：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 25 * 2] * 256 + read_data_140byte[7 + 25 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt26.Text = "单体26：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt26.Text = "Cell26：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 26 * 2] * 256 + read_data_140byte[7 + 26 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt27.Text = "单体27：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt27.Text = "Cell27：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 27 * 2] * 256 + read_data_140byte[7 + 27 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt28.Text = "单体28：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt28.Text = "Cell28：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 28 * 2] * 256 + read_data_140byte[7 + 28 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt29.Text = "单体29：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt29.Text = "Cell29：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 29 * 2] * 256 + read_data_140byte[7 + 29 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt30.Text = "单体30：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt30.Text = "Cell30：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 30 * 2] * 256 + read_data_140byte[7 + 30 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt31.Text = "单体31：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt31.Text = "Cell31：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            temp = read_data_140byte[6 + 31 * 2] * 256 + read_data_140byte[7 + 31 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                batt32.Text = "单体32：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt32.Text = "Cell32：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            //最高
+            temp = read_data_140byte[116] * 256 + read_data_140byte[117];
+            if (u8LanguageFlag == 0)
+            {
+                batt_max.Text = "最高(" + read_data_140byte[115] + ")" + ":" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt_max.Text = "CellHigh(" + read_data_140byte[115] + ")" + ":" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            //最低
+            temp = read_data_140byte[119] * 256 + read_data_140byte[120];
+            if (u8LanguageFlag == 0)
+            {
+                batt_min.Text = "最低(" + read_data_140byte[118] + ")" + ":" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+            else
+            {
+                batt_min.Text = "CellLow(" + read_data_140byte[118] + ")" + ":" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+            }
+
+            //平均
+             temp = read_data_140byte[121] * 256 + read_data_140byte[122];
+             if (u8LanguageFlag == 0)
+             {
+                 batt_avg.Text = "平均：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+             }
+             else
+             {
+                 batt_avg.Text = "CellMean：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+             }
+
+             //VoltDiff
+             temp = read_data_140byte[116] * 256 + read_data_140byte[117];//high
+             temp1 = read_data_140byte[119] * 256 + read_data_140byte[120];//low
+             temp = temp - temp1;
+             if (temp < 0)
+             {
+                 temp = 0;
+             }
+             if (u8LanguageFlag == 0)
+             {
+                 VoltDiff.Text = "压差：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+             }
+             else
+             {
+                 VoltDiff.Text = "CellDiff：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "V";
+             }
+
+            //剩余容量
+            temp = read_data_140byte[79];
+            temp = (temp<<8)+read_data_140byte[80];
+            temp = (temp << 8) + read_data_140byte[81];
+            temp = (temp << 8) + read_data_140byte[82];
+            temp = temp / 1000;
+            if (u8LanguageFlag == 0)
+            {
+                rongliang.Text = "剩余容量：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "AH";
+            }
+            else
+            {
+                rongliang.Text = "RemainAH：" + temp / 1000 + "." + temp % 1000 / 100 + temp % 100 / 10 + temp % 10 + "AH";
+            }
+
+            //平均
+            temp = read_data_140byte[74];
+            SOC.Text = "SOC："+temp +"%";
+
+            //电流
+            temp = read_data_140byte[72] * 256 + read_data_140byte[73];
+            if (u8LanguageFlag == 0)
+            {
+                if (temp < 32768)
+                {
+                    current.Text = "电流：" + temp / 1000 + temp % 1000 / 100 + temp % 100 / 10 + "." + temp % 10 + "A";
+                }
+                else
+                {
+                    temp = 65536 - temp;
+                    current.Text = "电流：-" + temp / 1000 + temp % 1000 / 100 + temp % 100 / 10 + "." + temp % 10 + "A";
+                }
+            }
+            else
+            {
+                if (temp < 32768)
+                {
+                    current.Text = "Current：" + temp / 1000 + temp % 1000 / 100 + temp % 100 / 10 + "." + temp % 10 + "A";
+                }
+                else
+                {
+                    temp = 65536 - temp;
+                    current.Text = "Current：-" + temp / 1000 + temp % 1000 / 100 + temp % 100 / 10 + "." + temp % 10 + "A";
+                }
+            }
+
+            //总压
+            temp = read_data_140byte[4 + 0 * 2] * 256 + read_data_140byte[5 + 0 * 2];
+            if (u8LanguageFlag == 0)
+            {
+                zongya.Text = "总压：" + temp / 100 + temp % 100 / 10 + "." + temp % 10 + "V";
+            }
+            else
+            {
+                zongya.Text = "BattVolt：" + temp / 100 + temp % 100 / 10 + "." + temp % 10 + "V";
+            }
+
+
+            //T1
+            temp = read_data_140byte[91] * 256 + read_data_140byte[92];
+            if (temp < 32768)
+                wendu1.Text = "MOS：" + temp+"℃";
+            else
+            {
+                temp = 65536 - temp;
+                wendu1.Text = "MOS：-" + temp + "℃";
+            }
+
+            //T2
+            temp = read_data_140byte[93] * 256 + read_data_140byte[94];
+            if (u8LanguageFlag == 0)
+            {
+                if (temp < 32768)
+                {
+                    wendu2.Text = "均衡：" + temp + "℃";
+                }
+                else
+                {
+                    temp = 65536 - temp;
+                    wendu2.Text = "均衡：-" + temp + "℃";
+                }
+            }
+            else
+            {
+                if (temp < 32768)
+                {
+                    wendu2.Text = "Balance：" + temp + "℃";
+                }
+                else
+                {
+                    temp = 65536 - temp;
+                    wendu2.Text = "Balance：-" + temp + "℃";
+                }
+            }
+
+            //T3
+            temp = read_data_140byte[95] * 256 + read_data_140byte[96];
+            if (temp < 32768)
+                wendu3.Text = "T1：" + temp + "℃";
+            else
+            {
+                temp = 65536 - temp;
+                wendu3.Text = "T1：-" + temp + "℃";
+            }
+
+            //T4
+            temp = read_data_140byte[97] * 256 + read_data_140byte[98];
+            if (temp < 32768)
+                wendu4.Text = "T2：" + temp + "℃";
+            else
+            {
+                temp = 65536 - temp;
+                wendu4.Text = "T2：-" + temp + "℃";
+            }
+
+            //ChargeMosState
+            temp = read_data_140byte[103];
+            if (u8LanguageFlag == 0)
+            {
+                switch (temp)
+                {
+                    case 0:
+                        ChargeMosState.Text = "关闭";
+                        break;
+                    case 1:
+                        ChargeMosState.Text = "开启";
+                        break;
+                    case 2:
+                        ChargeMosState.Text = "单体过压";
+                        break;
+                    case 3:
+                        ChargeMosState.Text = "过流保护";
+                        break;
+                    case 4:
+                        ChargeMosState.Text = "电池充满";
+                        break;
+                    case 5:
+                        ChargeMosState.Text = "总压过压";
+                        break;
+                    case 6:
+                        ChargeMosState.Text = "电池过温";
+                        break;
+                    case 7:
+                        ChargeMosState.Text = "功率过温";
+                        break;
+                    case 8:
+                        ChargeMosState.Text = "电流异常";
+                        break;
+                    case 9:
+                        ChargeMosState.Text = "均衡线掉串";
+                        break;
+                    case 10:
+                        ChargeMosState.Text = "主板过温";
+                        break;
+                    case 11:
+                        ChargeMosState.Text = " 11 ";
+                        break;
+                    case 12:
+                        ChargeMosState.Text = "开启失败";
+                        break;
+                    case 13:
+                        ChargeMosState.Text = "充电管异常";
+                        break;
+                    case 14:
+                        ChargeMosState.Text = "等待";
+                        break;
+                    case 15:
+                        ChargeMosState.Text = "手动关闭";
+                        break;
+                    case 16:
+                        ChargeMosState.Text = "二级过压";
+                        break;
+                    case 17:
+                        ChargeMosState.Text = " 低温保护";
+                        break;
+                    case 18:
+                        ChargeMosState.Text = "压差超限";
+                        break;
+                    case 19:
+                        ChargeMosState.Text = " 19 ";
+                        break;
+                    case 20:
+                        ChargeMosState.Text = "单体校验异常";
+                        break;
+                    case 21:
+                        ChargeMosState.Text = "电流异常";
+                        break;
+                    case 22:
+                        ChargeMosState.Text = "总压单体异常";
+                        break;
+                    default:
+                        ChargeMosState.Text = " " + temp + " ";
+                        break;
+                }
+            }
+            else
+            {
+                switch (temp)
+                {
+                    case 0:
+                        ChargeMosState.Text = "OFF";
+                        break;
+                    case 1:
+                        ChargeMosState.Text = "ON";
+                        break;
+                    case 2:
+                        ChargeMosState.Text = "CellHigh";
+                        break;
+                    case 3:
+                        ChargeMosState.Text = "OverCurrent";
+                        break;
+                    case 4:
+                        ChargeMosState.Text = "BatFull";
+                        break;
+                    case 5:
+                        ChargeMosState.Text = "BattVoltHigh";
+                        break;
+                    case 6:
+                        ChargeMosState.Text = "BatTempHigh";
+                        break;
+                    case 7:
+                        ChargeMosState.Text = "MosTempHigh";
+                        break;
+                    case 8:
+                        ChargeMosState.Text = "CurrentError";
+                        break;
+                    case 9:
+                        ChargeMosState.Text = "WireDisconnected";
+                        break;
+                    case 10:
+                        ChargeMosState.Text = "MainBoardTempHigh";
+                        break;
+                    case 11:
+                        ChargeMosState.Text = " 11 ";
+                        break;
+                    case 12:
+                        ChargeMosState.Text = "OpenFailure";
+                        break;
+                    case 13:
+                        ChargeMosState.Text = "ChargeMosError";
+                        break;
+                    case 14:
+                        ChargeMosState.Text = "Waiting";
+                        break;
+                    case 15:
+                        ChargeMosState.Text = "MannualOFF";
+                        break;
+                    case 16:
+                        ChargeMosState.Text = "Level2CellVolthigh";
+                        break;
+                    case 17:
+                        ChargeMosState.Text = "LowTemp";
+                        break;
+                    case 18:
+                        ChargeMosState.Text = "CellDiffHigh";
+                        break;
+                    case 19:
+                        ChargeMosState.Text = " 19 ";
+                        break;
+                    case 20:
+                        ChargeMosState.Text = "CellVoltCheckError";
+                        break;
+                    case 21:
+                        ChargeMosState.Text = "CurrentError";
+                        break;
+                    case 22:
+                        ChargeMosState.Text = "CellNumberError";
+                        break;
+                    default:
+                        ChargeMosState.Text = " " + temp + " ";
+                        break;
+                }
+            }
+            //ChargeMosState
+            temp = read_data_140byte[104];
+            if (u8LanguageFlag == 0)
+            {
+                switch (temp)
+                {
+                    case 0:
+                        DisMosState.Text = "关闭";
+                        break;
+                    case 1:
+                        DisMosState.Text = "开启";
+                        break;
+                    case 2:
+                        DisMosState.Text = "单体欠压";
+                        break;
+                    case 3:
+                        DisMosState.Text = "过流保护";
+                        break;
+                    case 4:
+                        DisMosState.Text = "二级过流";
+                        break;
+                    case 5:
+                        DisMosState.Text = "总压欠压";
+                        break;
+                    case 6:
+                        DisMosState.Text = "电池过温";
+                        break;
+                    case 7:
+                        DisMosState.Text = "功率过温";
+                        break;
+                    case 8:
+                        DisMosState.Text = "电流异常";
+                        break;
+                    case 9:
+                        DisMosState.Text = "均衡线掉串";
+                        break;
+                    case 10:
+                        DisMosState.Text = "主板过温";
+                        break;
+                    case 11:
+                        DisMosState.Text = "充电开启";
+                        break;
+                    case 12:
+                        DisMosState.Text = "短路保护";
+                        break;
+                    case 13:
+                        DisMosState.Text = "放电管异常";
+                        break;
+                    case 14:
+                        DisMosState.Text = "开启失败";
+                        break;
+                    case 15:
+                        DisMosState.Text = "手动关闭";
+                        break;
+                    case 16:
+                        DisMosState.Text = "二级欠压";
+                        break;
+                    case 17:
+                        DisMosState.Text = " 低温保护";
+                        break;
+                    case 18:
+                        DisMosState.Text = "压差超限";
+                        break;
+                    case 19:
+                        DisMosState.Text = " 19 ";
+                        break;
+                    case 20:
+                        DisMosState.Text = "单体校验异常";
+                        break;
+                    case 21:
+                        DisMosState.Text = "电流异常";
+                        break;
+                    case 22:
+                        DisMosState.Text = "总压单体异常";
+                        break;
+                    default:
+                        DisMosState.Text = " " + temp + " ";
+                        break;
+                }
+            }
+            else
+            {
+                switch (temp)
+                {
+                    case 0:
+                        DisMosState.Text = "OFF";
+                        break;
+                    case 1:
+                        DisMosState.Text = "ON";
+                        break;
+                    case 2:
+                        DisMosState.Text = "CellVoltLow";
+                        break;
+                    case 3:
+                        DisMosState.Text = "OverCurrent";
+                        break;
+                    case 4:
+                        DisMosState.Text = "Level2OverCurrent";
+                        break;
+                    case 5:
+                        DisMosState.Text = "BattVoltLow";
+                        break;
+                    case 6:
+                        DisMosState.Text = "BattTempHigh";
+                        break;
+                    case 7:
+                        DisMosState.Text = "MosTempHigh";
+                        break;
+                    case 8:
+                        DisMosState.Text = "CurrentError";
+                        break;
+                    case 9:
+                        DisMosState.Text = "WireDisconnected";
+                        break;
+                    case 10:
+                        DisMosState.Text = "MainBoardTempHigh";
+                        break;
+                    case 11:
+                        DisMosState.Text = "ChargeMosON";
+                        break;
+                    case 12:
+                        DisMosState.Text = "ShortCircuit";
+                        break;
+                    case 13:
+                        DisMosState.Text = "DisMosError";
+                        break;
+                    case 14:
+                        DisMosState.Text = "OpenFailure";
+                        break;
+                    case 15:
+                        DisMosState.Text = "MannualOFF";
+                        break;
+                    case 16:
+                        DisMosState.Text = "Level2CellVoltLow";
+                        break;
+                    case 17:
+                        DisMosState.Text = "TempLow";
+                        break;
+                    case 18:
+                        DisMosState.Text = "CellDiffHigh";
+                        break;
+                    case 19:
+                        DisMosState.Text = " 19 ";
+                        break;
+                    case 20:
+                        DisMosState.Text = "CellVoltCheckError";
+                        break;
+                    case 21:
+                        DisMosState.Text = "CurrentError";
+                        break;
+                    case 22:
+                        DisMosState.Text = "CellNumberError";
+                        break;
+                    default:
+                        DisMosState.Text = " " + temp + " ";
+                        break;
+                }
+            }
+            //ChargeMosState
+            temp = read_data_140byte[105];
+            {
+                if (u8LanguageFlag == 0)
+                {
+                    switch (temp)
+                    {
+                        case 0:
+                            BalanceState.Text = "关闭";
+                            break;
+                        case 1:
+                            BalanceState.Text = "超过极限均衡";
+                            break;
+                        case 2:
+                            BalanceState.Text = "充电压差均衡";
+                            break;
+                        case 3:
+                            BalanceState.Text = "均衡过温";
+                            break;
+                        case 4:
+                            BalanceState.Text = "自动均衡";
+                            break;
+                        case 10:
+                            BalanceState.Text = "主板过温";
+                            break;
+                        default:
+                            BalanceState.Text = " " + temp + " ";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (temp)
+                    {
+                        case 0:
+                            BalanceState.Text = "OFF";
+                            break;
+                        case 1:
+                            BalanceState.Text = "CellLimitBalance";
+                            break;
+                        case 2:
+                            BalanceState.Text = "ChargeCellDiffBalance";
+                            break;
+                        case 3:
+                            BalanceState.Text = "BalanceTempHigh";
+                            break;
+                        case 4:
+                            BalanceState.Text = "AutoBalance";
+                            break;
+                        case 10:
+                            BalanceState.Text = "MainBoardTempHigh";
+                            break;
+                        default:
+                            BalanceState.Text = " " + temp + " ";
+                            break;
+                    }
+                }
+            }

@@ -1,0 +1,106 @@
+
+typedef   unsigned int   u32;
+typedef   unsigned char  u8;
+
+
+Communication baud rate 19200
+
+(Bluetooth) send 0XDBDB00000000 returns 140 bytes of data parsing
+
+(BMS serial port) The host computer sends 0X5A5A00000000 BMS returns 140 bytes of data, parsed below
+
+Frame header (0-3): 0xAA 0X55 0XAA 0XFF
+Voltage data (4-69): 0.000 V
+Current (70-73): int 0.0 A
+Percentage of remaining battery (74): u8
+Battery physical capacity (75-78): u32 .000000 AH
+Remaining battery capacity (79-82): u32 .000000 AH
+Total battery cycle capacity (83-86): u32 .000AH
+Accumulate from boot time seconds (87-90): u32 S
+Actual temperature (91-102): short degree
+
+Charging mos tube status flag (103): u8 (resolved below)
+Discharge mos tube status flag (104): u8 (resolved below)
+Equilibrium status flag (105): u8 (resolved below)
+
+Tire length (106-107) : u16 MM
+Pulses per week (108-109) : u16 N
+Relay switch (110): u8 does not display
+
+Current power (111-114): int W
+The highest number of single strings (115): u8
+The highest monomer (116-117): u16 0.000V
+Minimum number of strings (118): u8
+Minimum monomer (119-120): u16 0.000V
+Average (121-122): u16 0.000V
+Effective battery count (123): u8 S
+
+Detected discharge tube voltage between D-S poles (124-125): u16 0.0 V No display
+Discharge MOS tube drive voltage (126-127): u16 0.0V No display
+Charging MOS tube driving voltage (128-129): u16 0.0V No display
+The initial value of the comparator when the detected current is 0 (130-131); u16 does not need to be displayed
+Control equalization corresponding bit is 1 equalization (1-32 bits correspond to 1-32 string equalization) (132-135) u32 Corresponding bit is 1 Display color on the corresponding voltage
+System log (136-137): Status: 0-4 digits (Charge and discharge tube status) Battery No.: 5-9 digits Sequence: 10-14 digits Charge and discharge: 15 (1 discharge, 0 charge)
+
+And checksum (138-139): 2 bytes
+
+
+//Charging mos tube status flag
+//value: 0 close
+//value: 1 open
+//Value: 2 single cell overvoltage
+//Value: 3 Overcurrent protection
+//Value: 4 Full battery
+//Value: 5 total overpressure
+//Value: 6 Battery over temperature
+//Value: 7 Power over temperature
+//Value: 8 current abnormality
+//Value: 9 equalization line off string
+//Value: 10 motherboard over temperature
+//Value: 12 failed to open
+//Value: 13 Discharge tube abnormality
+//value: 14 waiting
+//Value: 15 Manually close
+//Value: 16 secondary overpressure
+//Value: 17 low temperature protection
+/ / value: 18 pressure difference overrun
+/ / value: 20 monomer check exception
+//Value: 21 current abnormality
+/ / Value: 22 total pressure monomer abnormal
+
+
+
+//Discharge mos tube status flag
+//value: 0 close
+//value: 1 open
+/ / value: 2 monomer undervoltage
+//Value: 3 Overcurrent protection
+//Value: 4 secondary overcurrent
+/ / value: 5 total pressure and pressure
+//Value: 6 Battery over temperature
+//Value: 7 Power over temperature
+//Value: 8 current abnormality
+//Value: 9 equalization line off string
+//Value: 10 motherboard over temperature
+//Value: 11 Charging on
+//Value: 12 short circuit protection
+//Value: 13 Discharge tube abnormality
+//Value: 14 failed to open
+//Value: 15 Manually close
+//Value: 16 secondary undervoltage
+//Value: 17 low temperature protection
+/ / value: 18 pressure difference overrun
+/ / value: 20 monomer check exception
+//Value: 21 current abnormality
+/ / Value: 22 total pressure monomer abnormal
+
+
+
+/ / Balance state flag
+//value: 0 close
+//Value: 1 exceeds the limit equilibrium
+//Value: 2 Charge differential pressure equalization
+//Value: 3 Balanced over temperature
+//value: 4 automatic equalization
+//Value: 10 motherboard over temperature
+

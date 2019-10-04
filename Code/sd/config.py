@@ -1,108 +1,119 @@
-def init():
-    # Detect config file and load values to memory
-    # If config file DNE, generate config file and load default values.
-    try:
+class Config:
+    def __init__(self):
+        # Detect config file and load values to memory
+        # If config file DNE, generate config file and load default values.
+        try:
+            f = open("/sd/settings.config","r")
+            configRead = f.read()
+            f.close()
+            print("Configuration file copied to memory.")
+        except:
+            print("Configuration file does not exist, creating a new one.")
+            configRead = self.freshWriteDefaults()
+
+        configValues = Config.format(configRead)
+        self.configValues = configValues
+
+    def freshWriteDefaults(self):
+        import os
+        global defaultSettings
+
+        print("Writing defaults...")
+        f = open("/sd/settings.config","w")
+        for i in range(len(defaultSettings)):
+            f.write(defaultSettings[i])
+        f.close()
+        print("Written...")
+
+        print("Refreshing memory...")
         f = open("/sd/settings.config","r")
         configRead = f.read()
         f.close()
-        print("Configuration file copied to memory.")
-    except:
-        print("Configuration file does not exist, creating a new one.")
-        configRead = freshWriteDefaults()
+        print("Read...")
 
-    configValues = format(configRead)
-    return configValues
+        return configRead
 
-def freshWriteDefaults():
-    import os
-    global defaultSettings
+    def loadDefaults(self):
+        import os
+        global defaultSettings
 
-    print("Writing defaults...")
-    f = open("/sd/settings.config","w")
-    for i in range(len(defaultSettings)):
-        f.write(defaultSettings[i])
-    f.close()
-    print("Written...")
+        print("Writing defaults...")
+        f = open("/sd/settings.config","w")
+        for i in range(len(defaultSettings)):
+            f.write(defaultSettings[i])
+        f.close()
+        print("Written...")
 
-    print("Refreshing memory...")
-    f = open("/sd/settings.config","r")
-    configRead = f.read()
-    f.close()
-    print("Read...")
+        print("Refreshing memory...")
+        f = open("/sd/settings.config","r")
+        configRead = f.read()
+        f.close()
+        print("Read...")
 
-    return configRead
+        configSettings = format(configRead)
 
-def loadDefaults(configValues):
-    import os
-    global defaultSettings
-
-    print("Writing defaults...")
-    f = open("/sd/settings.config","w")
-    for i in range(len(defaultSettings)):
-        f.write(defaultSettings[i])
-    f.close()
-    print("Written...")
-
-    print("Refreshing memory...")
-    f = open("/sd/settings.config","r")
-    configRead = f.read()
-    f.close()
-    print("Read...")
-
-    configSettings = format(configRead)
-
-    for i in range(len(configValues)):
-        configValues.pop(0)
-    for i in range(len(configSettings)):
-        configValues.append(configSettings[i])
-
-def format(configRead):
-    import os
-    configSettings = []
-
-    for i in range(256):
-        configSettings.append(configRead[24*i:(24*i)+24])
-
-    try:
-        if len(configRead) == 0:
-            raise Exception("Configuration length 0.")
+        for i in range(len(self.configValues)):
+            self.configValues.pop(0)
         for i in range(len(configSettings)):
-            if configSettings[i] == "":
-                raise Exception("Incorrectly formatted.")
-    except:
-        os.remove("/sd/settings.config")
-        raise Exception("Configuration file is empty or incorrectly formatted, please reboot.")
+            self.configValues.append(configSettings[i])
 
-    print("Configuration values formatted successfully.")
-    return configSettings
+    def format(configRead):
+        import os
+        configSettings = []
 
-def getValue(register,position,configValues):
-    for i in range(len(configValues)):
-        if register in configValues[i]:
-            value = configValues[i][7:23]
-            position = 15-position[0], 16-position[1]
-            if value == None or value == "None":
-                raise Exception("Encountered Nonetype object which is an invalid register value array. Try reformatting.")
-            return value[position[0]:position[1]]
+        for i in range(256):
+            configSettings.append(configRead[24*i:(24*i)+24])
 
-def sendValue(register,position,value,configValues):
-    import os
-    oldValue = getValue(register,position,configValues)
-    for i in range(len(configValues)):
-        if register in configValues[i]:
-            position = 15-position[0], 16-position[1]
-            pulledValue = configValues[i][7:23]
-            pulledValue = pulledValue[0:position[0]]+value+pulledValue[position[1]:]
-            print("Changed register "+str(register)+" value "+"["+str(15-position[0])+":"+str(16-position[1])+"]"+" from "+str(oldValue)+" to "+str(value))
-            configValues[i] = "["+register+": "+pulledValue+"]"
+        try:
+            if len(configRead) == 0:
+                raise Exception("Configuration length 0.")
+            for i in range(len(configSettings)):
+                if configSettings[i] == "":
+                    raise Exception("Incorrectly formatted.")
+        except:
+            os.remove("/sd/settings.config")
+            raise Exception("Configuration file is empty or incorrectly formatted, please reboot.")
 
-def save(configValues):
-    import os
-    print("Saving...")
-    f = open("/sd/settings.config", "w")
-    for i in range(len(configValues)):
-        f.write(configValues[i])
-    f.close()
+        print("Configuration values formatted successfully.")
+        return configSettings
+
+    def getValue(self,register,position=None):
+        for i in range(len(self.configValues)):
+            if register in self.configValues[i]:
+                value = self.configValues[i][7:23]
+                if position is not None:
+                    position = 15-position[0], 16-position[1]
+                    if value == None or value == "None":
+                        raise Exception("Encountered Nonetype object which is an invalid register value array. Try reformatting.")
+                    return value[position[0]:position[1]]
+                else:
+                    return value
+
+
+    def sendValue(self,register,value,position=None):
+        import os
+        if position is not None:
+            oldValue = self.getValue(register,position)
+        else:
+            oldValue = self.getValue(register,[15,0])
+        for i in range(len(self.configValues)):
+            if register in self.configValues[i]:
+                if position is not None:
+                    position = 15-position[0], 16-position[1]
+                else:
+                    position = 0,16
+                pulledValue = self.configValues[i][7:23]
+                pulledValue = pulledValue[0:position[0]]+value+pulledValue[position[1]:]
+                print("Changed register "+str(register)+" value "+"["+str(15-position[0])+":"+str(16-position[1])+"]"+" from "+str(oldValue)+" to "+str(value))
+                self.configValues[i] = "["+register+": "+pulledValue+"]"
+
+    def save(self):
+        import os
+        print("Saving...")
+        f = open("/sd/settings.config", "w")
+        for i in range(len(self.configValues)):
+            f.write(self.configValues[i])
+        f.close()
 
 defaultSettings = ["[0x00: 0000000000000000]",
                    "[0x01: 0000000000000000]",
