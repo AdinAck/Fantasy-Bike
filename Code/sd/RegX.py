@@ -21,17 +21,24 @@ class RegX:
         self.regValues = self.format(regRead)
 
     def loadDefaults(self):
-        self.regValues = []
-        for i in range(16):
-            for j in range(16):
-                self.regValues.append(str(hex(int(i))[2:]).upper()+str(hex(int(j))[2:]).upper()+":0000000000000000")
+        try:
+            for i in range(len(self.regValues)):
+                self.regValues.pop(i)
+            for i in range(16):
+                for j in range(16):
+                    self.regValues.append("0x"+str(hex(int(i))[2:]).upper()+str(hex(int(j))[2:]).upper()+":0000000000000000")
+        except:
+            self.regValues = []
+            for i in range(16):
+                for j in range(16):
+                    self.regValues.append("0x"+str(hex(int(i))[2:]).upper()+str(hex(int(j))[2:]).upper()+":0000000000000000")
 
     def format(self,regRead):
         import os
         regSettings = []
 
         for i in range(256):
-            regSettings.append(regRead[24*i:(24*i)+24])
+            regSettings.append(regRead[21*i:(21*i)+21])
 
         try:
             if len(regRead) == 0:
@@ -50,7 +57,7 @@ class RegX:
         for i in range(len(self.regValues)):
             try:
                 if register in self.regValues[i]:
-                    value = self.regValues[i][7:23]
+                    value = self.regValues[i][5:21]
                     if position is not None:
                         position = 15-position[0], 16-position[1]
                         if value == None:
@@ -74,10 +81,10 @@ class RegX:
                     position = 15-position[0], 16-position[1]
                 else:
                     position = 0,16
-                pulledValue = self.regValues[i][7:23]
+                pulledValue = self.regValues[i][5:21]
                 pulledValue = pulledValue[0:position[0]]+value+pulledValue[position[1]:]
                 print("["+self.name+"] "+"Changed register "+str(register)+" value "+"["+str(15-position[0])+":"+str(16-position[1])+"]"+" from "+str(oldValue)+" to "+str(value))
-                self.regValues[i] = "["+register+": "+pulledValue+"]"
+                self.regValues[i] = register+":"+pulledValue
 
     def save(self):
         import os
@@ -97,7 +104,7 @@ class RegX:
         print("["+self.name+"] "+"[TEST] Performing functionality test...")
         if len(self.regValues) == 256:
             for i in range(len(self.regValues)):
-                if len(self.regValues[i]) != 24:
+                if len(self.regValues[i]) != 21:
                     raise Exception("["+self.name+"] "+"[TEST] Format exception.")
             print("["+self.name+"] "+"[TEST] Formatting is probably OK")
         else:
@@ -124,9 +131,3 @@ class RegX:
         else:
             raise Exception("["+self.name+"] "+"[TEST] Default loader exception.")
         print("["+self.name+"] "+"[TEST] Complete")
-
-    def scan():
-        import os
-        from os import listdir
-        from os.path import isfile, join
-        fileList = [i for i in listdir("/sd/reg") if isfile(join("/sd/reg", i))]
