@@ -18,51 +18,33 @@ d = Display()
 s = SuperTime()
 
 # Display
-for m in range(10):
-    framerate = 30
-    frames = 100
-    start = -50,0
-    start_infl = .75
-    end = 50,0
-    end_infl = .75
-    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
-    for i in range(frames):
-        x0 = 0
-        y0 = start[0]
-        x1 = frames*start_infl
-        y1 = y0
-        x3 = frames
-        y3 = end[0]
-        x2 = frames*(1-end_infl)
-        y2 = y3
-        t = i/frames
-        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
-        d.clear()
-        d.drawRect(position,0,10,10,1,True)
-        # d.drawPixel(i,32,1)
-        while s.check(1/framerate):
-            pass
-    start = 50,0
-    start_infl = .75
-    end = -50,0
-    end_infl = .75
-    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
-    for i in range(frames):
-        x0 = 0
-        y0 = start[0]
-        x1 = frames*start_infl
-        y1 = y0
-        x3 = frames
-        y3 = end[0]
-        x2 = frames*(1-end_infl)
-        y2 = y3
-        t = i/frames
-        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
-        d.clear()
-        d.drawRect(position,0,10,10,1,True)
-        # d.drawPixel(i,32,1)
-        while s.check(1/framerate):
-            pass
+
+framerate = 30
+frames = 30
+start = -50,0
+start_infl = .75
+end = 50,0
+end_infl = .75
+distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
+for i in range(frames):
+    # d.frame()
+    x0 = 0
+    y0 = start[0]
+    x1 = frames*start_infl
+    y1 = y0
+    x3 = frames
+    y3 = end[0]
+    x2 = frames*(1-end_infl)
+    y2 = y3
+    t = i/frames
+    position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
+    # d.drawRect(position,0,3,3,1,True)
+    d.clear()
+    d.drawRect(position,0,32,32,1,True)
+    # for i in range(10):
+    #     d.drawPixel(position,10+i,1)
+    while s.check(1/framerate):
+        pass
 
 time.sleep(2)
 
