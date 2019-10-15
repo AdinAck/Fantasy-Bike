@@ -1,10 +1,11 @@
---How to upload code to Arduino--
+[ARDUINO IDE]
+
 	arduino --verify <code.ino> //verifies code
 	arduino --upload <code.ino> --board arduino:avr:uno --port /dev/ttyS6 // --board: arduino:<avr or sam>:<board type> --port: /dev/tty<COM6 -> S6>
 	
 --Fast Access--
 	arduino --upload blinky.ino --board arduino:avr:uno --port /dev/ttyS6 --verbose-upload
-	arduino --upload blinky.ino --board esp8266com:avr:ESP8266_GENERIC --port /dev/ttyS6 --verbose-upload
+	arduino --upload blinky.ino --board esp8266:esp8266:generic --port /dev/ttyS6
 
 --Resources--
 	https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
@@ -12,4 +13,9 @@
 
 --Directories--
 	/usr/share/arduino/hardware/ <-- available board packages
-	/<board package folder>/boards.txt <-- available boards
+	/<board package folder>/boards.txt <-- available boards for platform
+	~/.arduino15/preferences.txt <-- preferences
+
+[SERIAL MONITOR]
+
+	busybox microcom -t 9600 /dev/ttyS6 <-- cannot be stopped lol
