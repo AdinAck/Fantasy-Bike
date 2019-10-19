@@ -1,2 +1,2 @@
-circuitpython
-arduino
+adafruit/circuitpython
+arduino/Arduino
