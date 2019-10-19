@@ -1,2 +1,0 @@
--e git://github.com/adafruit/circuitpython.git
--e git://github.com/arduino/Arduino.git
