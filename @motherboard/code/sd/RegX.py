@@ -5,7 +5,7 @@ class RegX:
         else:
             self.name = "temp"
         try:
-            f = open("/sd/reg"+self.name+".reg","r")
+            f = open("/sd/reg/"+self.name+".reg","r")
             regRead = f.read()
             f.close()
             print("["+self.name+"] "+"Registers copied to memory.")
@@ -13,7 +13,7 @@ class RegX:
             print("["+self.name+"] "+"Register file does not exist, creating a new one.")
             self.loadDefaults()
             self.save()
-            f = open("/sd/reg"+self.name+".reg","r")
+            f = open("/sd/reg/"+self.name+".reg","r")
             regRead = f.read()
             f.close()
             print("["+self.name+"] "+"Registers copied to memory.")
@@ -47,7 +47,7 @@ class RegX:
                 if regSettings[i] == "":
                     raise Exception("["+self.name+"] "+"Incorrectly formatted.")
         except:
-            os.remove("/sd/reg"+self.name+".reg")
+            os.remove("/sd/reg/"+self.name+".reg")
             raise Exception("["+self.name+"] "+"Register file is empty or incorrectly formatted, please reboot.")
 
         print("["+self.name+"] "+"Configuration values formatted successfully.")
@@ -61,20 +61,20 @@ class RegX:
                     if position is not None:
                         position = 15-position[0], 16-position[1]
                         if value == None:
-                            raise Exception("["+self.name+"] "+"Encountered Nonetype object which is an invalid register value array. Try reformatting.")
+                            raise Exception("["+self.name+"] "+"Encountered 'Nonetype' object which is an invalid register value array. Try reformatting.")
                         return value[position[0]:position[1]]
                     else:
                         return value
             except TypeError:
                 raise Exception("Encountered 'NoneType' object, register file probably does not exist.")
 
-
     def sendValue(self,register,value,position=None):
-        import os
         if position is not None:
             oldValue = self.getValue(register,position)
         else:
             oldValue = self.getValue(register,[15,0])
+        if len(value) is not position[0]-position[1]+1:
+            raise Exception("Value length does not meet position domain requirements.")
         for i in range(len(self.regValues)):
             if register in self.regValues[i]:
                 if position is not None:
@@ -89,7 +89,7 @@ class RegX:
     def save(self):
         import os
         print("["+self.name+"] "+"Saving...")
-        f = open("/sd/reg"+self.name+".reg", "w")
+        f = open("/sd/reg/"+self.name+".reg", "w")
         for i in range(len(self.regValues)):
             f.write(self.regValues[i])
         f.close()
@@ -97,7 +97,7 @@ class RegX:
     def purge(self):
         import os
         print("["+self.name+"] "+"Purging...")
-        os.remove("/sd/reg"+self.name+".reg")
+        os.remove("/sd/reg/"+self.name+".reg")
         self.regValues = []
 
     def debug(self):
@@ -116,7 +116,7 @@ class RegX:
         else:
             raise Exception("["+self.name+"] "+"[TEST] RAM read/write exception.")
         self.regValues = [0]
-        f = open("/sd/reg"+self.name+".reg","r")
+        f = open("/sd/reg/"+self.name+".reg","r")
         regRead = f.read()
         f.close()
         self.regValues = self.format(regRead)

@@ -27,9 +27,16 @@ d = x0-x
 # Cardono condenced cubic formula
 # t = (q+(q**2+(r-p**2)**3)**(1/2))**(1/3)+(q-(q**2+(r-p**2)**3)**(1/2))**(1/3)+p
 
+# New formula that will suck a solid amount
+t = (-b/(3*a)
+    -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d+((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3)
+    -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d-((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3))
+
+t = (-1)**(1/2)
+
 # Numpy root finder
-f = [a,b,c,d]
-t = str(np.roots(f)[2])[1:-4]
+# f = [a,b,c,d]
+# t = str(np.roots(f)[2])[1:-4]
 
 print("a: "+str(a))
 print("b: "+str(b))
