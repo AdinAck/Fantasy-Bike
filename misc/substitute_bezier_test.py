@@ -1,9 +1,7 @@
 import numpy as np
 
 n = 20 # dimensions of grid
-
-c = 3 # amount of curve deviation
-b = 2**c + 1 # exponential conversion
+c = 3 # amount of curve deviation (0-17)
 
 a = np.zeros((n,n))
 
@@ -12,6 +10,7 @@ def point(x,y):
     a[-y-1,x] = 1
 
 # Mathematics
+b = 2**c + c**2 # exponential conversion
 def y(x):
     f = 2*(x+.5)*(x-.5)+.5
     g = 2*(x-.5)*(x-1.5)+.5
@@ -26,17 +25,19 @@ def y(x):
 for x in range(n):
     point(x,int(n*y(x/n)))
 
+# =========================== #
 c = c - 1
-b = 2**c + 1
+b = 2**c + c**2
 
 for x in range(n):
     point(x,int(n*y(x/n)))
 
 c = c + 2
-b = 2**c + 1
+b = 2**c + c**2
 
 for x in range(n):
     point(x,int(n*y(x/n)))
+# =========================== #
 
 # Final result
 print(a)
