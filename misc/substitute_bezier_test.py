@@ -10,7 +10,7 @@ def point(x,y):
     a[-y-1,x] = 1
 
 # Mathematics
-b = 2**c + c**2 # exponential conversion
+b = 2**c + c**2 # conversion
 def y(x):
     f = 2*(x+.5)*(x-.5)+.5
     g = 2*(x-.5)*(x-1.5)+.5
