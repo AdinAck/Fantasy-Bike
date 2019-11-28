@@ -21,7 +21,7 @@ def y(x):
     elif x <= 1:
         return -(g/l)+1
 
-# Loop (repeates for anti-aliasing *for demo purposes only*)
+# Loop to plot points
 for x in range(n):
     point(x,int(n*y(x/n)))
 
