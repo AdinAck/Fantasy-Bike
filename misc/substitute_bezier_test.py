@@ -25,19 +25,5 @@ def y(x):
 for x in range(n):
     point(x,int(n*y(x/n)))
 
-# =========================== #
-c = c - 1
-b = 2**c + c**2
-
-for x in range(n):
-    point(x,int(n*y(x/n)))
-
-c = c + 2
-b = 2**c + c**2
-
-for x in range(n):
-    point(x,int(n*y(x/n)))
-# =========================== #
-
 # Final result
 print(a)
