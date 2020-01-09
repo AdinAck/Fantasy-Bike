@@ -12,8 +12,11 @@ import time
 from display import Display
 from supertime import*
 
-d = Display("0xAA")
 s = SuperTime()
+d = Display("0x8")
+
+d.drawRect(128,32,50,50)
+d.drawStr(128,32,"Test")
 
 # Display
 

@@ -16,20 +16,16 @@ void setup() {
   u8g2.setFont(u8g2_font_profont17_mf);
 
   Serial.begin(9600);
-  Wire.begin(4,5,slaveAddress);
+  Wire.begin(slaveAddress);
   Wire.onReceive(receiveEvent);
 }
 
 void loop() {
 }
 
-void receiveEvent(size_t howMany) {
-
-  (void) howMany;
-  while (1 < Wire.available()) { // loop through all but the last
+void receiveEvent() {
+  while (0 < Wire.available()) { // loop through all but the last
     byte c = Wire.read(); // receive byte as a character
     Serial.print(c);         // print the character
   }
-  int x = Wire.read();    // receive byte as an integer
-  Serial.println(x);         // print the integer
 }
