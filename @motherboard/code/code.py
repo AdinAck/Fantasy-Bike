@@ -15,39 +15,69 @@ from supertime import*
 s = SuperTime()
 d = Display("0x8")
 
-d.drawRect(128,32,50,50)
-d.drawStr(128,32,"Test")
+# d.drawStr(128,32,"Test")
 
 # Display
 
-# framerate = 30
-# frames = 60
-# start = -50,0
-# start_infl = .75
-# end = 50,0
-# end_infl = .75
-# distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
-# for i in range(frames):
-#     # d.frame()
-#     x0 = 0
-#     y0 = start[0]
-#     x1 = frames*start_infl
-#     y1 = y0
-#     x3 = frames
-#     y3 = end[0]
-#     x2 = frames*(1-end_infl)
-#     y2 = y3
-#     t = i/frames
-#     position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
-#     # d.drawRect(position,0,3,3,1,True)
-#     d.clear()
-#     d.drawRect(position,0,5,5,1,True)
-#     # for i in range(10):
-#     #     d.drawPixel(position,10+i,1)
-#     while s.check(1/framerate):
-#         pass
-#
-# time.sleep(2)
+d.drawRect(0,0,255,63)
+d.sendBuffer()
+time.sleep(5)
+
+framerate = 60
+frames = 60
+while True:
+    start = 0,32-3
+    start_infl = .75
+    end = 256-20,32-3
+    end_infl = .75
+    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
+    for i in range(frames):
+        # d.frame()
+        x0 = 0
+        y0 = start[0]
+        x1 = frames*start_infl
+        y1 = y0
+        x3 = frames
+        y3 = end[0]
+        x2 = frames*(1-end_infl)
+        y2 = y3
+        t = i/frames
+        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
+        # d.drawRect(position,0,3,3,1,True)
+        d.clearBuffer()
+        d.drawRect(int(position),32-10,20,20)
+        # for i in range(10):
+        #     d.drawPixel(position,10+i,1)
+        while s.check(1/framerate):
+            pass
+        d.sendBuffer()
+    start = 256-20,32-3
+    start_infl = .75
+    end = 0,32-3
+    end_infl = .75
+    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
+    for i in range(frames):
+        # d.frame()
+        x0 = 0
+        y0 = start[0]
+        x1 = frames*start_infl
+        y1 = y0
+        x3 = frames
+        y3 = end[0]
+        x2 = frames*(1-end_infl)
+        y2 = y3
+        t = i/frames
+        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
+        # d.drawRect(position,0,3,3,1,True)
+        d.clearBuffer()
+        d.drawRect(int(position),32-10,20,20)
+        # for i in range(10):
+        #     d.drawPixel(position,10+i,1)
+        while s.check(1/framerate):
+            pass
+        d.sendBuffer()
+
+time.sleep(2)
 
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
 print("CPU Frequency: "+str(microcontroller.cpu.frequency))

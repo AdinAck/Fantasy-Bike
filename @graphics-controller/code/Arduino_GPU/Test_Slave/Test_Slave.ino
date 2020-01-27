@@ -28,10 +28,9 @@ void receiveEvent() {
 
     if (c == String(67)) {
       Rectangle();
+    }else {
+      Serial.println("Received invalid/unknown bytes.");
     }
-  }
-  if (c.length() != 0){
-    Serial.println("Byte transmission complete.");
   }
 }
 
@@ -44,6 +43,7 @@ void Rectangle() {
   Serial.println(y);
   Serial.println(w);
   Serial.println(h);
+  Serial.println("Transmission complete.");
 }
 
 void loop() {

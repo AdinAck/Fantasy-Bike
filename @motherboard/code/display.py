@@ -18,16 +18,16 @@ class Display:
             raise Exception("Display controller not detected.")
         self.bus.unlock()
 
-    def clear(self):
+    def clearBuffer(self):
         while not self.bus.try_lock():
             pass
-        self.bus.writeto(self.slaveAddress, bytes([int(0x80)])) # command type 1000 0000
+        self.bus.writeto(int(self.slaveAddress), bytes([int(0x80)])) # command type 1000 0000
         self.bus.unlock()
 
-    def send(self):
+    def sendBuffer(self):
         while not self.bus.try_lock():
             pass
-        self.bus.writeto(self.slaveAddress, bytes([int(0x81)])) # command type 1000 0001
+        self.bus.writeto(int(self.slaveAddress), bytes([int(0x81)])) # command type 1000 0001
         self.bus.unlock()
 
     def drawRect(self,x,y,w,h):
@@ -42,14 +42,14 @@ class Display:
         self.bus.writeto(int(self.slaveAddress), bytearray(a))
         self.bus.unlock()
 
-    def drawStr(self,x,y,str):
-        while not self.bus.try_lock():
-            pass
-        a = []
-        a.append(int(0x44)) # command type 0100 0100
-        a.append(x)         # x position
-        a.append(y)         # y position
-        a.append(str)       # string
-        print(bytearray(a))
-        self.bus.writeto(int(self.slaveAddress), bytearray(a))
-        self.bus.unlock()
+    # def drawStr(self,x,y,str):
+    #     while not self.bus.try_lock():
+    #         pass
+    #     a = []
+    #     a.append(int(0x44)) # command type 0100 0100
+    #     a.append(x)         # x position
+    #     a.append(y)         # y position
+    #     a.append(str)       # string
+    #     print(bytearray(a))
+    #     self.bus.writeto(int(self.slaveAddress), bytearray(a))
+    #     self.bus.unlock()
