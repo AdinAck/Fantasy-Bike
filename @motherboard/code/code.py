@@ -21,61 +21,55 @@ d = Display("0x8")
 
 d.drawRect(0,0,255,63)
 d.sendBuffer()
-time.sleep(5)
+time.sleep(2)
 
+def bezier(i, start, start_infl, end, end_infl, frames):
+    x00 = 0
+    y00 = start[0]
+    x01 = frames*start_infl
+    y01 = y00
+    x03 = frames
+    y03 = end[0]
+    x02 = frames*(1-end_infl)
+    y02 = y03
+    x10 = 0
+    y10 = start[1]
+    x11 = frames*start_infl
+    y11 = y10
+    x13 = frames
+    y13 = end[1]
+    x12 = frames*(1-end_infl)
+    y12 = y13
+    t = i/frames
+    return [(1-t)*((1-t)*((1-t)*y00+t*y01)+t*((1-t)*y01+t*y02))+t*((1-t)*((1-t)*y01+t*y02)+t*((1-t)*y02+t*y03)),
+            (1-t)*((1-t)*((1-t)*y10+t*y11)+t*((1-t)*y11+t*y12))+t*((1-t)*((1-t)*y11+t*y12)+t*((1-t)*y12+t*y13))]
+
+# Test Square Animation
+def testSquare(i, framerate, frames, start, start_infl, end, end_infl):
+    if i <= frames:
+        position = bezier(i, start, start_infl, end, end_infl, frames)
+        while s.check(1/framerate):
+            pass
+        d.drawRect(int(position[0]),int(position[1]),20,20)
+
+# Variables for Main Loop
+tick = 0
 framerate = 60
-frames = 60
+testSquareFrames = 80
+
+# Main Loop
 while True:
-    start = 0,32-3
-    start_infl = .75
-    end = 256-20,32-3
-    end_infl = .75
-    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
-    for i in range(frames):
-        # d.frame()
-        x0 = 0
-        y0 = start[0]
-        x1 = frames*start_infl
-        y1 = y0
-        x3 = frames
-        y3 = end[0]
-        x2 = frames*(1-end_infl)
-        y2 = y3
-        t = i/frames
-        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
-        # d.drawRect(position,0,3,3,1,True)
-        d.clearBuffer()
-        d.drawRect(int(position),32-10,20,20)
-        # for i in range(10):
-        #     d.drawPixel(position,10+i,1)
-        while s.check(1/framerate):
-            pass
-        d.sendBuffer()
-    start = 256-20,32-3
-    start_infl = .75
-    end = 0,32-3
-    end_infl = .75
-    distance = math.sqrt(((end[0]-start[0])**2)+((end[1]-start[1])**2))
-    for i in range(frames):
-        # d.frame()
-        x0 = 0
-        y0 = start[0]
-        x1 = frames*start_infl
-        y1 = y0
-        x3 = frames
-        y3 = end[0]
-        x2 = frames*(1-end_infl)
-        y2 = y3
-        t = i/frames
-        position = (1-t)*((1-t)*((1-t)*y0+t*y1)+t*((1-t)*y1+t*y2))+t*((1-t)*((1-t)*y1+t*y2)+t*((1-t)*y2+t*y3))
-        # d.drawRect(position,0,3,3,1,True)
-        d.clearBuffer()
-        d.drawRect(int(position),32-10,20,20)
-        # for i in range(10):
-        #     d.drawPixel(position,10+i,1)
-        while s.check(1/framerate):
-            pass
-        d.sendBuffer()
+    d.clearBuffer()
+    if tick <= testSquareFrames:
+        testSquare(tick,framerate,testSquareFrames,(0,0),.75,(256-20,64-20),.75)
+    if tick > testSquareFrames and tick <= testSquareFrames*2:
+        testSquare(tick-testSquareFrames,framerate,testSquareFrames,(256-20,64-20),.75,(0,0),.75)
+    d.sendBuffer()
+    if tick == testSquareFrames*2:
+        tick = 0
+    tick += 1
+
+
 
 time.sleep(2)
 
