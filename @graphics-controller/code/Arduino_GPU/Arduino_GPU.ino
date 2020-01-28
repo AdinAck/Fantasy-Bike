@@ -4,10 +4,6 @@
 
 U8G2_SSD1322_NHD_256X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 7, /* dc=*/ 9, /* reset=*/ 10);  // Enable U8G2_16BIT in u8g2.h
 
-int w = 32;
-int a = 1;
-int s = millis()/1000;
-
 #define slaveAddress 9
 
 void setup() {
@@ -25,26 +21,116 @@ void loop() {
 void receiveEvent(int howMany) {
   while (0 < Wire.available()) { // loop through all but the last
     int c = Wire.read(); // receive byte as a character
-    if (c == 67) {
-      Rectangle();
-    }
-    if (c == 128) {
+    if (c == 0) {
       u8g2.clearBuffer();
     }
-    if (c == 129) {
+    if (c == 1) {
       u8g2.sendBuffer();
+    }
+    if (c == 16) {
+      Pixel();
+    }
+    if (c == 17) {
+      Line();
+    }
+    if (c == 18) {
+      Rectangle();
+    }
+    if (c == 19) {
+    hollowRectangle();
+    }
+    if (c == 20) {
+      Circle();
+    }
+    if (c == 21) {
+      hollowCircle();
+    }
+    if (c == 33) {
+      Text();
+    }
+    if (c == 34) {
+      Font();
     }
   }
 }
 
+void Pixel() {
+  int x = Wire.read();
+  int y = Wire.read();
+  u8g2.drawPixel(x,y);
+}
+
+void Line() {
+  int x1 = Wire.read();
+  int y1 = Wire.read();
+  int x2 = Wire.read();
+  int y2 = Wire.read();
+  u8g2.drawLine(x1,y1,x2,y2);
+}
+
 void Rectangle() {
-  int xpos = Wire.read();
-  int ypos = Wire.read();
+  int x = Wire.read();
+  int y = Wire.read();
   int width = Wire.read();
   int height = Wire.read();
-//  Serial.print("X Position: "); Serial.println(xpos);
-//  Serial.print("Y Position: "); Serial.println(ypos);
-//  Serial.print("Width: "); Serial.println(width);
-//  Serial.print("Height: "); Serial.println(height);
-  u8g2.drawBox(xpos,ypos,width,height);
+  u8g2.drawBox(x,y,width,height);
+}
+
+void hollowRectangle() {
+  int x = Wire.read();
+  int y = Wire.read();
+  int width = Wire.read();
+  int height = Wire.read();
+  u8g2.drawFrame(x,y,width,height);
+}
+
+void Circle() {
+  int x = Wire.read();
+  int y = Wire.read();
+  int r = Wire.read();
+  u8g2.drawDisc(x,y,r,U8G2_DRAW_ALL);
+}
+
+void hollowCircle() {
+  int x = Wire.read();
+  int y = Wire.read();
+  int r = Wire.read();
+  u8g2.drawCircle(x,y,r,U8G2_DRAW_ALL);
+}
+
+void Text() {
+  int stringLength = Wire.read();
+  int x = Wire.read();
+  int y = Wire.read();
+  char stringArray[stringLength];
+  for (int i = 0; i <= stringLength-1; i++) {
+    int stringChar = Wire.read();
+    stringArray[i] = stringChar;
+  }
+  u8g2.drawStr(x,y,stringArray);
+}
+
+void Font() {
+  int f = Wire.read();
+  if (f == 6) {
+    u8g2.setFont(u8g2_font_profont10_mf);
+  }
+  if (f == 7) {
+    u8g2.setFont(u8g2_font_profont11_mf);
+  }
+  if (f == 8) {
+    u8g2.setFont(u8g2_font_profont12_mf);
+  }
+  if (f == 9) {
+    u8g2.setFont(u8g2_font_profont15_mf);
+  }
+  if (f == 11) {
+    u8g2.setFont(u8g2_font_profont17_mf);
+  }
+  if (f == 14) {
+    u8g2.setFont(u8g2_font_profont22_mf);
+  }
+  if (f == 19) {
+    u8g2.setFont(u8g2_font_profont29_mf);
+  }
 }
