@@ -105,7 +105,7 @@ void Text() {
   char stringArray[stringLength];
   for (int i = 0; i <= stringLength-1; i++) {
     int stringChar = Wire.read();
-    stringArray[i] = stringChar;
+    Serial.println(stringChar);
   }
   u8g2.drawStr(x,y,stringArray);
 }

@@ -60,8 +60,8 @@ testSquareFrames = 80
 # Main Loop
 while True:
     d.clearBuffer()
-    # d.drawStr(0,11,"AAAA")
-    d.drawHRect(1,1,10,10)
+    # d.drawStr(0,11,"ABCDEFG")
+    d.drawHRect(128-5,32-5,10,10)
     d.drawLine(0,64,255,0)
     if tick <= testSquareFrames:
         testSquare(tick,framerate,testSquareFrames,(0,0),.75,(256-20,64-20),.75)
