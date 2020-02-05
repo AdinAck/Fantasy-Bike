@@ -1,6 +1,4 @@
-import board
-import busio
-
+import board, busio
 class Display:
     def __init__(self,slaveAddress):
         self.slaveAddress = int(slaveAddress)
@@ -43,6 +41,14 @@ class Display:
     def drawHRect(self,x,y,w,h):
         c = int(0x13)
         self.bus.writeto(self.slaveAddress, bytearray([c,x,y,w,h]))
+
+    def drawCircle(self,x,y,r):
+        c = int(0x14)
+        self.bus.writeto(self.slaveAddress, bytearray([c,x,y,r]))
+
+    def drawHCircle(self,x,y,r):
+        c = int(0x15)
+        self.bus.writeto(self.slaveAddress, bytearray([c,x,y,r]))
 
     def drawStr(self,x,y,str):
         c = int(0x21)

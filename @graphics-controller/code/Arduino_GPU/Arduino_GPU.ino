@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include <SPI.h>
 
-U8G2_SSD1322_NHD_256X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 7, /* dc=*/ 9, /* reset=*/ 10);
+U8G2_SSD1322_NHD_256X64_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 7, /* dc=*/ 9, /* reset=*/ 10); // MUST ENABLE 16 BIT IN U8G2.h!!!!
 
 void setup() {
   u8g2.begin();
