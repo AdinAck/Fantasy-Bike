@@ -1,17 +1,17 @@
 import numpy as np
 
 # Time coordinate
-x = 8
+x = .3
 
 # Positions of 4 points (for cubic bezier)
 x0 = 0
 y0 = 0
-x1 = 5
+x1 = .5
 y1 = 0
-x2 = 5
-y2 = 10
-x3 = 10
-y3 = 10
+x2 = .5
+y2 = 1
+x3 = 1
+y3 = 1
 
 # Coefficients of polynomial form
 a = x3-3*x2+3*x1-x0
@@ -28,16 +28,16 @@ d = x0-x
 # t = (q+(q**2+(r-p**2)**3)**(1/2))**(1/3)+(q-(q**2+(r-p**2)**3)**(1/2))**(1/3)+p
 
 # New formula that will suck a solid amount
-t = (-b/(3*a)
-    -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d+((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3)
-    -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d-((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3))
+# t = (-b/(3*a)
+#     -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d+((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3)
+#     -(1/(3*a))*((1/2)*(2*b**3-9*a*b*c+27*a**2*d-((2*b**3-9*a*b*c+27*a**2*d)**2-4*(b**2-3*a*c)**3)**(1/2)))**(1/3))
 #
 # t = (-1)**(1/2)
 
 # Numpy root finder
 f = [a,b,c,d]
 print(np.roots(f))
-t = str(np.roots(f)[2])[1:-4]
+t = str(np.roots(f))
 
 print("a: "+str(a))
 print("b: "+str(b))
