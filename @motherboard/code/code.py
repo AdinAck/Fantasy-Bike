@@ -13,12 +13,31 @@ from display import Display
 import animation
 from supertime import*
 
+# Class inits
 s = SuperTime()
 d = Display("0x8")
 
-# d.drawStr(128,32,"Test")
+# General setup
+print("CPU Temp: "+str(microcontroller.cpu.temperature))
+print("CPU Frequency: "+str(microcontroller.cpu.frequency))
 
-# Display
+# Using the configuration file:
+# from RegX import *
+
+# Test config register system is working: WILL DELETE STORED REGISTER VALUES
+# cfg = RegX()
+# cfg.debug()
+# cfg2 = RegX("test2")
+# cfg2.test()
+# cfg2.purge()
+
+# I/O Setup
+# led = digitalio.DigitalInOut(board.D13)
+# led.direction = digitalio.Direction.OUTPUT
+
+# interrupt = digitalio.DigitalInOut(board.D3)
+# interrupt.direction = digitalio.Direction.INPUT
+# interrupt.pull = digitalio.Pull.UP
 
 # Test Square Animation
 def testSquare(i, frames, c, type, start, end, width):
@@ -62,39 +81,3 @@ while True:
     tick += 1
     while s.check(1/framerate):
         pass
-
-
-
-time.sleep(2)
-
-print("CPU Temp: "+str(microcontroller.cpu.temperature))
-print("CPU Frequency: "+str(microcontroller.cpu.frequency))
-
-# Using the configuration file:
-from RegX import *
-
-# Test config register system is working: WILL DELETE STORED REGISTER VALUES
-# cfg = RegX()
-# cfg.debug()
-# cfg2 = RegX("test2")
-# cfg2.test()
-# cfg2.purge()
-
-# I/O Setup
-led = digitalio.DigitalInOut(board.D13)
-led.direction = digitalio.Direction.OUTPUT
-
-# interrupt = digitalio.DigitalInOut(board.D3)
-# interrupt.direction = digitalio.Direction.INPUT
-# interrupt.pull = digitalio.Pull.UP
-
-# loop
-# while True:
-#     if interrupt.value == True:
-#         break
-#     time.sleep(1)
-#     led.value = True
-#     time.sleep(1)
-#     led.value = False
-#
-# print("\nLED deactivated.")
