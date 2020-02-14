@@ -69,12 +69,6 @@ while True:
     d.drawHRect(128-4,32-4,9,9)
     d.drawHCircle(128,32,16)
     d.drawPixel(128,32)
-    # if tick <= frames:
-    #     testLine(tick,frames,4,4,"ease",(128-20,56),(128-20,56),(128-20,56),(128+20,56))
-    #     testLine(tick,frames,4,4,"ease",(84,64/4),(44,64/4),(44,48),(84,48))
-    # if tick > frames and tick <= frames*2:
-    #     testLine(tick-frames,frames,4,4,"ease",(128-20,56),(128-20,56),(128+20,56),(128-20,56))
-    #     testLine(tick-frames,frames,4,4,"ease",(44,64/4),(84,64/4),(84,48),(44,48))
     tick += 1
     if len(a.animQueue) == 0:
         tick = 0
