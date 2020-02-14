@@ -12,10 +12,10 @@ class Animation:
         i = 0
         while i < len(self.animQueue):
             if "testSquare" in self.animQueue[i][0]:
-                if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0:
-                    self.animQueue.pop(i)
+                if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0: # If the animation is complete...
+                    self.animQueue.pop(i) # Remove from queue.
                     if len(self.animQueue) > 1: # This is not needed on last animation type if statement
-                        i -= 1
+                        i -= 1 # Make sure i is updated for new array size.
                     else:
                         break
                 else:
@@ -47,7 +47,7 @@ class Animation:
                     self.d.drawLine(position1[0],position1[1],position2[0],position2[1])
             i += 1
 
-    def keyframeGen(self, i, frames, type, start, end, c=None):
+    def keyframeGen(self, i, frames, type, start, end, c=None): # A bunch of math stuff...don't worry about it too much.
         if type == "linear":
             x = i/frames
             return [int((end[0]-start[0])*x+start[0]),int((end[1]-start[1])*x+start[1])]
