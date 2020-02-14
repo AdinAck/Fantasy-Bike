@@ -59,14 +59,8 @@ while True:
     d.clearBuffer() # Clear display buffer.
     led.value = False
     if skipFrame == True:
-<<<<<<< HEAD
         framerate = int(1/loopTime) # Sets framerate to minimum possible framerate with current performance.
         frames = int(animTime*framerate) # Adjusts length of animation to accomodate framerate change.
-=======
-        tick += (loopTime-1/framerate)*framerate
-        framerate = int(1/loopTime)
-        frames = int(animTime*framerate)
->>>>>>> 126411c7f1d3f923a060c2af322204dd33008491
         led.value = True
     elif framerate < desiredFramerate:
         framerate += 1 # Slowly return framerate to normal once performance allows.
