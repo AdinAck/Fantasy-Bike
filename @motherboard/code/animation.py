@@ -14,7 +14,7 @@ class Animation:
             if "testSquare" in self.animQueue[i][0]:
                 if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0:
                     self.animQueue.pop(i)
-                    if len(self.animQueue) > 1: # This is not needed on last if statement
+                    if len(self.animQueue) > 1: # This is not needed on last animation type if statement
                         i -= 1
                     else:
                         break
