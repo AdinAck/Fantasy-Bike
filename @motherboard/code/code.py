@@ -38,9 +38,9 @@ print("CPU Frequency: "+str(microcontroller.cpu.frequency))
 led = digitalio.DigitalInOut(board.D13)
 led.direction = digitalio.Direction.OUTPUT
 
-button = digitalio.DigitalInOut(board.D53)
-button.direction = digitalio.Direction.INPUT
-button.pull = digitalio.Pull.UP
+button1 = digitalio.DigitalInOut(board.D53)
+button1.direction = digitalio.Direction.INPUT
+button1.pull = digitalio.Pull.UP
 
 # Variables for Main Loop
 tick = 0
@@ -59,6 +59,7 @@ while True:
     d.clearBuffer()
     led.value = False
     if skipFrame == True:
+        tick += (loopTime-1/framerate)*framerate
         framerate = int(1/loopTime)
         frames = int(animTime*framerate)
         led.value = True
@@ -72,7 +73,7 @@ while True:
     tick += 1
     if len(a.animQueue) == 0:
         tick = 0
-    if button.value == False:
+    if button1.value == False:
         a.animQueue.append(["testSquare",tick,frames,c,start,end,"easeIn",9])
         a.animQueue.append(["testLine",tick,int(framerate),1,(84,16),(44,16),(44,48),(84,48),"ease"])
     a.drawFrame(tick)
