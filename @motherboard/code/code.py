@@ -42,15 +42,6 @@ button = digitalio.DigitalInOut(board.D53)
 button.direction = digitalio.Direction.INPUT
 button.pull = digitalio.Pull.UP
 
-
-
-# Test Line Animation
-def testLine(i, frames, c1, c2, type, start1, end1, start2, end2):
-    if i <= frames:
-        position1 = a.keyframeGen(i, frames, type, start1, end1, c1)
-        position2 = a.keyframeGen(i, frames, type, start2, end2, c2)
-        d.drawLine(position1[0],position1[1],position2[0],position2[1])
-
 # Variables for Main Loop
 tick = 0
 desiredFramerate = 60
