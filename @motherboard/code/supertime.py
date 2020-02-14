@@ -11,3 +11,8 @@ class SuperTime:
             return False
         else:
             return True
+    def getTime(self):
+        self.current = time.monotonic_ns()
+        actualTime = (self.current-self.previous)/10**9
+        self.previous = self.current
+        return actualTime

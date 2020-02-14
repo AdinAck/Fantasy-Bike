@@ -54,7 +54,7 @@ class Display:
         c = int(0x21)
         if len(str) <= 256:
             self.bus.writeto(self.slaveAddress, bytearray([c,len(str),x,y]))
-            self.bus.writeto(self.slaveAddress, str.encode())
+            self.bus.writeto(self.slaveAddress, b'1')
         else:
             str = "String exceeds maximum size of 256 bytes."
             self.bus.writeto(self.slaveAddress, bytearray([c,len(str),x,y]))
