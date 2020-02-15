@@ -60,12 +60,11 @@ while True:
     led.value = False
     if skipFrame == True:
         framerate = int(1/loopTime) # Sets framerate to minimum possible framerate with current performance.
-        frames = int(animTime*framerate) # Adjusts length of animation to accomodate framerate change.
         led.value = True
     elif framerate < desiredFramerate:
         framerate += 1 # Slowly return framerate to normal once performance allows.
-        frames = int(animTime*framerate) # Readjusts length of animation.
-    d.drawStr(0,11,"a")
+    frames = int(animTime*framerate) # Adjusts length of animation to accomodate framerate change.
+    d.drawStr(0,11,str(framerate))
     d.drawHRect(128-4,32-4,9,9)
     d.drawHCircle(128,32,16)
     d.drawPixel(128,32)

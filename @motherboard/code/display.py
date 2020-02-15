@@ -53,12 +53,12 @@ class Display:
     def drawStr(self,x,y,str):
         c = int(0x21)
         if len(str) <= 256:
-            self.bus.writeto(self.slaveAddress, bytearray([c,len(str),x,y]))
-            self.bus.writeto(self.slaveAddress, b'1')
+            a = [c,len(str)+1,x,y]+[ord(i) for i in str]+[0]
+            self.bus.writeto(self.slaveAddress, bytearray(a))
         else:
-            str = "String exceeds maximum size of 256 bytes."
-            self.bus.writeto(self.slaveAddress, bytearray([c,len(str),x,y]))
-            self.bus.writeto(self.slaveAddress, str.encode())
+            str = "Molasss"
+            a = [c,len(str)+1,x,y]+[ord(i) for i in str]+[0]
+            self.bus.writeto(self.slaveAddress, bytearray(a))
 
     def setFont(self,font):
         c = int(0x22)

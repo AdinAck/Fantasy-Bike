@@ -19,12 +19,8 @@ class Animation:
                     else:
                         break
                 else:
-                    position = self.keyframeGen(tick-self.animQueue[i][1],
-                                                self.animQueue[i][2],
-                                                self.animQueue[i][6],
-                                                self.animQueue[i][4],
-                                                self.animQueue[i][5],
-                                                self.animQueue[i][3])
+                    position = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][6],
+                                                self.animQueue[i][4],self.animQueue[i][5],self.animQueue[i][3])
                     self.d.drawRect(position[0],position[1],
                                     self.animQueue[i][7],self.animQueue[i][7])
             if "testLine" in self.animQueue[i][0]:
@@ -32,18 +28,10 @@ class Animation:
                     self.animQueue.pop(i)
                     i -= 1
                 else:
-                    position1 = self.keyframeGen(tick-self.animQueue[i][1],
-                                                self.animQueue[i][2],
-                                                self.animQueue[i][8],
-                                                self.animQueue[i][4],
-                                                self.animQueue[i][5],
-                                                self.animQueue[i][3])
-                    position2 = self.keyframeGen(tick-self.animQueue[i][1],
-                                                self.animQueue[i][2],
-                                                self.animQueue[i][8],
-                                                self.animQueue[i][6],
-                                                self.animQueue[i][7],
-                                                self.animQueue[i][3])
+                    position1 = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][8],
+                                                self.animQueue[i][4],self.animQueue[i][5],self.animQueue[i][3])
+                    position2 = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][8],
+                                                self.animQueue[i][6],self.animQueue[i][7],self.animQueue[i][3])
                     self.d.drawLine(position1[0],position1[1],position2[0],position2[1])
             i += 1
 

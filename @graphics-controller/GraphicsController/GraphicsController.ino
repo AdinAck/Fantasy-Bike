@@ -100,16 +100,12 @@ void Text() {
   int stringLength = Wire.read();
   int x = Wire.read();
   int y = Wire.read();
-//  char stringArray[stringLength];
-  char stringArray = Wire.read();
-//  for (int i = 0; i <= stringLength-1; i++) {
-//    int stringChar = Wire.read();
-//    Serial.println(stringChar);
-//  }
-//  u8g2.drawStr(x,y,stringArray);
-  Serial.println(stringArray);
+  char stringArray[stringLength];
+  for (int i = 0; i <= stringLength-1; i++) {
+    stringArray[i] = Wire.read();
+  }
+  u8g2.drawStr(x,y,stringArray);
 }
-
 void Font() {
   int f = Wire.read();
   if (f == 6) {
