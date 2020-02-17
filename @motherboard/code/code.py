@@ -17,8 +17,12 @@ from supertime import*
 # Class inits
 s = SuperTime()
 p = SuperTime()
+l = SuperTime()
 d = Display("0x8")
 a = Animation(d)
+
+# Load keyframe lookup tables
+testSquareKey = a.loadKeyframes("Test keyframes X.txt", "Test keyframes Y.txt")
 
 # General setup
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
@@ -44,12 +48,8 @@ button1.pull = digitalio.Pull.UP
 
 # Variables for Main Loop
 tick = 0
-desiredFramerate = 60
-framerate = desiredFramerate
-animTime = .5
-loopTime = 1/framerate
-skipFrame = False
-frames = int(animTime*framerate)
+loopTime = 1
+animTime = 2
 start = (200,20)
 end = (200, 64-9)
 c = 0
@@ -57,29 +57,19 @@ c = 0
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
-    led.value = False
-    if skipFrame == True:
-        framerate = int(1/loopTime) # Sets framerate to minimum possible framerate with current performance.
-        led.value = True
-    elif framerate < desiredFramerate:
-        framerate += 1 # Slowly return framerate to normal once performance allows.
-    frames = int(animTime*framerate) # Adjusts length of animation to accomodate framerate change.
-    d.drawStr(0,11,str(framerate))
+    d.drawStr(0,11,str(int(1/loopTime))+" "+str(tick))
     d.drawHRect(128-4,32-4,9,9)
     d.drawHCircle(128,32,16)
     d.drawPixel(128,32)
-    tick += 1 # Increase tick by 1 every loop.
+    tick = l.end()
     if len(a.animQueue) == 0: # If no animations are running, no need to count ticks!
         tick = 0
-    if button1.value == False:
-        a.animQueue.append(["testSquare",tick,frames,c,start,end,"easeIn",9])
-        a.animQueue.append(["testLine",tick,int(framerate),1,(84,16),(44,16),(44,48),(84,48),"ease"])
+        l.start()
+    if button1.value == False and a.testSquareRun == False:
+        a.animQueue.append(["testSquare",tick,testSquareKey,9])
+        a.animQueue.append(["testLine",tick,2,1,(84,16),(44,16),(44,48),(84,48),"ease"])
         # ^ Adds animations to animation queue.
 
     a.drawFrame(tick) # Adds all animations at frame "tick" to display buffer.
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = p.getTime() # Gets duration of loop (to compare with desired).
-    skipFrame = True
-    while s.check(1/framerate): # Will loop until time for 1 frame has passed
-        skipFrame = False # If this loop is able to run, that means the main loop finished before the required time,
-                          # thus, no frames were lost.

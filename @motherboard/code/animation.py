@@ -7,22 +7,25 @@ class Animation:
     def __init__(self,display):
         self.d = display
         self.animQueue = []
+        self.testSquareRun = False
 
     def drawFrame(self,tick):
         i = 0
         while i < len(self.animQueue):
             if "testSquare" in self.animQueue[i][0]:
-                if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0: # If the animation is complete...
+                if int((tick-self.animQueue[i][1])*60) >= len(self.animQueue[i][2][0]): # If the animation is complete...
                     self.animQueue.pop(i) # Remove from queue.
+                    self.testSquareRun = False
                     if len(self.animQueue) > 1: # This is not needed on last animation type if statement
                         i -= 1 # Make sure i is updated for new array size.
                     else:
                         break
                 else:
-                    position = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][6],
-                                                self.animQueue[i][4],self.animQueue[i][5],self.animQueue[i][3])
+                    self.testSquareRun = True
+                    position = (self.animQueue[i][2][0][int((tick-self.animQueue[i][1])*60)],
+                                self.animQueue[i][2][1][int((tick-self.animQueue[i][1])*60)])
                     self.d.drawRect(position[0],position[1],
-                                    self.animQueue[i][7],self.animQueue[i][7])
+                                    self.animQueue[i][3],self.animQueue[i][3])
             if "testLine" in self.animQueue[i][0]:
                 if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0:
                     self.animQueue.pop(i)
@@ -59,3 +62,18 @@ class Animation:
             f = .5*(x+1)*(x-1)+.5
             h = -c*(x+1)*(x-1)+1
             return [int(end[0]+(f/h)*2*(start[0]-end[0])),int(end[1]+(f/h)*2*(start[1]-end[1]))]
+
+    def loadKeyframes(self, x, y):
+        count = 0
+        with open(x, "r") as f:
+            for line in f:
+                count += 1
+        f.close()
+        fx = open(x, "r")
+        fy = open(y, "r")
+        try:
+            return ([round(i) for i in [float(i[:-2]) for i in fx.readlines()[:-1]]],
+                    [round(i) for i in [float(i[:-2]) for i in fy.readlines()[:-1]]])
+        except Exception as e:
+            print("Exception: ",e)
+            print("File(s) may be formatted incorrectly.")

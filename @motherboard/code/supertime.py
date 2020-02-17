@@ -16,3 +16,7 @@ class SuperTime:
         actualTime = (self.current-self.previous)/10**9
         self.previous = self.current
         return actualTime
+    def start(self):
+        self.previous = time.monotonic_ns()
+    def end(self):
+        return (time.monotonic_ns()-self.previous)/10**9
