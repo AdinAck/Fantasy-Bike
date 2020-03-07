@@ -1,6 +1,6 @@
 # Animation library
 # By Adin Ackerman
-# ==============================================================================
+# ======================================================================================================================
 # c should be no lower than -0.3
 
 class Animation:
@@ -27,14 +27,16 @@ class Animation:
                     self.d.drawRect(position[0],position[1],
                                     self.animQueue[i][3],self.animQueue[i][3])
             if "testLine" in self.animQueue[i][0]:
-                if -self.animQueue[i][1]-self.animQueue[i][2]+tick >= 0:
-                    self.animQueue.pop(i)
-                    i -= 1
+                if int((tick-self.animQueue[i][1])*60) >= len(self.animQueue[i][2][0]): # If the animation is complete...
+                    self.animQueue.pop(i) # Remove from queue.
+                    self.testSquareRun = False
+                    if len(self.animQueue) > 1: # This is not needed on last animation type if statement
+                        i -= 1 # Make sure i is updated for new array size.
                 else:
-                    position1 = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][8],
-                                                self.animQueue[i][4],self.animQueue[i][5],self.animQueue[i][3])
-                    position2 = self.keyframeGen(tick-self.animQueue[i][1],self.animQueue[i][2],self.animQueue[i][8],
-                                                self.animQueue[i][6],self.animQueue[i][7],self.animQueue[i][3])
+                    position1 = (self.animQueue[i][2][0][int((tick-self.animQueue[i][1])*60)],
+                                self.animQueue[i][2][1][int((tick-self.animQueue[i][1])*60)])
+                    position2 = (self.animQueue[i][3][0][int((tick-self.animQueue[i][1])*60)],
+                                self.animQueue[i][3][1][int((tick-self.animQueue[i][1])*60)])
                     self.d.drawLine(position1[0],position1[1],position2[0],position2[1])
             i += 1
 
@@ -72,8 +74,8 @@ class Animation:
         fx = open(x, "r")
         fy = open(y, "r")
         try:
-            return ([round(i) for i in [float(i[:-2]) for i in fx.readlines()[:-1]]],
-                    [round(i) for i in [float(i[:-2]) for i in fy.readlines()[:-1]]])
+            return ([round(float(i[:-2])) for i in fx.readlines()[:-1]],
+                    [round(float(i[:-2])) for i in fy.readlines()[:-1]])
         except Exception as e:
             print("Exception: ",e)
             print("File(s) may be formatted incorrectly.")
