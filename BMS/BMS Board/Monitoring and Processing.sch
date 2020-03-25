@@ -2180,4 +2180,16 @@ Text HLabel 6450 8950 3    50   Input ~ 0
 CELL18
 Text HLabel 6350 8950 3    50   Input ~ 0
 CELL17
+Text GLabel 8050 2250 2    50   Input ~ 0
+SENSE_1-4
+Text GLabel 8050 3850 2    50   Input ~ 0
+SENSE_5-8
+Text GLabel 8050 5450 2    50   Input ~ 0
+SENSE_9-12
+Text GLabel 8050 7050 2    50   Input ~ 0
+SENSE_13-16
+Text GLabel 8050 8650 2    50   Input ~ 0
+SENSE_17-20
+Text GLabel 12250 5050 2    50   Input ~ 0
+VREF
 $EndSCHEMATC

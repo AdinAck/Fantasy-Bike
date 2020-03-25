@@ -33,6 +33,7 @@ class Animation:
                     if len(self.animQueue) > 1: # This is not needed on last animation type if statement
                         i -= 1 # Make sure i is updated for new array size.
                 else:
+                    self.testSquareRun = True
                     position1 = (self.animQueue[i][2][0][int((tick-self.animQueue[i][1])*60)],
                                 self.animQueue[i][2][1][int((tick-self.animQueue[i][1])*60)])
                     position2 = (self.animQueue[i][3][0][int((tick-self.animQueue[i][1])*60)],
