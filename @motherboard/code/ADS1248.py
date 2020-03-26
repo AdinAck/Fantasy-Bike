@@ -8,6 +8,9 @@ class ADS1248:
         self.vref = 2.048
         self.result = "None"
         self.fetching = False
+        self.last_increment = -1
+        self.increment = 0
+        self.dump = []
 
         # Initialize SPI
         self.spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
@@ -95,13 +98,25 @@ class ADS1248:
             if len(result_bin) == 24: # Test if negative
                 result_int = int(result_bin[1:], 2)-(2**23)
             self.result = (self.vref/(2**23))*((result_int))+self.vref
+            self.increment += 1
             self.fetching = False
 
         return self.result
 
     def fetchAll(self,ref):
-        result = []
-        for i in range(8):
-            result.append(self.fetch(i,ref))
+        if self.last_increment == -1:
+            self.dump = []
 
-        return result
+        result = self.fetch(self.increment,ref)
+
+        if self.increment > self.last_increment:
+            self.last_increment = self.increment
+            if self.increment > 0:
+                self.dump.append(result)
+
+        if self.increment >= 8:
+            self.increment = 0
+            self.last_increment = -1
+            return True
+
+        return False

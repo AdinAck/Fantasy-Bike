@@ -70,7 +70,9 @@ c = 0
 while True:
     d.clearBuffer() # Clear display buffer.
     d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
-    d.drawStr(0,31,str(adc.fetch(2,0)))
+    # d.drawStr(0,31,str(adc.fetch(2,0)))
+    if adc.fetchAll(0):
+        print(adc.dump)
     # d.drawHCircle(128,32,16)
     # d.drawHRect(128-4,32-4,9,9)
     # d.drawPixel(128,32)
