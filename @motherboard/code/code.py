@@ -50,11 +50,6 @@ adc = ADS1248(2000000)
 adc.wakeup()
 adc.wreg(2,[0x30,0x00])
 print(adc.rreg(0,16))
-# print(adc.fetch(2,0))
-# print(adc.fetchAll(0))
-# adc.start.value = True
-# print(adc.rreg(0,16))
-# adc.start.value = False
 
 
 
@@ -69,14 +64,10 @@ c = 0
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
-    adc.fetch(0,[0,2]) # Tell ADC to begin conversion
+    if adc.fetch(0,[0,2]): # Tell ADC to continuously convert
+        print(adc.dump)
     d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
     d.drawStr(0,31,str(adc.dump)) # adc.dump is updated as the ADC provides from adc.fetch
-    # if adc.fetch(0,[2]):
-    #     print(adc.dump)
-    # d.drawHCircle(128,32,16)
-    # d.drawHRect(128-4,32-4,9,9)
-    # d.drawPixel(128,32)
     tick = l.end()
     if len(a.animQueue) == 0: # If no animations are running, no need to count ticks!
         tick = 0

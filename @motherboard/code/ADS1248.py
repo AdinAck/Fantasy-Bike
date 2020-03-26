@@ -80,14 +80,15 @@ class ADS1248:
         self.cs.value = True
 
     def fetch(self,ref,inputs): # Do NOT run multiple instances of fetch in a single object simultaneously
+        exit = False
         start = inputs[0]
         end = inputs[0]
         if len(inputs) == 2:
             end = inputs[1]
         elif len(inputs) > 2:
             raise Exception("[ADS1248] Input range cannot contain more than 2 values.")
-            
-        if self.last_increment == start-1:
+
+        if self.last_increment == start-1 and len(self.dump) == 0:
             self.dump = []
             for i in range(end-start+1):
                 self.dump.append("No Data")
@@ -116,10 +117,11 @@ class ADS1248:
         if self.increment > end+1:
             self.increment = start
             self.last_increment = start-1
+            exit = True
 
         if self.increment > self.last_increment:
             self.last_increment = self.increment
             if self.increment > start:
                 self.dump[self.increment-start-1] = self.result
 
-        return self.dump
+        return exit
