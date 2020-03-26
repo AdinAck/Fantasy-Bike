@@ -79,7 +79,13 @@ class ADS1248:
         self.spi.write(bytearray(send))
         self.cs.value = True
 
-    def fetch(self,ref,start,end):
+    def fetch(self,ref,inputs): # Do NOT run multiple instances of fetch in a single object simultaneously
+        start = inputs[0]
+        end = inputs[0]
+        if len(inputs) == 2:
+            end = inputs[1]
+        elif len(inputs) > 2:
+            raise Exception("[ADS1248] Input range cannot contain more than 2 values.")
         if self.last_increment == start-1:
             self.dump = []
 
