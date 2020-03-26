@@ -79,7 +79,7 @@ class ADS1248:
         self.spi.write(bytearray(send))
         self.cs.value = True
 
-    def fetch(self,pos,neg):
+    def fetch(self,pos,neg,increment=0): # Fetching while a fetchAll is in progress will interfere with the fetchAll
         if not self.fetching:
             self.start.value = True
             self.wreg(0,[pos*8+neg])
@@ -98,7 +98,7 @@ class ADS1248:
             if len(result_bin) == 24: # Test if negative
                 result_int = int(result_bin[1:], 2)-(2**23)
             self.result = (self.vref/(2**23))*((result_int))+self.vref
-            self.increment += 1
+            self.increment += increment
             self.fetching = False
 
         return self.result
@@ -107,7 +107,7 @@ class ADS1248:
         if self.last_increment == -1:
             self.dump = []
 
-        result = self.fetch(self.increment,ref)
+        result = self.fetch(self.increment,ref,increment=1)
 
         if self.increment > self.last_increment:
             self.last_increment = self.increment
