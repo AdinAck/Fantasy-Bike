@@ -50,8 +50,8 @@ adc = ADS1248(2000000)
 adc.wakeup()
 adc.wreg(2,[0x30,0x04])
 print(adc.rreg(0,16))
-print(adc.fetch(2,0))
-# print(adc.fetchAll(0))
+# print(adc.fetch(2,0))
+print(adc.fetchAll(0))
 # adc.start.value = True
 # print(adc.rreg(0,16))
 # adc.start.value = False
