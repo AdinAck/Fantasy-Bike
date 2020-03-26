@@ -8,8 +8,8 @@ class ADS1248:
         self.vref = 2.048
         self.result = "None"
         self.fetching = False
-        self.last_increment = -1
         self.increment = 0
+        self.last_increment = -1
         self.dump = []
 
         # Initialize SPI
@@ -79,10 +79,13 @@ class ADS1248:
         self.spi.write(bytearray(send))
         self.cs.value = True
 
-    def fetch(self,pos,neg,increment=0): # Fetching while a fetchAll is in progress will interfere with the fetchAll
+    def fetch(self,ref,start,end):
+        if self.last_increment == start-1:
+            self.dump = []
+
         if not self.fetching:
             self.start.value = True
-            self.wreg(0,[pos*8+neg])
+            self.wreg(0,[self.increment*8+ref])
             time.sleep(3/self.freq) # t_START is 3 clock cycles
             self.start.value = False
             self.cs.value = False
@@ -98,25 +101,17 @@ class ADS1248:
             if len(result_bin) == 24: # Test if negative
                 result_int = int(result_bin[1:], 2)-(2**23)
             self.result = (self.vref/(2**23))*((result_int))+self.vref
-            self.increment += increment
+            self.increment += 1
             self.fetching = False
-
-        return self.result
-
-    def fetchAll(self,ref,increment=1):
-        if self.last_increment == -1:
-            self.dump = []
-
-        result = self.fetch(self.increment,ref,increment)
 
         if self.increment > self.last_increment:
             self.last_increment = self.increment
-            if self.increment > 0:
-                self.dump.append(result)
+            if self.increment > start:
+                self.dump.append(self.result)
 
-        if self.increment >= 8//increment:
-            self.increment = 0
-            self.last_increment = -1
+        if self.increment > end:
+            self.increment = start
+            self.last_increment = start-1
             return True
 
         return False
