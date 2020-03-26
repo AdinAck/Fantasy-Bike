@@ -2,8 +2,7 @@
 import board
 import digitalio
 import busio
-import storage
-import sd
+# import sd
 import microcontroller
 import os
 import sys
@@ -13,6 +12,7 @@ from display import Display
 import animation
 from animation import Animation
 from supertime import*
+from ADS1248 import ADS1248
 
 # Class inits
 s = SuperTime()
@@ -45,65 +45,16 @@ button1 = digitalio.DigitalInOut(board.D22)
 button1.direction = digitalio.Direction.INPUT
 button1.pull = digitalio.Pull.UP
 
-# ADS1248
-class ADS1248:
-    def __init__(self, freq):
-        # Initialize SPI
-        self.spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-        while not self.spi.try_lock():
-            pass
-        self.freq = freq
-        self.spi.configure(baudrate=self.freq, phase=1, polarity=0)
-
-        # Start pin
-        self.start = digitalio.DigitalInOut(board.D33)
-        self.start.direction = digitalio.Direction.OUTPUT
-        self.start.value = False
-
-        # CS pin
-        self.cs = digitalio.DigitalInOut(board.D31)
-        self.cs.direction = digitalio.Direction.OUTPUT
-        self.cs.value = True
-
-        # Reset pin
-        self.reset = digitalio.DigitalInOut(board.D35)
-        self.reset.direction = digitalio.Direction.OUTPUT
-        # Cycle reset pin to ensure reset
-        self.reset.value = True
-        time.sleep(0.001)
-        self.reset.value = False
-        time.sleep(0.001)
-        self.reset.value = True
-        time.sleep(0.001)
-
-    def wakeup(self):
-        self.cs.value = False
-        time.sleep(1*10**(-8)) # tCSSC wait time after CS is set to low before operation
-        self.spi.write(bytes([0x00]))
-        self.cs.value = True
-
-    def rreg(self,register,count):
-        self.cs.value = False
-        time.sleep(1*10**(-8))
-        send = [32+register, count-1]
-        self.spi.write(bytearray(send))
-        recv = bytearray(count)
-        self.spi.readinto(recv,write_value=0xFF) # 0xFF is NOP command which makes it send bytes
-        self.cs.value = True
-        return [i for i in recv]
-
-    def wreg(self,register,data):
-        self.cs.value = False
-        time.sleep(1*10**(-8))
-        send = [64+register, len(data)-1] + data
-        self.spi.write(bytearray(send))
-        self.cs.value = True
-
-
-adc = ADS1248(1000000)
+# ADS1248 Init
+adc = ADS1248(2000000)
 adc.wakeup()
-adc.wreg(2,[0x20])
+adc.wreg(2,[0x30,0x04])
 print(adc.rreg(0,16))
+print(adc.fetch(2,0))
+# print(adc.fetchAll(0))
+# adc.start.value = True
+# print(adc.rreg(0,16))
+# adc.start.value = False
 
 
 
@@ -119,6 +70,8 @@ c = 0
 while True:
     d.clearBuffer() # Clear display buffer.
     d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
+    d.drawStr(0,31,str(adc.fetch(2,0)[0]))
+    d.drawStr(0,51,str(adc.fetch(2,0)[1]))
     # d.drawHCircle(128,32,16)
     # d.drawHRect(128-4,32-4,9,9)
     # d.drawPixel(128,32)
