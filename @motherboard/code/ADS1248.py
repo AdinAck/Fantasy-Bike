@@ -103,18 +103,18 @@ class ADS1248:
 
         return self.result
 
-    def fetchAll(self,ref):
+    def fetchAll(self,ref,increment=1):
         if self.last_increment == -1:
             self.dump = []
 
-        result = self.fetch(self.increment,ref,increment=1)
+        result = self.fetch(self.increment,ref,increment)
 
         if self.increment > self.last_increment:
             self.last_increment = self.increment
             if self.increment > 0:
                 self.dump.append(result)
 
-        if self.increment >= 8:
+        if self.increment >= 8//increment:
             self.increment = 0
             self.last_increment = -1
             return True
