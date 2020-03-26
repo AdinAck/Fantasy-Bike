@@ -6,6 +6,8 @@ import busio
 class ADS1248:
     def __init__(self, freq):
         self.vref = 2.048
+        self.result = "None"
+        self.fetching = False
 
         # Initialize SPI
         self.spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
@@ -75,24 +77,27 @@ class ADS1248:
         self.cs.value = True
 
     def fetch(self,pos,neg):
-        self.start.value = True
-        self.wreg(0,[pos*8+neg])
-        time.sleep(3/self.freq) # t_START is 3 clock cycles
-        self.start.value = False
-        self.cs.value = False
+        if not self.fetching:
+            self.start.value = True
+            self.wreg(0,[pos*8+neg])
+            time.sleep(3/self.freq) # t_START is 3 clock cycles
+            self.start.value = False
+            self.cs.value = False
+            self.fetching = True
 
-        while self.drdy.value:
-            pass
+        if not self.drdy.value:
+            recv = bytearray(3)
+            self.spi.readinto(recv,write_value=0xFF)
+            self.cs.value = True
+            result = [i for i in recv]
+            result_int = result[0]*2**16+result[1]*2**8+result[2]
+            result_bin = str(bin(result_int))[2:]
+            if len(result_bin) == 24: # Test if negative
+                result_int = int(result_bin[1:], 2)-(2**23)
+            self.result = (self.vref/(2**23))*((result_int))+self.vref
+            self.fetching = False
 
-        recv = bytearray(3)
-        self.spi.readinto(recv,write_value=0xFF)
-        self.cs.value = True
-        result = [i for i in recv]
-        result_int = result[0]*2**16+result[1]*2**8+result[2]
-        result_bin = str(bin(result_int))[2:]
-        if len(result_bin) == 24: # Test if negative
-            result_int = int(result_bin[1:], 2)-(2**23)
-        return (self.vref/(2**23))*((result_int))+self.vref
+        return self.result
 
     def fetchAll(self,ref):
         result = []
