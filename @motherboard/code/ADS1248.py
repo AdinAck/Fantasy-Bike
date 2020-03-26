@@ -86,8 +86,11 @@ class ADS1248:
             end = inputs[1]
         elif len(inputs) > 2:
             raise Exception("[ADS1248] Input range cannot contain more than 2 values.")
+            
         if self.last_increment == start-1:
             self.dump = []
+            for i in range(end-start+1):
+                self.dump.append("No Data")
 
         if not self.fetching:
             self.start.value = True
@@ -110,14 +113,13 @@ class ADS1248:
             self.increment += 1
             self.fetching = False
 
+        if self.increment > end+1:
+            self.increment = start
+            self.last_increment = start-1
+
         if self.increment > self.last_increment:
             self.last_increment = self.increment
             if self.increment > start:
-                self.dump.append(self.result)
+                self.dump[self.increment-start-1] = self.result
 
-        if self.increment > end:
-            self.increment = start
-            self.last_increment = start-1
-            return True
-
-        return False
+        return self.dump

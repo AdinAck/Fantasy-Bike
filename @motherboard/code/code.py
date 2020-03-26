@@ -65,15 +65,13 @@ animTime = 2
 start = (200,20)
 end = (200, 64-9)
 c = 0
-value = "No Data"
 
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
+    adc.fetch(0,[0,2]) # Tell ADC to begin conversion
     d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
-    if adc.fetch(0,[0,2]):
-        value = str(adc.dump)
-    d.drawStr(0,31,value)
+    d.drawStr(0,31,str(adc.dump)) # adc.dump is updated as the ADC provides from adc.fetch
     # if adc.fetch(0,[2]):
     #     print(adc.dump)
     # d.drawHCircle(128,32,16)
