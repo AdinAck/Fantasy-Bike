@@ -90,10 +90,9 @@ class ADS1248:
         result = [i for i in recv]
         result_int = result[0]*2**16+result[1]*2**8+result[2]
         result_bin = str(bin(result_int))[2:]
-        if len(result_bin) == 24:
+        if len(result_bin) == 24: # Test if negative
             result_int = int(result_bin[1:], 2)-(2**23)
-        return [result_int,
-                (self.vref/(2**23))*((result_int))+self.vref]
+        return (self.vref/(2**23))*((result_int))+self.vref
 
     def fetchAll(self,ref):
         result = []
