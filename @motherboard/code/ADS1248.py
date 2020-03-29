@@ -85,11 +85,8 @@ class ADS1248:
         end = inputs[0]
         if len(inputs) == 2:
             end = inputs[1]
-        elif len(inputs) > 2:
-            raise Exception("[ADS1248] Input range cannot contain more than 2 values.")
 
         if self.last_increment == start-1 and len(self.dump) == 0:
-            self.dump = []
             for i in range(end-start+1):
                 self.dump.append("No Data")
 
@@ -110,7 +107,7 @@ class ADS1248:
             result_bin = str(bin(result_int))[2:]
             if len(result_bin) == 24: # Test if negative
                 result_int = int(result_bin[1:], 2)-(2**23)
-            self.result = (self.vref/(2**23))*((result_int))+self.vref
+            self.result = self.vref/(2**23)*result_int+self.vref
             self.increment += 1
             self.fetching = False
 
