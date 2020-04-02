@@ -40,7 +40,7 @@ class ADS1248:
         return voltages
 
     def __init__(self, cs_pin, drdy_pin):
-        self.vref = 2.048
+        self.vref = None
         ADS1248.list.append(self)
 
         # CS pin
@@ -107,6 +107,5 @@ class ADS1248:
         result_bin = str(bin(result_int))[2:]
         if len(result_bin) == 24: # Test if negative
             result_int = int(result_bin[1:], 2)-(2**23)
-        final = self.vref/(2**23)*result_int+self.vref
 
-        return final
+        return result_int
