@@ -45,11 +45,22 @@ button1 = digitalio.DigitalInOut(board.D22)
 button1.direction = digitalio.Direction.INPUT
 button1.pull = digitalio.Pull.UP
 
+# Initialize SPI
+spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+while not spi.try_lock():
+    pass
+spi.configure(baudrate=2000000, phase=1, polarity=0)
+
 # ADS1248 Init
-adc = ADS1248(2000000)
+adc = ADS1248(board.D31, board.D37) # Define ADC objects first
+ADS1248.init(spi, board.D33, board.D35) # Initialize ADC group
+
+# Send commands to individual ADC
 adc.wakeup()
-adc.wreg(2,[0x30,0x00])
-print(adc.rreg(0,16))
+adc.wreg(2,[0x30,0x00]) # Write register 2 with 0x30 (configure vref) and register 3 with 0x00 (conversion rate)
+adc.rreg(0,16) # Read all registers
+
+print(ADS1248.fetchAll(0,[0,2])) # Read inputs A0 and A2 from all ADC objects
 
 
 
@@ -64,10 +75,7 @@ c = 0
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
-    if adc.fetch(0,[0,2]): # Tell ADC to continuously convert
-        print(adc.dump)
     d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
-    d.drawStr(0,31,str(adc.dump)) # adc.dump is updated as the ADC provides from adc.fetch
     tick = l.end()
     if len(a.animQueue) == 0: # If no animations are running, no need to count ticks!
         tick = 0
