@@ -151,14 +151,11 @@ class ADS1248:
 
     def fetch(self, ref, inputs):
         final = []
-        self.wakeup()
         for i in range(len(inputs)):
             self.start.value = True
             self.wreg(0,[inputs[i]*8+ref])
             self.start.value = False
             final.append(self.retreive(ref, inputs))
-
-        self.sleep()
 
         return final
 
