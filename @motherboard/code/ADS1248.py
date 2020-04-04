@@ -86,7 +86,7 @@ class ADS1248:
 
             ADS1248.start.value = False
             for adc in ADS1248.list:
-                voltages.append(adc.retreive(ref, inputs))
+                voltages.append(adc.receive())
 
         return voltages
 
@@ -153,14 +153,14 @@ class ADS1248:
     def fetch(self, ref, inputs):
         result = []
         for i in range(len(inputs)):
-            self.start.value = True
+            ADS1248.start.value = True
             self.wreg(0,[inputs[i]*8+ref])
-            self.start.value = False
-            final.append(self.retreive(ref, inputs))
+            ADS1248.start.value = False
+            result.append(self.receive())
 
         return result
 
-    def retreive(self, ref, inputs):
+    def receive(self):
         if self.drdy.value:
             if ADS1248.verbose:
                 print("[ADS1248] [{}] [FETCH] Waiting for ADC...".format(ADS1248.list.index(self)))
@@ -168,6 +168,7 @@ class ADS1248:
         while self.drdy.value: # Wait until ADC conversion is completed
             pass
 
+        self.cs.value = False
         recv = bytearray(3)
         ADS1248.spi.readinto(recv,write_value=0xFF)
         self.cs.value = True
@@ -178,5 +179,4 @@ class ADS1248:
         result_bin = str(bin(result_int))[2:] # Convert to binary
         if len(result_bin) == 24: # Test if negative
             result_int = int(result_bin[1:], 2)-(2**23) # Convert to correct integer
-
         return result_int
