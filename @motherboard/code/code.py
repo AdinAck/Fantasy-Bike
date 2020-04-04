@@ -53,7 +53,7 @@ spi.configure(baudrate=2000000, phase=1, polarity=0)
 
 # ADS1248
 adc = ADS1248(board.D31, board.D37) # Define ADC objects first
-ADS1248.init(spi, board.D33, board.D35) # Initialize ADC group
+ADS1248.configure(spi, board.D33, board.D35) # Initialize ADC group
 
 # Send commands to individual ADC
 adc.wakeup()

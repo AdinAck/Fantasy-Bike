@@ -13,7 +13,7 @@ class ADS1248:
     list = []
     verbose = False
 
-    def init(spi, start_pin, reset_pin):
+    def configure(spi, start_pin, reset_pin):
         # SPI
         ADS1248.spi = spi
 
@@ -33,16 +33,59 @@ class ADS1248:
         ADS1248.reset.value = True
         time.sleep(0.001)
 
+    def wakeupAll(): # Simultaneously send bytes to all ADCs
+        for adc in ADS1248.list:
+            adc.cs.value = False
+
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        ADS1248.spi.write(bytes([0x00]))
+        for adc in ADS1248.list:
+            adc.cs.value = True
+
+    def sleepAll():
+        for adc in ADS1248.list:
+            adc.cs.value = False
+
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        ADS1248.spi.write(bytes([0x02]))
+        for adc in ADS1248.list:
+            adc.cs.value = True
+
+    def rstAll():
+        for adc in ADS1248.list:
+            adc.cs.value = False
+
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        ADS1248.spi.write(bytes([0x06]))
+        self.cs.value = True
+        time.sleep(.0006) # Wait before sending any more commands after reset
+        for adc in ADS1248.list:
+            adc.cs.value = True
+
+    def rregAll(register, count):
+        for adc in ADS1248.list:
+            adc.rreg(register, count)
+
+    def wregAll(register, data):
+        for adc in ADS1248.list:
+            adc.cs.value = False
+
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        send = [64+register, len(data)-1] + data
+        ADS1248.spi.write(bytearray(send))
+        for adc in ADS1248.list:
+            adc.cs.value = True
+
     def fetchAll(ref, inputs):
         voltages = []
         for i in range(len(inputs)):
             ADS1248.start.value = True
             for adc in ADS1248.list:
                 adc.wreg(0,[inputs[i]*8+ref])
-                adc.cs.value = False
+
             ADS1248.start.value = False
             for adc in ADS1248.list:
-                voltages.append(adc.fetch())
+                voltages.append(adc.retreive(ref, inputs))
 
         return voltages
 
@@ -59,7 +102,7 @@ class ADS1248:
         self.drdy = digitalio.DigitalInOut(drdy_pin)
         self.drdy.direction = digitalio.Direction.INPUT
 
-    def wakeup(self): # 0x00 0x01
+    def wakeup(self): # 0x00 or 0x01
         self.cs.value = False
         time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
         ADS1248.spi.write(bytes([0x00]))
@@ -67,7 +110,7 @@ class ADS1248:
         if ADS1248.verbose:
             print("[ADC1248] [{}] [WAKEUP] Done.".format(ADS1248.list.index(self)))
 
-    def sleep(self): # 0x02 0x03
+    def sleep(self): # 0x02 or 0x03
         self.cs.value = False
         time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
         ADS1248.spi.write(bytes([0x02]))
@@ -75,11 +118,12 @@ class ADS1248:
         if ADS1248.verbose:
             print("[ADC1248] [{}] [SLEEP] Done.".format(ADS1248.list.index(self)))
 
-    def rst(self): # 0x06 0x07
+    def rst(self): # 0x06 or 0x07
         self.cs.value = False
         time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
         ADS1248.spi.write(bytes([0x06]))
         self.cs.value = True
+        time.sleep(.0006) # Wait before sending any more commands after reset
         if ADS1248.verbose:
             print("[ADC1248] [{}] [RESET] Done.".format(ADS1248.list.index(self)))
 
@@ -93,6 +137,7 @@ class ADS1248:
         self.cs.value = True
         if ADS1248.verbose:
             print("[ADC1248] [{0}] [RREG] Received {1}.".format(ADS1248.list.index(self),recv))
+
         return [i for i in recv]
 
     def wreg(self,register,data): # 0x4_
@@ -104,10 +149,24 @@ class ADS1248:
         if ADS1248.verbose:
             print("[ADC1248] [{0}] [WREG] Wrote {1} to register {2}.".format(ADS1248.list.index(self),data,register))
 
-    def fetch(self):
+    def fetch(self, ref, inputs):
+        final = []
+        self.wakeup()
+        for i in range(len(inputs)):
+            self.start.value = True
+            self.wreg(0,[inputs[i]*8+ref])
+            self.start.value = False
+            final.append(self.retreive(ref, inputs))
+
+        self.sleep()
+
+        return final
+
+    def retreive(self, ref, inputs):
         if self.drdy.value:
             if ADS1248.verbose:
                 print("[ADS1248] [{}] [FETCH] Waiting for ADC...".format(ADS1248.list.index(self)))
+
         while self.drdy.value: # Wait until ADC conversion is completed
             pass
 
@@ -121,5 +180,3 @@ class ADS1248:
         result_bin = str(bin(result_int))[2:] # Convert to binary
         if len(result_bin) == 24: # Test if negative
             result_int = int(result_bin[1:], 2)-(2**23) # Convert to correct integer
-
-        return result_int
