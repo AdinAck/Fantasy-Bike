@@ -63,8 +63,9 @@ class ADS1248:
             adc.cs.value = True
 
     def rregAll(register, count):
+        result = []
         for adc in ADS1248.list:
-            adc.rreg(register, count)
+            result.append(adc.rreg(register, count))
 
     def wregAll(register, data):
         for adc in ADS1248.list:
@@ -150,14 +151,14 @@ class ADS1248:
             print("[ADC1248] [{0}] [WREG] Wrote {1} to register {2}.".format(ADS1248.list.index(self),data,register))
 
     def fetch(self, ref, inputs):
-        final = []
+        result = []
         for i in range(len(inputs)):
             self.start.value = True
             self.wreg(0,[inputs[i]*8+ref])
             self.start.value = False
             final.append(self.retreive(ref, inputs))
 
-        return final
+        return result
 
     def retreive(self, ref, inputs):
         if self.drdy.value:
@@ -177,3 +178,5 @@ class ADS1248:
         result_bin = str(bin(result_int))[2:] # Convert to binary
         if len(result_bin) == 24: # Test if negative
             result_int = int(result_bin[1:], 2)-(2**23) # Convert to correct integer
+
+        return result_int
