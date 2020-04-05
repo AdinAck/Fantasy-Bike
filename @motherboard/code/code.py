@@ -13,15 +13,14 @@ import animation
 from animation import Animation
 from supertime import*
 from ADS1248 import ADS1248
+from ui import UI
 
 # Class inits
 s = SuperTime()
 l = SuperTime()
 d = Display("0x8")
 a = Animation(d)
-
-# Load keyframe lookup tables
-testSquareKey = a.loadKeyframes("Test keyframes X.txt", "Test keyframes Y.txt")
+u = UI(d)
 
 # General setup
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
@@ -54,7 +53,7 @@ spi.configure(baudrate=2000000, phase=1, polarity=0)
 # ADS1248
 adc = ADS1248(board.D31, board.D37) # Define ADC objects first
 ADS1248.configure(spi, board.D33, board.D35) # Initialize ADC group
-ADS1248.verbose = True
+# ADS1248.verbose = True
 
 # Send commands to individual ADC
 adc.wakeup()
@@ -77,15 +76,16 @@ c = 0
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
-    d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
+    # d.setFont(11)
+    # d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
     tick = l.end()
     if len(a.animQueue) == 0: # If no animations are running, no need to count ticks!
         tick = 0
         l.start()
     if button1.value == False and a.testSquareRun == False:
-        a.animQueue.append(["testSquare",tick,testSquareKey,9])
-        # ^ Adds animations to animation queue.
+        pass
 
+    u.menu1("MENU",[0,0,0,0,0,0])
     a.drawFrame(tick) # Adds all animations at frame "tick" to display buffer.
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
