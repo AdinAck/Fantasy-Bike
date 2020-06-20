@@ -1,0 +1,3146 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A1 23386 33110 portrait
+encoding utf-8
+Sheet 2 6
+Title "Discharge"
+Date ""
+Rev ""
+Comp ""
+Comment1 "Adin Ackerman"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Isolator:EL817(S)(C)(TU) O20
+U 1 1 5E91A124
+P 11300 27500
+F 0 "O20" H 11300 27815 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 27724 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 27250 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 27600 50  0001 C CNN
+	1    11300 27500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M20
+U 1 1 5E91C5D7
+P 12000 27900
+F 0 "M20" H 12228 27946 50  0000 L CNN
+F 1 "AO3402" H 12228 27855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 27250 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 28100 50  0001 C CNN
+	1    12000 27900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R40
+U 1 1 5E91F2A1
+P 11600 28250
+F 0 "R40" V 11554 28338 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 27950 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 27850 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 27850 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 27750 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 27650 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 27550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 27450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 27350 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 27250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 28338 50  0000 L CNN "Resistance"
+	1    11600 28250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 28300 12000 28600
+Wire Wire Line
+	12000 28600 11600 28600
+$Comp
+L SamacSys_Parts:CRGP2512F12R R100
+U 1 1 5E9224A4
+P 13000 27800
+F 0 "R100" H 12800 27850 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 27550 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 27450 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 27750 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 27350 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 27250 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 27150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 27050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 26950 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 26850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 27800 50  0000 C CNN "Resistance"
+	1    13000 27800
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R99
+U 1 1 5E9239E1
+P 13000 27650
+F 0 "R99" H 12800 27700 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 27400 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 27300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 27600 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 27200 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 27100 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 27000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 26900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 26800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 26700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 27650 50  0000 C CNN "Resistance"
+	1    13000 27650
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R98
+U 1 1 5E923F66
+P 13000 27500
+F 0 "R98" H 12800 27550 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 27250 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 27150 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 27450 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 27050 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 26950 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 26850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 26750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 26650 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 26550 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 27500 50  0000 C CNN "Resistance"
+	1    13000 27500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 27500 13350 27650
+Connection ~ 13350 27650
+Wire Wire Line
+	13350 27650 13350 27800
+Text HLabel 13550 27400 2    50   Input ~ 0
+CELL_1
+Wire Wire Line
+	13550 27400 13550 27500
+Connection ~ 13350 27500
+Wire Wire Line
+	12650 27500 12650 27650
+Connection ~ 12650 27650
+Wire Wire Line
+	12650 27650 12650 27800
+Wire Wire Line
+	11600 27900 11600 27600
+Connection ~ 11600 27900
+Connection ~ 12650 27500
+Wire Wire Line
+	13550 27400 12000 27400
+$Comp
+L power:GNDREF #PWR022
+U 1 1 5E93EF07
+P 11600 28600
+F 0 "#PWR022" H 11600 28350 50  0001 C CNN
+F 1 "GNDREF" H 11605 28427 50  0000 C CNN
+F 2 "" H 11600 28600 50  0001 C CNN
+F 3 "" H 11600 28600 50  0001 C CNN
+	1    11600 28600
+	1    0    0    -1  
+$EndComp
+Connection ~ 11600 28600
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R20
+U 1 1 5E93FB80
+P 10650 27400
+F 0 "R20" H 10650 27625 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 26900 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 27000 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 26900 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 26800 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 26700 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 26600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 26500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 26400 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 26300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 27534 50  0000 C CNN "Resistance"
+	1    10650 27400
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 27400 0    50   Input ~ 0
+D1
+$Comp
+L power:GNDREF #PWR021
+U 1 1 5E942652
+P 11000 27600
+F 0 "#PWR021" H 11000 27350 50  0001 C CNN
+F 1 "GNDREF" V 11005 27472 50  0000 R CNN
+F 2 "" H 11000 27600 50  0001 C CNN
+F 3 "" H 11000 27600 50  0001 C CNN
+	1    11000 27600
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O19
+U 1 1 5E97DB70
+P 11300 26300
+F 0 "O19" H 11300 26615 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 26524 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 26050 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 26400 50  0001 C CNN
+	1    11300 26300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M19
+U 1 1 5E97DB76
+P 12000 26700
+F 0 "M19" H 12228 26746 50  0000 L CNN
+F 1 "AO3402" H 12228 26655 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 26050 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 26900 50  0001 C CNN
+	1    12000 26700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R39
+U 1 1 5E97DB83
+P 11600 27050
+F 0 "R39" V 11554 27138 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 26750 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 26650 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 26650 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 26550 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 26450 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 26350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 26250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 26150 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 26050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 27138 50  0000 L CNN "Resistance"
+	1    11600 27050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 27100 12000 27400
+$Comp
+L SamacSys_Parts:CRGP2512F12R R97
+U 1 1 5E97DB92
+P 13000 26600
+F 0 "R97" H 12800 26650 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 26350 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 26250 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 26550 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 26150 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 26050 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 25950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 25850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 25750 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 25650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 26600 50  0000 C CNN "Resistance"
+	1    13000 26600
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R96
+U 1 1 5E97DB9F
+P 13000 26450
+F 0 "R96" H 12800 26500 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 26200 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 26100 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 26400 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 26000 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 25900 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 25800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 25700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 25600 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 25500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 26450 50  0000 C CNN "Resistance"
+	1    13000 26450
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R95
+U 1 1 5E97DBAC
+P 13000 26300
+F 0 "R95" H 12800 26350 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 26050 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 25950 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 26250 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 25850 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 25750 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 25650 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 25550 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 25450 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 25350 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 26300 50  0000 C CNN "Resistance"
+	1    13000 26300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 26300 13350 26450
+Connection ~ 13350 26450
+Wire Wire Line
+	13350 26450 13350 26600
+Text HLabel 13550 26200 2    50   Input ~ 0
+CELL_2
+Wire Wire Line
+	13550 26200 13550 26300
+Connection ~ 13350 26300
+Wire Wire Line
+	12650 26300 12650 26450
+Connection ~ 12650 26450
+Wire Wire Line
+	12650 26450 12650 26600
+Wire Wire Line
+	11600 26700 11600 26400
+Connection ~ 11600 26700
+Connection ~ 12650 26300
+Wire Wire Line
+	13550 26200 12000 26200
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R19
+U 1 1 5E97DBCF
+P 10650 26200
+F 0 "R19" H 10650 26425 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 25700 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 25800 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 25700 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 25600 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 25500 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 25400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 25300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 25200 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 25100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 26334 50  0000 C CNN "Resistance"
+	1    10650 26200
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 26200 0    50   Input ~ 0
+D2
+$Comp
+L power:GNDREF #PWR020
+U 1 1 5E97DBD6
+P 11000 26400
+F 0 "#PWR020" H 11000 26150 50  0001 C CNN
+F 1 "GNDREF" V 11005 26272 50  0000 R CNN
+F 2 "" H 11000 26400 50  0001 C CNN
+F 3 "" H 11000 26400 50  0001 C CNN
+	1    11000 26400
+	0    1    1    0   
+$EndComp
+Connection ~ 11600 27400
+Connection ~ 12000 27400
+Wire Wire Line
+	12000 27400 11600 27400
+$Comp
+L Isolator:EL817(S)(C)(TU) O18
+U 1 1 5E991AA1
+P 11300 25100
+F 0 "O18" H 11300 25415 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 25324 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 24850 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 25200 50  0001 C CNN
+	1    11300 25100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M18
+U 1 1 5E991AA7
+P 12000 25500
+F 0 "M18" H 12228 25546 50  0000 L CNN
+F 1 "AO3402" H 12228 25455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 24850 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 25700 50  0001 C CNN
+	1    12000 25500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R38
+U 1 1 5E991AB4
+P 11600 25850
+F 0 "R38" V 11554 25938 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 25550 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 25450 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 25450 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 25350 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 25250 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 25150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 25050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 24950 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 24850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 25938 50  0000 L CNN "Resistance"
+	1    11600 25850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 25900 12000 26200
+$Comp
+L SamacSys_Parts:CRGP2512F12R R94
+U 1 1 5E991AC2
+P 13000 25400
+F 0 "R94" H 12800 25450 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 25150 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 25050 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 25350 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 24950 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 24850 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 24750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 24650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 24550 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 24450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 25400 50  0000 C CNN "Resistance"
+	1    13000 25400
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R93
+U 1 1 5E991ACF
+P 13000 25250
+F 0 "R93" H 12800 25300 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 25000 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 24900 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 25200 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 24800 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 24700 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 24600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 24500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 24400 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 24300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 25250 50  0000 C CNN "Resistance"
+	1    13000 25250
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R92
+U 1 1 5E991ADC
+P 13000 25100
+F 0 "R92" H 12800 25150 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 24850 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 24750 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 25050 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 24650 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 24550 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 24450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 24350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 24250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 24150 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 25100 50  0000 C CNN "Resistance"
+	1    13000 25100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 25100 13350 25250
+Connection ~ 13350 25250
+Wire Wire Line
+	13350 25250 13350 25400
+Text HLabel 13550 25000 2    50   Input ~ 0
+CELL_3
+Wire Wire Line
+	13550 25000 13550 25100
+Connection ~ 13350 25100
+Wire Wire Line
+	12650 25100 12650 25250
+Connection ~ 12650 25250
+Wire Wire Line
+	12650 25250 12650 25400
+Wire Wire Line
+	11600 25500 11600 25200
+Connection ~ 11600 25500
+Connection ~ 12650 25100
+Wire Wire Line
+	13550 25000 12000 25000
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R18
+U 1 1 5E991AF8
+P 10650 25000
+F 0 "R18" H 10650 25225 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 24500 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 24600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 24500 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 24400 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 24300 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 24200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 24100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 24000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 23900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 25134 50  0000 C CNN "Resistance"
+	1    10650 25000
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 25000 0    50   Input ~ 0
+D3
+$Comp
+L power:GNDREF #PWR019
+U 1 1 5E991AFF
+P 11000 25200
+F 0 "#PWR019" H 11000 24950 50  0001 C CNN
+F 1 "GNDREF" V 11005 25072 50  0000 R CNN
+F 2 "" H 11000 25200 50  0001 C CNN
+F 3 "" H 11000 25200 50  0001 C CNN
+	1    11000 25200
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O17
+U 1 1 5E99AE1D
+P 11300 23900
+F 0 "O17" H 11300 24215 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 24124 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 23650 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 24000 50  0001 C CNN
+	1    11300 23900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M17
+U 1 1 5E99AE23
+P 12000 24300
+F 0 "M17" H 12228 24346 50  0000 L CNN
+F 1 "AO3402" H 12228 24255 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 23650 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 24500 50  0001 C CNN
+	1    12000 24300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R37
+U 1 1 5E99AE30
+P 11600 24650
+F 0 "R37" V 11554 24738 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 24350 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 24250 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 24250 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 24150 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 24050 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 23950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 23850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 23750 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 23650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 24738 50  0000 L CNN "Resistance"
+	1    11600 24650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 24700 12000 25000
+$Comp
+L SamacSys_Parts:CRGP2512F12R R91
+U 1 1 5E99AE3E
+P 13000 24200
+F 0 "R91" H 12800 24250 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 23950 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 23850 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 24150 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 23750 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 23650 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 23550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 23450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 23350 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 23250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 24200 50  0000 C CNN "Resistance"
+	1    13000 24200
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R90
+U 1 1 5E99AE4B
+P 13000 24050
+F 0 "R90" H 12800 24100 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 23800 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 23700 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 24000 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 23600 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 23500 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 23400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 23300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 23200 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 23100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 24050 50  0000 C CNN "Resistance"
+	1    13000 24050
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R89
+U 1 1 5E99AE58
+P 13000 23900
+F 0 "R89" H 12800 23950 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 23650 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 23550 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 23850 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 23450 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 23350 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 23250 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 23150 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 23050 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 22950 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 23900 50  0000 C CNN "Resistance"
+	1    13000 23900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 23900 13350 24050
+Connection ~ 13350 24050
+Wire Wire Line
+	13350 24050 13350 24200
+Text HLabel 13550 23800 2    50   Input ~ 0
+CELL_4
+Wire Wire Line
+	13550 23800 13550 23900
+Connection ~ 13350 23900
+Wire Wire Line
+	12650 23900 12650 24050
+Connection ~ 12650 24050
+Wire Wire Line
+	12650 24050 12650 24200
+Wire Wire Line
+	11600 24300 11600 24000
+Connection ~ 11600 24300
+Connection ~ 12650 23900
+Wire Wire Line
+	13550 23800 12000 23800
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R17
+U 1 1 5E99AE74
+P 10650 23800
+F 0 "R17" H 10650 24025 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 23300 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 23400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 23300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 23200 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 23100 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 23000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 22900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 22800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 22700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 23934 50  0000 C CNN "Resistance"
+	1    10650 23800
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 23800 0    50   Input ~ 0
+D4
+$Comp
+L power:GNDREF #PWR018
+U 1 1 5E99AE7B
+P 11000 24000
+F 0 "#PWR018" H 11000 23750 50  0001 C CNN
+F 1 "GNDREF" V 11005 23872 50  0000 R CNN
+F 2 "" H 11000 24000 50  0001 C CNN
+F 3 "" H 11000 24000 50  0001 C CNN
+	1    11000 24000
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O16
+U 1 1 5E9A1405
+P 11300 22700
+F 0 "O16" H 11300 23015 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 22924 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 22450 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 22800 50  0001 C CNN
+	1    11300 22700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M16
+U 1 1 5E9A140B
+P 12000 23100
+F 0 "M16" H 12228 23146 50  0000 L CNN
+F 1 "AO3402" H 12228 23055 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 22450 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 23300 50  0001 C CNN
+	1    12000 23100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R36
+U 1 1 5E9A1418
+P 11600 23450
+F 0 "R36" V 11554 23538 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 23150 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 23050 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 23050 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 22950 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 22850 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 22750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 22650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 22550 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 22450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 23538 50  0000 L CNN "Resistance"
+	1    11600 23450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 23500 12000 23800
+$Comp
+L SamacSys_Parts:CRGP2512F12R R88
+U 1 1 5E9A1426
+P 13000 23000
+F 0 "R88" H 12800 23050 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 22750 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 22650 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 22950 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 22550 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 22450 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 22350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 22250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 22150 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 22050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 23000 50  0000 C CNN "Resistance"
+	1    13000 23000
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R87
+U 1 1 5E9A1433
+P 13000 22850
+F 0 "R87" H 12800 22900 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 22600 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 22500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 22800 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 22400 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 22300 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 22200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 22100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 22000 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 21900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 22850 50  0000 C CNN "Resistance"
+	1    13000 22850
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R86
+U 1 1 5E9A1440
+P 13000 22700
+F 0 "R86" H 12800 22750 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 22450 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 22350 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 22650 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 22250 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 22150 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 22050 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 21950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 21850 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 21750 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 22700 50  0000 C CNN "Resistance"
+	1    13000 22700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 22700 13350 22850
+Connection ~ 13350 22850
+Wire Wire Line
+	13350 22850 13350 23000
+Text HLabel 13550 22600 2    50   Input ~ 0
+CELL_5
+Wire Wire Line
+	13550 22600 13550 22700
+Connection ~ 13350 22700
+Wire Wire Line
+	12650 22700 12650 22850
+Connection ~ 12650 22850
+Wire Wire Line
+	12650 22850 12650 23000
+Wire Wire Line
+	11600 23100 11600 22800
+Connection ~ 11600 23100
+Connection ~ 12650 22700
+Wire Wire Line
+	13550 22600 12000 22600
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R16
+U 1 1 5E9A145C
+P 10650 22600
+F 0 "R16" H 10650 22825 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 22100 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 22200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 22100 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 22000 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 21900 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 21800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 21700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 21600 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 21500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 22734 50  0000 C CNN "Resistance"
+	1    10650 22600
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 22600 0    50   Input ~ 0
+D5
+$Comp
+L power:GNDREF #PWR017
+U 1 1 5E9A1463
+P 11000 22800
+F 0 "#PWR017" H 11000 22550 50  0001 C CNN
+F 1 "GNDREF" V 11005 22672 50  0000 R CNN
+F 2 "" H 11000 22800 50  0001 C CNN
+F 3 "" H 11000 22800 50  0001 C CNN
+	1    11000 22800
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O15
+U 1 1 5E9AA400
+P 11300 21500
+F 0 "O15" H 11300 21815 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 21724 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 21250 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 21600 50  0001 C CNN
+	1    11300 21500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M15
+U 1 1 5E9AA406
+P 12000 21900
+F 0 "M15" H 12228 21946 50  0000 L CNN
+F 1 "AO3402" H 12228 21855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 21250 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 22100 50  0001 C CNN
+	1    12000 21900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R35
+U 1 1 5E9AA413
+P 11600 22250
+F 0 "R35" V 11554 22338 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 21950 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 21850 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 21850 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 21750 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 21650 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 21550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 21450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 21350 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 21250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 22338 50  0000 L CNN "Resistance"
+	1    11600 22250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 22300 12000 22600
+$Comp
+L SamacSys_Parts:CRGP2512F12R R85
+U 1 1 5E9AA421
+P 13000 21800
+F 0 "R85" H 12800 21850 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 21550 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 21450 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 21750 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 21350 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 21250 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 21150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 21050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 20950 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 20850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 21800 50  0000 C CNN "Resistance"
+	1    13000 21800
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R84
+U 1 1 5E9AA42E
+P 13000 21650
+F 0 "R84" H 12800 21700 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 21400 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 21300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 21600 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 21200 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 21100 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 21000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 20900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 20800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 20700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 21650 50  0000 C CNN "Resistance"
+	1    13000 21650
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R83
+U 1 1 5E9AA43B
+P 13000 21500
+F 0 "R83" H 12800 21550 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 21250 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 21150 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 21450 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 21050 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 20950 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 20850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 20750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 20650 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 20550 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 21500 50  0000 C CNN "Resistance"
+	1    13000 21500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 21500 13350 21650
+Connection ~ 13350 21650
+Wire Wire Line
+	13350 21650 13350 21800
+Text HLabel 13550 21400 2    50   Input ~ 0
+CELL_6
+Wire Wire Line
+	13550 21400 13550 21500
+Connection ~ 13350 21500
+Wire Wire Line
+	12650 21500 12650 21650
+Connection ~ 12650 21650
+Wire Wire Line
+	12650 21650 12650 21800
+Wire Wire Line
+	11600 21900 11600 21600
+Connection ~ 11600 21900
+Connection ~ 12650 21500
+Wire Wire Line
+	13550 21400 12000 21400
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R15
+U 1 1 5E9AA457
+P 10650 21400
+F 0 "R15" H 10650 21625 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 20900 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 21000 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 20900 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 20800 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 20700 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 20600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 20500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 20400 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 20300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 21534 50  0000 C CNN "Resistance"
+	1    10650 21400
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 21400 0    50   Input ~ 0
+D6
+$Comp
+L power:GNDREF #PWR016
+U 1 1 5E9AA45E
+P 11000 21600
+F 0 "#PWR016" H 11000 21350 50  0001 C CNN
+F 1 "GNDREF" V 11005 21472 50  0000 R CNN
+F 2 "" H 11000 21600 50  0001 C CNN
+F 3 "" H 11000 21600 50  0001 C CNN
+	1    11000 21600
+	0    1    1    0   
+$EndComp
+Connection ~ 11600 22600
+Connection ~ 11600 23800
+Connection ~ 11600 25000
+Connection ~ 11600 26200
+Connection ~ 12000 22600
+Wire Wire Line
+	12000 22600 11600 22600
+Connection ~ 12000 23800
+Wire Wire Line
+	12000 23800 11600 23800
+Connection ~ 12000 25000
+Wire Wire Line
+	12000 25000 11600 25000
+Connection ~ 12000 26200
+Wire Wire Line
+	12000 26200 11600 26200
+$Comp
+L Isolator:EL817(S)(C)(TU) O14
+U 1 1 5EA47494
+P 11300 20300
+F 0 "O14" H 11300 20615 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 20524 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 20050 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 20400 50  0001 C CNN
+	1    11300 20300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M14
+U 1 1 5EA4749A
+P 12000 20700
+F 0 "M14" H 12228 20746 50  0000 L CNN
+F 1 "AO3402" H 12228 20655 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 20050 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 20900 50  0001 C CNN
+	1    12000 20700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R34
+U 1 1 5EA474A7
+P 11600 21050
+F 0 "R34" V 11554 21138 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 20750 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 20650 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 20650 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 20550 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 20450 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 20350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 20250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 20150 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 20050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 21138 50  0000 L CNN "Resistance"
+	1    11600 21050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 21100 12000 21400
+$Comp
+L SamacSys_Parts:CRGP2512F12R R82
+U 1 1 5EA474B5
+P 13000 20600
+F 0 "R82" H 12800 20650 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 20350 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 20250 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 20550 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 20150 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 20050 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 19950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 19850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 19750 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 19650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 20600 50  0000 C CNN "Resistance"
+	1    13000 20600
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R81
+U 1 1 5EA474C2
+P 13000 20450
+F 0 "R81" H 12800 20500 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 20200 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 20100 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 20400 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 20000 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 19900 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 19800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 19700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 19600 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 19500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 20450 50  0000 C CNN "Resistance"
+	1    13000 20450
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R80
+U 1 1 5EA474CF
+P 13000 20300
+F 0 "R80" H 12800 20350 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 20050 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 19950 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 20250 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 19850 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 19750 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 19650 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 19550 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 19450 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 19350 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 20300 50  0000 C CNN "Resistance"
+	1    13000 20300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 20300 13350 20450
+Connection ~ 13350 20450
+Wire Wire Line
+	13350 20450 13350 20600
+Text HLabel 13550 20200 2    50   Input ~ 0
+CELL_7
+Wire Wire Line
+	13550 20200 13550 20300
+Connection ~ 13350 20300
+Wire Wire Line
+	12650 20300 12650 20450
+Connection ~ 12650 20450
+Wire Wire Line
+	12650 20450 12650 20600
+Wire Wire Line
+	11600 20700 11600 20400
+Connection ~ 11600 20700
+Connection ~ 12650 20300
+Wire Wire Line
+	13550 20200 12000 20200
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R14
+U 1 1 5EA474EB
+P 10650 20200
+F 0 "R14" H 10650 20425 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 19700 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 19800 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 19700 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 19600 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 19500 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 19400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 19300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 19200 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 19100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 20334 50  0000 C CNN "Resistance"
+	1    10650 20200
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 20200 0    50   Input ~ 0
+D7
+$Comp
+L power:GNDREF #PWR015
+U 1 1 5EA474F2
+P 11000 20400
+F 0 "#PWR015" H 11000 20150 50  0001 C CNN
+F 1 "GNDREF" V 11005 20272 50  0000 R CNN
+F 2 "" H 11000 20400 50  0001 C CNN
+F 3 "" H 11000 20400 50  0001 C CNN
+	1    11000 20400
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O13
+U 1 1 5EA50E9B
+P 11300 19100
+F 0 "O13" H 11300 19415 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 19324 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 18850 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 19200 50  0001 C CNN
+	1    11300 19100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M13
+U 1 1 5EA50EA1
+P 12000 19500
+F 0 "M13" H 12228 19546 50  0000 L CNN
+F 1 "AO3402" H 12228 19455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 18850 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 19700 50  0001 C CNN
+	1    12000 19500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R33
+U 1 1 5EA50EAE
+P 11600 19850
+F 0 "R33" V 11554 19938 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 19550 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 19450 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 19450 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 19350 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 19250 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 19150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 19050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 18950 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 18850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 19938 50  0000 L CNN "Resistance"
+	1    11600 19850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 19900 12000 20200
+$Comp
+L SamacSys_Parts:CRGP2512F12R R79
+U 1 1 5EA50EBC
+P 13000 19400
+F 0 "R79" H 12800 19450 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 19150 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 19050 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 19350 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 18950 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 18850 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 18750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 18650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 18550 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 18450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 19400 50  0000 C CNN "Resistance"
+	1    13000 19400
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R78
+U 1 1 5EA50EC9
+P 13000 19250
+F 0 "R78" H 12800 19300 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 19000 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 18900 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 19200 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 18800 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 18700 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 18600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 18500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 18400 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 18300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 19250 50  0000 C CNN "Resistance"
+	1    13000 19250
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R77
+U 1 1 5EA50ED6
+P 13000 19100
+F 0 "R77" H 12800 19150 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 18850 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 18750 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 19050 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 18650 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 18550 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 18450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 18350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 18250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 18150 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 19100 50  0000 C CNN "Resistance"
+	1    13000 19100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 19100 13350 19250
+Connection ~ 13350 19250
+Wire Wire Line
+	13350 19250 13350 19400
+Text HLabel 13550 19000 2    50   Input ~ 0
+CELL_8
+Wire Wire Line
+	13550 19000 13550 19100
+Connection ~ 13350 19100
+Wire Wire Line
+	12650 19100 12650 19250
+Connection ~ 12650 19250
+Wire Wire Line
+	12650 19250 12650 19400
+Wire Wire Line
+	11600 19500 11600 19200
+Connection ~ 11600 19500
+Connection ~ 12650 19100
+Wire Wire Line
+	13550 19000 12000 19000
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R13
+U 1 1 5EA50EF2
+P 10650 19000
+F 0 "R13" H 10650 19225 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 18500 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 18600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 18500 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 18400 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 18300 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 18200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 18100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 18000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 17900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 19134 50  0000 C CNN "Resistance"
+	1    10650 19000
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 19000 0    50   Input ~ 0
+D8
+$Comp
+L power:GNDREF #PWR014
+U 1 1 5EA50EF9
+P 11000 19200
+F 0 "#PWR014" H 11000 18950 50  0001 C CNN
+F 1 "GNDREF" V 11005 19072 50  0000 R CNN
+F 2 "" H 11000 19200 50  0001 C CNN
+F 3 "" H 11000 19200 50  0001 C CNN
+	1    11000 19200
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O12
+U 1 1 5EA59EF2
+P 11300 17900
+F 0 "O12" H 11300 18215 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 18124 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 17650 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 18000 50  0001 C CNN
+	1    11300 17900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M12
+U 1 1 5EA59EF8
+P 12000 18300
+F 0 "M12" H 12228 18346 50  0000 L CNN
+F 1 "AO3402" H 12228 18255 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 17650 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 18500 50  0001 C CNN
+	1    12000 18300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R32
+U 1 1 5EA59F05
+P 11600 18650
+F 0 "R32" V 11554 18738 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 18350 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 18250 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 18250 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 18150 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 18050 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 17950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 17850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 17750 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 17650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 18738 50  0000 L CNN "Resistance"
+	1    11600 18650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 18700 12000 19000
+$Comp
+L SamacSys_Parts:CRGP2512F12R R76
+U 1 1 5EA59F13
+P 13000 18200
+F 0 "R76" H 12800 18250 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 17950 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 17850 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 18150 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 17750 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 17650 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 17550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 17450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 17350 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 17250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 18200 50  0000 C CNN "Resistance"
+	1    13000 18200
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R75
+U 1 1 5EA59F20
+P 13000 18050
+F 0 "R75" H 12800 18100 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 17800 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 17700 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 18000 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 17600 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 17500 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 17400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 17300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 17200 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 17100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 18050 50  0000 C CNN "Resistance"
+	1    13000 18050
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R74
+U 1 1 5EA59F2D
+P 13000 17900
+F 0 "R74" H 12800 17950 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 17650 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 17550 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 17850 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 17450 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 17350 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 17250 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 17150 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 17050 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 16950 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 17900 50  0000 C CNN "Resistance"
+	1    13000 17900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 17900 13350 18050
+Connection ~ 13350 18050
+Wire Wire Line
+	13350 18050 13350 18200
+Text HLabel 13550 17800 2    50   Input ~ 0
+CELL_9
+Wire Wire Line
+	13550 17800 13550 17900
+Connection ~ 13350 17900
+Wire Wire Line
+	12650 17900 12650 18050
+Connection ~ 12650 18050
+Wire Wire Line
+	12650 18050 12650 18200
+Wire Wire Line
+	11600 18300 11600 18000
+Connection ~ 11600 18300
+Connection ~ 12650 17900
+Wire Wire Line
+	13550 17800 12000 17800
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R12
+U 1 1 5EA59F49
+P 10650 17800
+F 0 "R12" H 10650 18025 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 17300 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 17400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 17300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 17200 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 17100 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 17000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 16900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 16800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 16700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 17934 50  0000 C CNN "Resistance"
+	1    10650 17800
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 17800 0    50   Input ~ 0
+D9
+$Comp
+L power:GNDREF #PWR013
+U 1 1 5EA59F50
+P 11000 18000
+F 0 "#PWR013" H 11000 17750 50  0001 C CNN
+F 1 "GNDREF" V 11005 17872 50  0000 R CNN
+F 2 "" H 11000 18000 50  0001 C CNN
+F 3 "" H 11000 18000 50  0001 C CNN
+	1    11000 18000
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O11
+U 1 1 5EA656B3
+P 11300 16700
+F 0 "O11" H 11300 17015 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 16924 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 16450 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 16800 50  0001 C CNN
+	1    11300 16700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M11
+U 1 1 5EA656B9
+P 12000 17100
+F 0 "M11" H 12228 17146 50  0000 L CNN
+F 1 "AO3402" H 12228 17055 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 16450 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 17300 50  0001 C CNN
+	1    12000 17100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R31
+U 1 1 5EA656C6
+P 11600 17450
+F 0 "R31" V 11554 17538 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 17150 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 17050 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 17050 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 16950 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 16850 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 16750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 16650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 16550 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 16450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 17538 50  0000 L CNN "Resistance"
+	1    11600 17450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 17500 12000 17800
+$Comp
+L SamacSys_Parts:CRGP2512F12R R73
+U 1 1 5EA656D4
+P 13000 17000
+F 0 "R73" H 12800 17050 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 16750 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 16650 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 16950 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 16550 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 16450 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 16350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 16250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 16150 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 16050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 17000 50  0000 C CNN "Resistance"
+	1    13000 17000
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R72
+U 1 1 5EA656E1
+P 13000 16850
+F 0 "R72" H 12800 16900 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 16600 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 16500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 16800 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 16400 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 16300 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 16200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 16100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 16000 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 15900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 16850 50  0000 C CNN "Resistance"
+	1    13000 16850
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R71
+U 1 1 5EA656EE
+P 13000 16700
+F 0 "R71" H 12800 16750 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 16450 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 16350 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 16650 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 16250 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 16150 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 16050 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 15950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 15850 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 15750 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 16700 50  0000 C CNN "Resistance"
+	1    13000 16700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 16700 13350 16850
+Connection ~ 13350 16850
+Wire Wire Line
+	13350 16850 13350 17000
+Text HLabel 13550 16600 2    50   Input ~ 0
+CELL_10
+Wire Wire Line
+	13550 16600 13550 16700
+Connection ~ 13350 16700
+Wire Wire Line
+	12650 16700 12650 16850
+Connection ~ 12650 16850
+Wire Wire Line
+	12650 16850 12650 17000
+Wire Wire Line
+	11600 17100 11600 16800
+Connection ~ 11600 17100
+Connection ~ 12650 16700
+Wire Wire Line
+	13550 16600 12000 16600
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R11
+U 1 1 5EA6570A
+P 10650 16600
+F 0 "R11" H 10650 16825 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 16100 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 16200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 16100 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 16000 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 15900 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 15800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 15700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 15600 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 15500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 16734 50  0000 C CNN "Resistance"
+	1    10650 16600
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 16600 0    50   Input ~ 0
+D10
+$Comp
+L power:GNDREF #PWR012
+U 1 1 5EA65711
+P 11000 16800
+F 0 "#PWR012" H 11000 16550 50  0001 C CNN
+F 1 "GNDREF" V 11005 16672 50  0000 R CNN
+F 2 "" H 11000 16800 50  0001 C CNN
+F 3 "" H 11000 16800 50  0001 C CNN
+	1    11000 16800
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O10
+U 1 1 5EA71F5A
+P 11300 15500
+F 0 "O10" H 11300 15815 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 15724 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 15250 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 15600 50  0001 C CNN
+	1    11300 15500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M10
+U 1 1 5EA71F60
+P 12000 15900
+F 0 "M10" H 12228 15946 50  0000 L CNN
+F 1 "AO3402" H 12228 15855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 15250 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 16100 50  0001 C CNN
+	1    12000 15900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R30
+U 1 1 5EA71F6D
+P 11600 16250
+F 0 "R30" V 11554 16338 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 15950 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 15850 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 15850 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 15750 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 15650 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 15550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 15450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 15350 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 15250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 16338 50  0000 L CNN "Resistance"
+	1    11600 16250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 16300 12000 16600
+$Comp
+L SamacSys_Parts:CRGP2512F12R R70
+U 1 1 5EA71F7B
+P 13000 15800
+F 0 "R70" H 12800 15850 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 15550 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 15450 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 15750 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 15350 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 15250 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 15150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 15050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 14950 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 14850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 15800 50  0000 C CNN "Resistance"
+	1    13000 15800
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R69
+U 1 1 5EA71F88
+P 13000 15650
+F 0 "R69" H 12800 15700 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 15400 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 15300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 15600 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 15200 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 15100 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 15000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 14900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 14800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 14700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 15650 50  0000 C CNN "Resistance"
+	1    13000 15650
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R68
+U 1 1 5EA71F95
+P 13000 15500
+F 0 "R68" H 12800 15550 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 15250 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 15150 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 15450 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 15050 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 14950 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 14850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 14750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 14650 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 14550 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 15500 50  0000 C CNN "Resistance"
+	1    13000 15500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 15500 13350 15650
+Connection ~ 13350 15650
+Wire Wire Line
+	13350 15650 13350 15800
+Text HLabel 13550 15400 2    50   Input ~ 0
+CELL_11
+Wire Wire Line
+	13550 15400 13550 15500
+Connection ~ 13350 15500
+Wire Wire Line
+	12650 15500 12650 15650
+Connection ~ 12650 15650
+Wire Wire Line
+	12650 15650 12650 15800
+Wire Wire Line
+	11600 15900 11600 15600
+Connection ~ 11600 15900
+Connection ~ 12650 15500
+Wire Wire Line
+	13550 15400 12000 15400
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R10
+U 1 1 5EA71FB1
+P 10650 15400
+F 0 "R10" H 10650 15625 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 14900 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 15000 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 14900 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 14800 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 14700 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 14600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 14500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 14400 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 14300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 15534 50  0000 C CNN "Resistance"
+	1    10650 15400
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 15400 0    50   Input ~ 0
+D11
+$Comp
+L power:GNDREF #PWR011
+U 1 1 5EA71FB8
+P 11000 15600
+F 0 "#PWR011" H 11000 15350 50  0001 C CNN
+F 1 "GNDREF" V 11005 15472 50  0000 R CNN
+F 2 "" H 11000 15600 50  0001 C CNN
+F 3 "" H 11000 15600 50  0001 C CNN
+	1    11000 15600
+	0    1    1    0   
+$EndComp
+Connection ~ 11600 16600
+Connection ~ 11600 17800
+Connection ~ 11600 19000
+Connection ~ 11600 20200
+Connection ~ 11600 21400
+Connection ~ 12000 16600
+Wire Wire Line
+	12000 16600 11600 16600
+Connection ~ 12000 17800
+Wire Wire Line
+	12000 17800 11600 17800
+Connection ~ 12000 19000
+Wire Wire Line
+	12000 19000 11600 19000
+Connection ~ 12000 20200
+Wire Wire Line
+	12000 20200 11600 20200
+Connection ~ 12000 21400
+Wire Wire Line
+	12000 21400 11600 21400
+$Comp
+L Isolator:EL817(S)(C)(TU) O9
+U 1 1 5EAD0B01
+P 11300 14300
+F 0 "O9" H 11300 14615 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 14524 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 14050 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 14400 50  0001 C CNN
+	1    11300 14300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M9
+U 1 1 5EAD0B07
+P 12000 14700
+F 0 "M9" H 12228 14746 50  0000 L CNN
+F 1 "AO3402" H 12228 14655 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 14050 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 14900 50  0001 C CNN
+	1    12000 14700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R29
+U 1 1 5EAD0B14
+P 11600 15050
+F 0 "R29" V 11554 15138 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 14750 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 14650 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 14650 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 14550 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 14450 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 14350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 14250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 14150 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 14050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 15138 50  0000 L CNN "Resistance"
+	1    11600 15050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 15100 12000 15400
+$Comp
+L SamacSys_Parts:CRGP2512F12R R67
+U 1 1 5EAD0B22
+P 13000 14600
+F 0 "R67" H 12800 14650 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 14350 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 14250 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 14550 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 14150 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 14050 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 13950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 13850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 13750 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 13650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 14600 50  0000 C CNN "Resistance"
+	1    13000 14600
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R66
+U 1 1 5EAD0B2F
+P 13000 14450
+F 0 "R66" H 12800 14500 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 14200 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 14100 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 14400 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 14000 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 13900 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 13800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 13700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 13600 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 13500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 14450 50  0000 C CNN "Resistance"
+	1    13000 14450
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R65
+U 1 1 5EAD0B3C
+P 13000 14300
+F 0 "R65" H 12800 14350 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 14050 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 13950 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 14250 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 13850 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 13750 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 13650 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 13550 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 13450 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 13350 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 14300 50  0000 C CNN "Resistance"
+	1    13000 14300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 14300 13350 14450
+Connection ~ 13350 14450
+Wire Wire Line
+	13350 14450 13350 14600
+Text HLabel 13550 14200 2    50   Input ~ 0
+CELL_12
+Wire Wire Line
+	13550 14200 13550 14300
+Connection ~ 13350 14300
+Wire Wire Line
+	12650 14300 12650 14450
+Connection ~ 12650 14450
+Wire Wire Line
+	12650 14450 12650 14600
+Wire Wire Line
+	11600 14700 11600 14400
+Connection ~ 11600 14700
+Connection ~ 12650 14300
+Wire Wire Line
+	13550 14200 12000 14200
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R9
+U 1 1 5EAD0B58
+P 10650 14200
+F 0 "R9" H 10650 14425 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 13700 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 13800 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 13700 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 13600 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 13500 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 13400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 13300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 13200 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 13100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 14334 50  0000 C CNN "Resistance"
+	1    10650 14200
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 14200 0    50   Input ~ 0
+D12
+$Comp
+L power:GNDREF #PWR010
+U 1 1 5EAD0B5F
+P 11000 14400
+F 0 "#PWR010" H 11000 14150 50  0001 C CNN
+F 1 "GNDREF" V 11005 14272 50  0000 R CNN
+F 2 "" H 11000 14400 50  0001 C CNN
+F 3 "" H 11000 14400 50  0001 C CNN
+	1    11000 14400
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O8
+U 1 1 5EADCF05
+P 11300 13100
+F 0 "O8" H 11300 13415 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 13324 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 12850 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 13200 50  0001 C CNN
+	1    11300 13100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M8
+U 1 1 5EADCF0B
+P 12000 13500
+F 0 "M8" H 12228 13546 50  0000 L CNN
+F 1 "AO3402" H 12228 13455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 12850 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 13700 50  0001 C CNN
+	1    12000 13500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R28
+U 1 1 5EADCF18
+P 11600 13850
+F 0 "R28" V 11554 13938 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 13550 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 13450 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 13450 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 13350 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 13250 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 13150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 13050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 12950 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 12850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 13938 50  0000 L CNN "Resistance"
+	1    11600 13850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 13900 12000 14200
+$Comp
+L SamacSys_Parts:CRGP2512F12R R64
+U 1 1 5EADCF26
+P 13000 13400
+F 0 "R64" H 12800 13450 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 13150 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 13050 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 13350 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 12950 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 12850 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 12750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 12650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 12550 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 12450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 13400 50  0000 C CNN "Resistance"
+	1    13000 13400
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R63
+U 1 1 5EADCF33
+P 13000 13250
+F 0 "R63" H 12800 13300 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 13000 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 12900 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 13200 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 12800 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 12700 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 12600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 12500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 12400 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 12300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 13250 50  0000 C CNN "Resistance"
+	1    13000 13250
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R62
+U 1 1 5EADCF40
+P 13000 13100
+F 0 "R62" H 12800 13150 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 12850 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 12750 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 13050 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 12650 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 12550 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 12450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 12350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 12250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 12150 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 13100 50  0000 C CNN "Resistance"
+	1    13000 13100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 13100 13350 13250
+Connection ~ 13350 13250
+Wire Wire Line
+	13350 13250 13350 13400
+Text HLabel 13550 13000 2    50   Input ~ 0
+CELL_13
+Wire Wire Line
+	13550 13000 13550 13100
+Connection ~ 13350 13100
+Wire Wire Line
+	12650 13100 12650 13250
+Connection ~ 12650 13250
+Wire Wire Line
+	12650 13250 12650 13400
+Wire Wire Line
+	11600 13500 11600 13200
+Connection ~ 11600 13500
+Connection ~ 12650 13100
+Wire Wire Line
+	13550 13000 12000 13000
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R8
+U 1 1 5EADCF5C
+P 10650 13000
+F 0 "R8" H 10650 13225 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 12500 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 12600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 12500 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 12400 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 12300 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 12200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 12100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 12000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 11900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 13134 50  0000 C CNN "Resistance"
+	1    10650 13000
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 13000 0    50   Input ~ 0
+D13
+$Comp
+L power:GNDREF #PWR09
+U 1 1 5EADCF63
+P 11000 13200
+F 0 "#PWR09" H 11000 12950 50  0001 C CNN
+F 1 "GNDREF" V 11005 13072 50  0000 R CNN
+F 2 "" H 11000 13200 50  0001 C CNN
+F 3 "" H 11000 13200 50  0001 C CNN
+	1    11000 13200
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O7
+U 1 1 5EAEAD2F
+P 11300 11900
+F 0 "O7" H 11300 12215 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 12124 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 11650 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 12000 50  0001 C CNN
+	1    11300 11900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M7
+U 1 1 5EAEAD35
+P 12000 12300
+F 0 "M7" H 12228 12346 50  0000 L CNN
+F 1 "AO3402" H 12228 12255 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 11650 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 12500 50  0001 C CNN
+	1    12000 12300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R27
+U 1 1 5EAEAD42
+P 11600 12650
+F 0 "R27" V 11554 12738 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 12350 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 12250 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 12250 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 12150 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 12050 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 11950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 11850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 11750 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 11650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 12738 50  0000 L CNN "Resistance"
+	1    11600 12650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 12700 12000 13000
+$Comp
+L SamacSys_Parts:CRGP2512F12R R61
+U 1 1 5EAEAD50
+P 13000 12200
+F 0 "R61" H 12800 12250 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 11950 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 11850 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 12150 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 11750 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 11650 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 11550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 11450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 11350 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 11250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 12200 50  0000 C CNN "Resistance"
+	1    13000 12200
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R60
+U 1 1 5EAEAD5D
+P 13000 12050
+F 0 "R60" H 12800 12100 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 11800 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 11700 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 12000 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 11600 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 11500 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 11400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 11300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 11200 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 11100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 12050 50  0000 C CNN "Resistance"
+	1    13000 12050
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R59
+U 1 1 5EAEAD6A
+P 13000 11900
+F 0 "R59" H 12800 11950 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 11650 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 11550 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 11850 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 11450 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 11350 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 11250 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 11150 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 11050 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 10950 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 11900 50  0000 C CNN "Resistance"
+	1    13000 11900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 11900 13350 12050
+Connection ~ 13350 12050
+Wire Wire Line
+	13350 12050 13350 12200
+Text HLabel 13550 11800 2    50   Input ~ 0
+CELL_14
+Wire Wire Line
+	13550 11800 13550 11900
+Connection ~ 13350 11900
+Wire Wire Line
+	12650 11900 12650 12050
+Connection ~ 12650 12050
+Wire Wire Line
+	12650 12050 12650 12200
+Wire Wire Line
+	11600 12300 11600 12000
+Connection ~ 11600 12300
+Connection ~ 12650 11900
+Wire Wire Line
+	13550 11800 12000 11800
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R7
+U 1 1 5EAEAD86
+P 10650 11800
+F 0 "R7" H 10650 12025 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 11300 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 11400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 11300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 11200 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 11100 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 11000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 10900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 10800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 10700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 11934 50  0000 C CNN "Resistance"
+	1    10650 11800
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 11800 0    50   Input ~ 0
+D14
+$Comp
+L power:GNDREF #PWR08
+U 1 1 5EAEAD8D
+P 11000 12000
+F 0 "#PWR08" H 11000 11750 50  0001 C CNN
+F 1 "GNDREF" V 11005 11872 50  0000 R CNN
+F 2 "" H 11000 12000 50  0001 C CNN
+F 3 "" H 11000 12000 50  0001 C CNN
+	1    11000 12000
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O6
+U 1 1 5EAFA20D
+P 11300 10700
+F 0 "O6" H 11300 11015 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 10924 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 10450 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 10800 50  0001 C CNN
+	1    11300 10700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M6
+U 1 1 5EAFA213
+P 12000 11100
+F 0 "M6" H 12228 11146 50  0000 L CNN
+F 1 "AO3402" H 12228 11055 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 10450 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 11300 50  0001 C CNN
+	1    12000 11100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R26
+U 1 1 5EAFA220
+P 11600 11450
+F 0 "R26" V 11554 11538 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 11150 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 11050 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 11050 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 10950 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 10850 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 10750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 10650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 10550 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 10450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 11538 50  0000 L CNN "Resistance"
+	1    11600 11450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 11500 12000 11800
+$Comp
+L SamacSys_Parts:CRGP2512F12R R58
+U 1 1 5EAFA22E
+P 13000 11000
+F 0 "R58" H 12800 11050 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 10750 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 10650 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 10950 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 10550 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 10450 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 10350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 10250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 10150 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 10050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 11000 50  0000 C CNN "Resistance"
+	1    13000 11000
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R57
+U 1 1 5EAFA23B
+P 13000 10850
+F 0 "R57" H 12800 10900 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 10600 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 10500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 10800 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 10400 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 10300 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 10200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 10100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 10000 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 9900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 10850 50  0000 C CNN "Resistance"
+	1    13000 10850
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R56
+U 1 1 5EAFA248
+P 13000 10700
+F 0 "R56" H 12800 10750 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 10450 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 10350 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 10650 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 10250 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 10150 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 10050 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 9950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 9850 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 9750 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 10700 50  0000 C CNN "Resistance"
+	1    13000 10700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 10700 13350 10850
+Connection ~ 13350 10850
+Wire Wire Line
+	13350 10850 13350 11000
+Text HLabel 13550 10600 2    50   Input ~ 0
+CELL_15
+Wire Wire Line
+	13550 10600 13550 10700
+Connection ~ 13350 10700
+Wire Wire Line
+	12650 10700 12650 10850
+Connection ~ 12650 10850
+Wire Wire Line
+	12650 10850 12650 11000
+Wire Wire Line
+	11600 11100 11600 10800
+Connection ~ 11600 11100
+Connection ~ 12650 10700
+Wire Wire Line
+	13550 10600 12000 10600
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R6
+U 1 1 5EAFA264
+P 10650 10600
+F 0 "R6" H 10650 10825 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 10100 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 10200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 10100 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 10000 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 9900 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 9800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 9700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 9600 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 9500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 10734 50  0000 C CNN "Resistance"
+	1    10650 10600
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 10600 0    50   Input ~ 0
+D15
+$Comp
+L power:GNDREF #PWR07
+U 1 1 5EAFA26B
+P 11000 10800
+F 0 "#PWR07" H 11000 10550 50  0001 C CNN
+F 1 "GNDREF" V 11005 10672 50  0000 R CNN
+F 2 "" H 11000 10800 50  0001 C CNN
+F 3 "" H 11000 10800 50  0001 C CNN
+	1    11000 10800
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O5
+U 1 1 5EB0B2D9
+P 11300 9500
+F 0 "O5" H 11300 9815 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 9724 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 9250 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 9600 50  0001 C CNN
+	1    11300 9500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M5
+U 1 1 5EB0B2DF
+P 12000 9900
+F 0 "M5" H 12228 9946 50  0000 L CNN
+F 1 "AO3402" H 12228 9855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 9250 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 10100 50  0001 C CNN
+	1    12000 9900
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R25
+U 1 1 5EB0B2EC
+P 11600 10250
+F 0 "R25" V 11554 10338 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 9950 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 9850 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 9850 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 9750 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 9650 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 9550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 9450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 9350 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 9250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 10338 50  0000 L CNN "Resistance"
+	1    11600 10250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 10300 12000 10600
+$Comp
+L SamacSys_Parts:CRGP2512F12R R55
+U 1 1 5EB0B2FA
+P 13000 9800
+F 0 "R55" H 12800 9850 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 9550 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 9450 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 9750 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 9350 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 9250 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 9150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 9050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 8950 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 8850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 9800 50  0000 C CNN "Resistance"
+	1    13000 9800
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R54
+U 1 1 5EB0B307
+P 13000 9650
+F 0 "R54" H 12800 9700 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 9400 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 9300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 9600 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 9200 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 9100 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 8700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 9650 50  0000 C CNN "Resistance"
+	1    13000 9650
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R53
+U 1 1 5EB0B314
+P 13000 9500
+F 0 "R53" H 12800 9550 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 9250 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 9150 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 9450 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 9050 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 8950 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 8850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 8750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 8650 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 8550 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 9500 50  0000 C CNN "Resistance"
+	1    13000 9500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 9500 13350 9650
+Connection ~ 13350 9650
+Wire Wire Line
+	13350 9650 13350 9800
+Text HLabel 13550 9400 2    50   Input ~ 0
+CELL_16
+Wire Wire Line
+	13550 9400 13550 9500
+Connection ~ 13350 9500
+Wire Wire Line
+	12650 9500 12650 9650
+Connection ~ 12650 9650
+Wire Wire Line
+	12650 9650 12650 9800
+Wire Wire Line
+	11600 9900 11600 9600
+Connection ~ 11600 9900
+Connection ~ 12650 9500
+Wire Wire Line
+	13550 9400 12000 9400
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R5
+U 1 1 5EB0B330
+P 10650 9400
+F 0 "R5" H 10650 9625 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 8900 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 9000 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 8900 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 8800 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 8700 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 8600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 8500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 8400 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 8300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 9534 50  0000 C CNN "Resistance"
+	1    10650 9400
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 9400 0    50   Input ~ 0
+D16
+$Comp
+L power:GNDREF #PWR06
+U 1 1 5EB0B337
+P 11000 9600
+F 0 "#PWR06" H 11000 9350 50  0001 C CNN
+F 1 "GNDREF" V 11005 9472 50  0000 R CNN
+F 2 "" H 11000 9600 50  0001 C CNN
+F 3 "" H 11000 9600 50  0001 C CNN
+	1    11000 9600
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O4
+U 1 1 5EB21F85
+P 11300 8300
+F 0 "O4" H 11300 8615 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 8524 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 8050 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 8400 50  0001 C CNN
+	1    11300 8300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M4
+U 1 1 5EB21F8B
+P 12000 8700
+F 0 "M4" H 12228 8746 50  0000 L CNN
+F 1 "AO3402" H 12228 8655 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 8050 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 8900 50  0001 C CNN
+	1    12000 8700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R24
+U 1 1 5EB21F98
+P 11600 9050
+F 0 "R24" V 11554 9138 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 8750 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 8650 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 8650 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 8550 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 8450 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 8350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 8250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 8150 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 8050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 9138 50  0000 L CNN "Resistance"
+	1    11600 9050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 9100 12000 9400
+$Comp
+L SamacSys_Parts:CRGP2512F12R R52
+U 1 1 5EB21FA6
+P 13000 8600
+F 0 "R52" H 12800 8650 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 8350 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 8250 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 8550 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 8150 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 8050 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 7950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 7850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 7750 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 7650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 8600 50  0000 C CNN "Resistance"
+	1    13000 8600
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R51
+U 1 1 5EB21FB3
+P 13000 8450
+F 0 "R51" H 12800 8500 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 8200 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 8100 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 8400 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 8000 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 7900 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 7800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 7700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 7600 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 7500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 8450 50  0000 C CNN "Resistance"
+	1    13000 8450
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R50
+U 1 1 5EB21FC0
+P 13000 8300
+F 0 "R50" H 12800 8350 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 8050 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 7950 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 8250 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 7850 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 7750 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 7650 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 7550 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 7450 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 7350 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 8300 50  0000 C CNN "Resistance"
+	1    13000 8300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 8300 13350 8450
+Connection ~ 13350 8450
+Wire Wire Line
+	13350 8450 13350 8600
+Text HLabel 13550 8200 2    50   Input ~ 0
+CELL_17
+Wire Wire Line
+	13550 8200 13550 8300
+Connection ~ 13350 8300
+Wire Wire Line
+	12650 8300 12650 8450
+Connection ~ 12650 8450
+Wire Wire Line
+	12650 8450 12650 8600
+Wire Wire Line
+	11600 8700 11600 8400
+Connection ~ 11600 8700
+Connection ~ 12650 8300
+Wire Wire Line
+	13550 8200 12000 8200
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R4
+U 1 1 5EB21FDC
+P 10650 8200
+F 0 "R4" H 10650 8425 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 7700 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 7800 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 7700 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 7600 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 7500 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 7400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 7300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 7200 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 7100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 8334 50  0000 C CNN "Resistance"
+	1    10650 8200
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 8200 0    50   Input ~ 0
+D17
+$Comp
+L power:GNDREF #PWR05
+U 1 1 5EB21FE3
+P 11000 8400
+F 0 "#PWR05" H 11000 8150 50  0001 C CNN
+F 1 "GNDREF" V 11005 8272 50  0000 R CNN
+F 2 "" H 11000 8400 50  0001 C CNN
+F 3 "" H 11000 8400 50  0001 C CNN
+	1    11000 8400
+	0    1    1    0   
+$EndComp
+Connection ~ 11600 9400
+Connection ~ 11600 10600
+Connection ~ 11600 11800
+Connection ~ 11600 13000
+Connection ~ 11600 14200
+Connection ~ 11600 15400
+Connection ~ 12000 9400
+Wire Wire Line
+	12000 9400 11600 9400
+Connection ~ 12000 10600
+Wire Wire Line
+	12000 10600 11600 10600
+Connection ~ 12000 11800
+Wire Wire Line
+	12000 11800 11600 11800
+Connection ~ 12000 13000
+Wire Wire Line
+	12000 13000 11600 13000
+Connection ~ 12000 14200
+Wire Wire Line
+	12000 14200 11600 14200
+Connection ~ 12000 15400
+Wire Wire Line
+	12000 15400 11600 15400
+$Comp
+L Isolator:EL817(S)(C)(TU) O3
+U 1 1 5EBB1DC7
+P 11300 7100
+F 0 "O3" H 11300 7415 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 7324 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 6850 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 7200 50  0001 C CNN
+	1    11300 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M3
+U 1 1 5EBB1DCD
+P 12000 7500
+F 0 "M3" H 12228 7546 50  0000 L CNN
+F 1 "AO3402" H 12228 7455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 6850 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 7700 50  0001 C CNN
+	1    12000 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R23
+U 1 1 5EBB1DDA
+P 11600 7850
+F 0 "R23" V 11554 7938 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 7550 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 7450 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 7450 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 7350 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 7250 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 7150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 7050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 6950 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 6850 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 7938 50  0000 L CNN "Resistance"
+	1    11600 7850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 7900 12000 8200
+$Comp
+L SamacSys_Parts:CRGP2512F12R R49
+U 1 1 5EBB1DE8
+P 13000 7400
+F 0 "R49" H 12800 7450 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 7150 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 7050 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 7350 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 6950 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 6850 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 6750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 6650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 6550 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 6450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 7400 50  0000 C CNN "Resistance"
+	1    13000 7400
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R48
+U 1 1 5EBB1DF5
+P 13000 7250
+F 0 "R48" H 12800 7300 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 7000 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 6900 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 7200 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 6800 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 6700 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 6600 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 6500 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 6400 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 6300 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 7250 50  0000 C CNN "Resistance"
+	1    13000 7250
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R47
+U 1 1 5EBB1E02
+P 13000 7100
+F 0 "R47" H 12800 7150 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 6850 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 6750 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 7050 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 6650 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 6550 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 6450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 6350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 6250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 6150 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 7100 50  0000 C CNN "Resistance"
+	1    13000 7100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 7100 13350 7250
+Connection ~ 13350 7250
+Wire Wire Line
+	13350 7250 13350 7400
+Text HLabel 13550 7000 2    50   Input ~ 0
+CELL_18
+Wire Wire Line
+	13550 7000 13550 7100
+Connection ~ 13350 7100
+Wire Wire Line
+	12650 7100 12650 7250
+Connection ~ 12650 7250
+Wire Wire Line
+	12650 7250 12650 7400
+Wire Wire Line
+	11600 7500 11600 7200
+Connection ~ 11600 7500
+Connection ~ 12650 7100
+Wire Wire Line
+	13550 7000 12000 7000
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R3
+U 1 1 5EBB1E1E
+P 10650 7000
+F 0 "R3" H 10650 7225 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 6500 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 6600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 6500 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 6400 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 6300 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 6200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 6100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 6000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 5900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 7134 50  0000 C CNN "Resistance"
+	1    10650 7000
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 7000 0    50   Input ~ 0
+D18
+$Comp
+L power:GNDREF #PWR04
+U 1 1 5EBB1E25
+P 11000 7200
+F 0 "#PWR04" H 11000 6950 50  0001 C CNN
+F 1 "GNDREF" V 11005 7072 50  0000 R CNN
+F 2 "" H 11000 7200 50  0001 C CNN
+F 3 "" H 11000 7200 50  0001 C CNN
+	1    11000 7200
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O2
+U 1 1 5EBC9ACA
+P 11300 5900
+F 0 "O2" H 11300 6215 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 6124 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 5650 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 6000 50  0001 C CNN
+	1    11300 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M2
+U 1 1 5EBC9AD0
+P 12000 6300
+F 0 "M2" H 12228 6346 50  0000 L CNN
+F 1 "AO3402" H 12228 6255 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 5650 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 6500 50  0001 C CNN
+	1    12000 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R22
+U 1 1 5EBC9ADD
+P 11600 6650
+F 0 "R22" V 11554 6738 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 6350 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 6250 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 6250 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 6150 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 6050 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 5950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 5850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 5750 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 5650 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 6738 50  0000 L CNN "Resistance"
+	1    11600 6650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 6700 12000 7000
+$Comp
+L SamacSys_Parts:CRGP2512F12R R46
+U 1 1 5EBC9AEB
+P 13000 6200
+F 0 "R46" H 12800 6250 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 5950 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 5850 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 6150 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 5750 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 5650 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 5550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 5450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 5350 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 5250 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 6200 50  0000 C CNN "Resistance"
+	1    13000 6200
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R45
+U 1 1 5EBC9AF8
+P 13000 6050
+F 0 "R45" H 12800 6100 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 5800 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 5700 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 6000 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 5600 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 5500 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 5400 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 5300 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 5200 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 5100 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 6050 50  0000 C CNN "Resistance"
+	1    13000 6050
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R44
+U 1 1 5EBC9B05
+P 13000 5900
+F 0 "R44" H 12800 5950 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 5650 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 5550 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 5850 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 5450 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 5350 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 5250 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 5150 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 5050 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 4950 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 5900 50  0000 C CNN "Resistance"
+	1    13000 5900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 5900 13350 6050
+Connection ~ 13350 6050
+Wire Wire Line
+	13350 6050 13350 6200
+Text HLabel 13550 5800 2    50   Input ~ 0
+CELL_19
+Wire Wire Line
+	13550 5800 13550 5900
+Connection ~ 13350 5900
+Wire Wire Line
+	12650 5900 12650 6050
+Connection ~ 12650 6050
+Wire Wire Line
+	12650 6050 12650 6200
+Wire Wire Line
+	11600 6300 11600 6000
+Connection ~ 11600 6300
+Connection ~ 12650 5900
+Wire Wire Line
+	13550 5800 12000 5800
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R2
+U 1 1 5EBC9B21
+P 10650 5800
+F 0 "R2" H 10650 6025 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 5300 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 5400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 5300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 5200 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 5100 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 5000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 4900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 4800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 4700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 5934 50  0000 C CNN "Resistance"
+	1    10650 5800
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 5800 0    50   Input ~ 0
+D19
+$Comp
+L power:GNDREF #PWR03
+U 1 1 5EBC9B28
+P 11000 6000
+F 0 "#PWR03" H 11000 5750 50  0001 C CNN
+F 1 "GNDREF" V 11005 5872 50  0000 R CNN
+F 2 "" H 11000 6000 50  0001 C CNN
+F 3 "" H 11000 6000 50  0001 C CNN
+	1    11000 6000
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:EL817(S)(C)(TU) O1
+U 1 1 5EBE32DB
+P 11300 4700
+F 0 "O1" H 11300 5015 50  0000 C CNN
+F 1 "EL817(S)(C)(TU)" H 11300 4924 50  0000 C CNN
+F 2 "Package_SO:SOP-4_Optocoupler" H 11300 4450 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/143/201407061833256242-365628.pdf" H 11500 4800 50  0001 C CNN
+	1    11300 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET:AO3402 M1
+U 1 1 5EBE32E1
+P 12000 5100
+F 0 "M1" H 12228 5146 50  0000 L CNN
+F 1 "AO3402" H 12228 5055 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 4450 50  0001 C CNN
+F 3 "https://datasheet.lcsc.com/szlcsc/1808131821_Alpha-Omega-Semicon-AO3402_C14385.pdf" H 11850 5300 50  0001 C CNN
+	1    12000 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06F2002V R21
+U 1 1 5EBE32EE
+P 11600 5450
+F 0 "R21" V 11554 5538 50  0000 L CNN
+F 1 "ERJ-S06F2002V" H 11450 5150 50  0001 L CNN
+F 2 "RESC2012X70N" H 11450 5050 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 11450 5050 50  0001 L CNN
+F 4 "Thick Film Resistors 0805 20Kohms 1% Anti-Sulfur" H 11450 4950 50  0001 L CNN "Description"
+F 5 "0.7" H 11450 4850 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06F2002V" H 11450 4750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/ProductDetail/Panasonic/ERJ-S06F2002V?qs=sGAEpiMZZMvdGkrng054t59%2FMXCyyixe0yzNlTwRWTk%3D" H 11450 4650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 11450 4550 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06F2002V" H 11450 4450 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "20 k" V 11645 5538 50  0000 L CNN "Resistance"
+	1    11600 5450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	12000 5500 12000 5800
+$Comp
+L SamacSys_Parts:CRGP2512F12R R43
+U 1 1 5EBE32FC
+P 13000 5000
+F 0 "R43" H 12800 5050 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 4750 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 4650 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 4950 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 4550 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 4450 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 4350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 4250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 4150 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 4050 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 5000 50  0000 C CNN "Resistance"
+	1    13000 5000
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R42
+U 1 1 5EBE3309
+P 13000 4850
+F 0 "R42" H 12800 4900 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 4600 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 4500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 4800 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 4400 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 4300 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 4200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 4100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 4000 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 3900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 4850 50  0000 C CNN "Resistance"
+	1    13000 4850
+	-1   0    0    1   
+$EndComp
+$Comp
+L SamacSys_Parts:CRGP2512F12R R41
+U 1 1 5EBE3316
+P 13000 4700
+F 0 "R41" H 12800 4750 50  0000 C CNN
+F 1 "CRGP2512F12R" H 12850 4450 50  0001 L CNN
+F 2 "RESC6432X65N" H 12850 4350 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F12R.pdf" H 13200 4650 50  0001 L CNN
+F 4 "Resistor Thick Film Pulse 2512 12R 1%" H 12850 4250 50  0001 L CNN "Description"
+F 5 "0.65" H 12850 4150 50  0001 L CNN "Height"
+F 6 "279-CRGP2512F12R" H 12850 4050 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F12R" H 12850 3950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "TE Connectivity" H 12850 3850 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRGP2512F12R" H 12850 3750 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "12" H 13000 4700 50  0000 C CNN "Resistance"
+	1    13000 4700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	13350 4700 13350 4850
+Connection ~ 13350 4850
+Wire Wire Line
+	13350 4850 13350 5000
+Text HLabel 13550 4600 2    50   Input ~ 0
+CELL_20
+Wire Wire Line
+	13550 4600 13550 4700
+Connection ~ 13350 4700
+Wire Wire Line
+	12650 4700 12650 4850
+Connection ~ 12650 4850
+Wire Wire Line
+	12650 4850 12650 5000
+Wire Wire Line
+	11600 5100 11600 4800
+Connection ~ 11600 5100
+Connection ~ 12650 4700
+Wire Wire Line
+	13550 4600 11600 4600
+$Comp
+L SamacSys_Parts:ERJ-6ENF1001V R1
+U 1 1 5EBE3332
+P 10650 4600
+F 0 "R1" H 10650 4825 50  0000 C CNN
+F 1 "ERJ-6ENF1001V" H 10500 4100 50  0001 L CNN
+F 2 "RESC2012X70N" H 10500 4200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF1001V.pdf" H 10500 4100 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 1Kohms 1% AEC-Q200" H 10500 4000 50  0001 L CNN "Description"
+F 5 "0.7" H 10500 3900 50  0001 L CNN "Height"
+F 6 "667-ERJ-6ENF1001V" H 10500 3800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF1001V" H 10500 3700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 10500 3600 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-6ENF1001V" H 10500 3500 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "1 k" H 10650 4734 50  0000 C CNN "Resistance"
+	1    10650 4600
+	1    0    0    -1  
+$EndComp
+Text HLabel 10300 4600 0    50   Input ~ 0
+D20
+$Comp
+L power:GNDREF #PWR02
+U 1 1 5EBE3339
+P 11000 4800
+F 0 "#PWR02" H 11000 4550 50  0001 C CNN
+F 1 "GNDREF" V 11005 4672 50  0000 R CNN
+F 2 "" H 11000 4800 50  0001 C CNN
+F 3 "" H 11000 4800 50  0001 C CNN
+	1    11000 4800
+	0    1    1    0   
+$EndComp
+Connection ~ 11600 5800
+Connection ~ 11600 7000
+Connection ~ 11600 8200
+Connection ~ 12000 5800
+Wire Wire Line
+	12000 5800 11600 5800
+Connection ~ 12000 7000
+Wire Wire Line
+	12000 7000 11600 7000
+Connection ~ 12000 8200
+Wire Wire Line
+	12000 8200 11600 8200
+Wire Wire Line
+	13550 26300 13350 26300
+Wire Wire Line
+	13550 25100 13350 25100
+Wire Wire Line
+	13550 23900 13350 23900
+Wire Wire Line
+	13550 22700 13350 22700
+Wire Wire Line
+	13550 21500 13350 21500
+Wire Wire Line
+	13550 20300 13350 20300
+Wire Wire Line
+	13550 19100 13350 19100
+Wire Wire Line
+	13550 17900 13350 17900
+Wire Wire Line
+	13550 16700 13350 16700
+Wire Wire Line
+	13550 15500 13350 15500
+Wire Wire Line
+	13550 14300 13350 14300
+Wire Wire Line
+	13550 13100 13350 13100
+Wire Wire Line
+	13550 11900 13350 11900
+Wire Wire Line
+	13550 10700 13350 10700
+Wire Wire Line
+	13550 9500 13350 9500
+Wire Wire Line
+	13550 8300 13350 8300
+Wire Wire Line
+	13550 7100 13350 7100
+Wire Wire Line
+	13550 5900 13350 5900
+Wire Wire Line
+	12000 5900 12650 5900
+Wire Wire Line
+	12000 7100 12650 7100
+Wire Wire Line
+	12000 8300 12650 8300
+Wire Wire Line
+	12000 9500 12650 9500
+Wire Wire Line
+	12000 10700 12650 10700
+Wire Wire Line
+	12000 11900 12650 11900
+Wire Wire Line
+	12000 13100 12650 13100
+Wire Wire Line
+	12000 14300 12650 14300
+Wire Wire Line
+	12000 15500 12650 15500
+Wire Wire Line
+	12000 16700 12650 16700
+Wire Wire Line
+	12000 17900 12650 17900
+Wire Wire Line
+	12000 19100 12650 19100
+Wire Wire Line
+	12000 20300 12650 20300
+Wire Wire Line
+	12000 21500 12650 21500
+Wire Wire Line
+	12000 22700 12650 22700
+Wire Wire Line
+	12000 23900 12650 23900
+Wire Wire Line
+	12000 25100 12650 25100
+Wire Wire Line
+	12000 26300 12650 26300
+Wire Wire Line
+	12000 27500 12650 27500
+Wire Wire Line
+	13550 27500 13350 27500
+Wire Wire Line
+	12000 4700 12650 4700
+Wire Wire Line
+	13550 4700 13350 4700
+$EndSCHEMATC
