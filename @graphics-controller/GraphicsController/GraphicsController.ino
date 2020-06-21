@@ -8,9 +8,10 @@ void setup() {
   u8g2.begin();
   u8g2.clearBuffer();
   u8g2.setFont(u8g2_font_profont17_mf);
+  u8g2.setFontMode(1);
+  u8g2.setDrawColor(2);
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
-  Serial.begin(9600);
 }
 
 void loop() {

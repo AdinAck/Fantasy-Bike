@@ -12,6 +12,7 @@ from display import Display
 import animation
 from animation import Animation
 from supertime import*
+import rotaryio
 import ui
 
 # SerCom Setup
@@ -39,10 +40,11 @@ print("CPU Frequency: "+str(microcontroller.cpu.frequency))
 # cfg2.purge()
 
 # Set up UI
+ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
 ui.Screen.setDisplay(d)
 
 test = ui.Screen()
-test.addButton(0,32-4,16,8,"Test")
+test.addButton(0,32-8,32,16,"Test", 11)
 
 ui.Screen.current = test
 
@@ -63,7 +65,7 @@ while True:
     d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
     # d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
-    d.drawStr(0,11,str(int(microcontroller.cpu.temperature)))
+    # d.drawStr(0,11,str(int(microcontroller.cpu.temperature)))
     ui.update()
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
