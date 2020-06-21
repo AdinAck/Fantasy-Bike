@@ -20,9 +20,10 @@ class Screen:
     def addButton(self, xpos, ypos, sizex, sizey, text, textSize):
         self.content.extend([[Screen.d.drawRect, xpos, ypos, sizex, sizey],[Screen.d.drawStr, xpos, ypos+sizey-((sizey-textSize)//2), text]])
 
-    def addLiveDial(self, xpos, ypos, radius, positionCount, valueRange=None, minAngle=None, maxAngle=None):
+    def addLiveDial(self, xpos, ypos, radius, positionCount):
         if Screen.current == self:
             Screen.d.drawHCircle(xpos, ypos, radius)
+            dr = 360/positionCount
 
 def update():
     Screen.cursorPosition = Screen.e.position
