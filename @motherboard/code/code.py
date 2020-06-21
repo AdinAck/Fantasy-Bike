@@ -50,7 +50,6 @@ animTime = 2
 start = (200,20)
 end = (200, 64-9)
 c = 0
-temp = "0"
 
 # Set up UI
 ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
@@ -58,7 +57,6 @@ ui.Screen.setDisplay(d)
 
 test = ui.Screen()
 test.addButton(0,32-8,32,16,"Test",11)
-test.addText(0,11,11,temp)
 
 ui.Screen.current = test
 
@@ -66,9 +64,9 @@ ui.Screen.current = test
 while True:
     d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
-    # d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
+    d.drawStr(0,11,str(int(1/loopTime)))
     # d.drawStr(0,11,str(int(microcontroller.cpu.temperature)))
-    temp = str(int(microcontroller.cpu.temperature))
-    ui.update(temp)
+    test.addLiveText(32,11,11,str(ui.Screen.cursorPosition))
+    ui.update()
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
