@@ -39,15 +39,6 @@ print("CPU Frequency: "+str(microcontroller.cpu.frequency))
 # cfg2.test()
 # cfg2.purge()
 
-# Set up UI
-ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
-ui.Screen.setDisplay(d)
-
-test = ui.Screen()
-test.addButton(0,32-8,32,16,"Test", 11)
-
-ui.Screen.current = test
-
 # I/O Setup
 led = digitalio.DigitalInOut(board.D13)
 led.direction = digitalio.Direction.OUTPUT
@@ -59,6 +50,17 @@ animTime = 2
 start = (200,20)
 end = (200, 64-9)
 c = 0
+temp = "0"
+
+# Set up UI
+ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
+ui.Screen.setDisplay(d)
+
+test = ui.Screen()
+test.addButton(0,32-8,32,16,"Test",11)
+test.addText(0,11,11,temp)
+
+ui.Screen.current = test
 
 # Main Loop
 while True:
@@ -66,6 +68,7 @@ while True:
     # d.setFont(11)
     # d.drawStr(0,11,str(int(1/loopTime))+" "+str(int(tick*60)))
     # d.drawStr(0,11,str(int(microcontroller.cpu.temperature)))
-    ui.update()
+    temp = str(int(microcontroller.cpu.temperature))
+    ui.update(temp)
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).

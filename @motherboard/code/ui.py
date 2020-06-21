@@ -12,8 +12,8 @@ class Screen:
     def addText(self,xpos,ypos,textSize,text):
         self.content.append([Screen.d.drawStr, xpos, ypos, text])
 
-    def addButton(self, xpos, ypos, sizex, sizey, text):
-        self.content.extend([[Screen.d.drawRect, xpos, ypos, sizex, sizey],[Screen.d.drawStr, xpos, ypos, text]])
+    def addButton(self, xpos, ypos, sizex, sizey, text, textSize):
+    self.content.extend([[Screen.d.drawRect, xpos, ypos, sizex, sizey],[Screen.d.drawStr, xpos, ypos+sizey-((sizey-textSize)//2), text]])
 
     def setContent(self,arrOfContent):
         self.content = arrOfContent
