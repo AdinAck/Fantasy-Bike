@@ -1,4 +1,4 @@
-16987181822303909
+16990367587055782
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -68733,6 +68733,13 @@ Loudspeaker or Buzzer
 2
 2
 SamacSys_Parts
+DIOM5227X250N
+CASE 403AE
+Diode
+0
+2
+2
+SamacSys_Parts
 G5PZ1ADC12
 G5PZ-1A DC12-2
 Relay or Contactor
@@ -68802,6 +68809,13 @@ Integrated Circuit
 0
 8
 8
+SamacSys_Parts
+SOIC127P700X220-6N
+TLP2310(TPL,E
+Integrated Circuit
+0
+6
+6
 SamacSys_Parts
 SOIC127P700X230-16N
 PS2805-4

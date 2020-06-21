@@ -2126,45 +2126,45 @@ Text GLabel 4050 12900 2    50   Output ~ 0
 V2
 Text GLabel 4050 13450 2    50   Output ~ 0
 V1
-Text GLabel 6500 6600 0    50   Input ~ 0
+Text GLabel 5800 6600 0    50   Input ~ 0
 V18
-Text GLabel 6500 6500 0    50   Input ~ 0
+Text GLabel 5800 6500 0    50   Input ~ 0
 V19
-Text GLabel 6500 6800 0    50   Input ~ 0
+Text GLabel 5800 6800 0    50   Input ~ 0
 V20
-Text GLabel 6500 6700 0    50   Input ~ 0
+Text GLabel 5800 6700 0    50   Input ~ 0
 V17
-Text GLabel 8700 6700 2    50   Input ~ 0
+Text GLabel 9400 6700 2    50   Input ~ 0
 V15
-Text GLabel 8700 6800 2    50   Input ~ 0
+Text GLabel 9400 6800 2    50   Input ~ 0
 V16
-Text GLabel 6500 8600 0    50   Input ~ 0
+Text GLabel 5800 8600 0    50   Input ~ 0
 V14
-Text GLabel 6500 8500 0    50   Input ~ 0
+Text GLabel 5800 8500 0    50   Input ~ 0
 V13
-Text GLabel 6500 8800 0    50   Input ~ 0
+Text GLabel 5800 8800 0    50   Input ~ 0
 V10
-Text GLabel 6500 8700 0    50   Input ~ 0
+Text GLabel 5800 8700 0    50   Input ~ 0
 V11
-Text GLabel 8700 8700 2    50   Input ~ 0
+Text GLabel 9400 8700 2    50   Input ~ 0
 V12
-Text GLabel 8700 8800 2    50   Input ~ 0
+Text GLabel 9400 8800 2    50   Input ~ 0
 V9
-Text GLabel 8700 8600 2    50   Input ~ 0
+Text GLabel 9400 8600 2    50   Input ~ 0
 V8
-Text GLabel 6500 10500 0    50   Input ~ 0
+Text GLabel 5800 10500 0    50   Input ~ 0
 V7
-Text GLabel 6500 10600 0    50   Input ~ 0
+Text GLabel 5800 10600 0    50   Input ~ 0
 V5
-Text GLabel 6500 10700 0    50   Input ~ 0
+Text GLabel 5800 10700 0    50   Input ~ 0
 V6
-Text GLabel 6500 10800 0    50   Input ~ 0
+Text GLabel 5800 10800 0    50   Input ~ 0
 V3
-Text GLabel 8700 10800 2    50   Input ~ 0
+Text GLabel 9400 10800 2    50   Input ~ 0
 V2
-Text GLabel 8700 10700 2    50   Input ~ 0
+Text GLabel 9400 10700 2    50   Input ~ 0
 V1
-Text GLabel 8700 10600 2    50   Input ~ 0
+Text GLabel 9400 10600 2    50   Input ~ 0
 V4
 Text GLabel 4900 10950 0    50   Input ~ 0
 9v
@@ -2472,4 +2472,364 @@ Text GLabel 6500 7900 0    50   Input ~ 0
 VREF
 Text GLabel 6500 9900 0    50   Input ~ 0
 VREF
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EEFBA26
+P 6150 6500
+F 0 "R?" H 5850 6500 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 6300 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 6200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 6450 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 6100 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 6000 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 5900 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 5800 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 5700 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 5600 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 6500 50  0000 C CNN "Resistance"
+	1    6150 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EEFF185
+P 6150 6600
+F 0 "R?" H 5850 6600 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 6400 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 6300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 6550 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 6200 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 6100 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 6000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 5900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 5800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 5700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 6600 50  0000 C CNN "Resistance"
+	1    6150 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EEFF5BE
+P 6150 6700
+F 0 "R?" H 5850 6700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 6500 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 6400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 6650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 6300 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 6200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 6100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 6000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 5900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 5800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 6700 50  0000 C CNN "Resistance"
+	1    6150 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EEFFA0B
+P 6150 6800
+F 0 "R?" H 5850 6800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 6600 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 6500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 6750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 6400 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 6300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 6200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 6100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 6000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 5900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 6800 50  0000 C CNN "Resistance"
+	1    6150 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EEFFEC0
+P 9050 6700
+F 0 "R?" H 8750 6700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 6500 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 6400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 6650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 6300 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 6200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 6100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 6000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 5900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 5800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 6700 50  0000 C CNN "Resistance"
+	1    9050 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF02F6F
+P 9050 6800
+F 0 "R?" H 8750 6800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 6600 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 6500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 6750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 6400 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 6300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 6200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 6100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 6000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 5900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 6800 50  0000 C CNN "Resistance"
+	1    9050 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF03410
+P 6150 8500
+F 0 "R?" H 5850 8500 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 8300 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 8200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 8450 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 8100 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 8000 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 7900 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 7800 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 7700 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 7600 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 8500 50  0000 C CNN "Resistance"
+	1    6150 8500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF064EB
+P 6150 8600
+F 0 "R?" H 5850 8600 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 8400 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 8300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 8550 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 8200 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 8100 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 8000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 7900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 7800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 7700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 8600 50  0000 C CNN "Resistance"
+	1    6150 8600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF06A18
+P 6150 8700
+F 0 "R?" H 5850 8700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 8500 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 8400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 8650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 8300 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 8200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 8100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 8000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 7900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 7800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 8700 50  0000 C CNN "Resistance"
+	1    6150 8700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF06E4D
+P 6150 8800
+F 0 "R?" H 5850 8800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 8600 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 8500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 8750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 8400 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 8300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 8200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 8100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 8000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 7900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 8800 50  0000 C CNN "Resistance"
+	1    6150 8800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF07332
+P 9050 8600
+F 0 "R?" H 8750 8600 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 8400 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 8300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 8550 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 8200 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 8100 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 8000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 7900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 7800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 7700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 8600 50  0000 C CNN "Resistance"
+	1    9050 8600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0A1B9
+P 9050 8700
+F 0 "R?" H 8750 8700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 8500 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 8400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 8650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 8300 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 8200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 8100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 8000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 7900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 7800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 8700 50  0000 C CNN "Resistance"
+	1    9050 8700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0A622
+P 9050 8800
+F 0 "R?" H 8750 8800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 8600 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 8500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 8750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 8400 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 8300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 8200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 8100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 8000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 7900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 8800 50  0000 C CNN "Resistance"
+	1    9050 8800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0AAF3
+P 6150 10500
+F 0 "R?" H 5850 10500 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 10300 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 10200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 10450 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 10100 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 10000 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 9900 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 9800 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 9700 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 9600 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 10500 50  0000 C CNN "Resistance"
+	1    6150 10500
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0DCD3
+P 6150 10600
+F 0 "R?" H 5850 10600 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 10400 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 10300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 10550 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 10200 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 10100 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 10000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 9900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 9800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 9700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 10600 50  0000 C CNN "Resistance"
+	1    6150 10600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0E0F8
+P 6150 10700
+F 0 "R?" H 5850 10700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 10500 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 10400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 10650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 10300 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 10200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 10100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 10000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 9900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 9800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 10700 50  0000 C CNN "Resistance"
+	1    6150 10700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0E465
+P 6150 10800
+F 0 "R?" H 5850 10800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 6000 10600 50  0001 L CNN
+F 2 "RESC2012X70N" H 6000 10500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 6350 10750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 6000 10400 50  0001 L CNN "Description"
+F 5 "0.7" H 6000 10300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 6000 10200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 6000 10100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 6000 10000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 6000 9900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 6150 10800 50  0000 C CNN "Resistance"
+	1    6150 10800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF0E80E
+P 9050 10600
+F 0 "R?" H 8750 10600 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 10400 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 10300 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 10550 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 10200 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 10100 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 10000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 9900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 9800 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 9700 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 10600 50  0000 C CNN "Resistance"
+	1    9050 10600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF1199C
+P 9050 10700
+F 0 "R?" H 8750 10700 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 10500 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 10400 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 10650 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 10300 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 10200 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 10100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 10000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 9900 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 9800 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 10700 50  0000 C CNN "Resistance"
+	1    9050 10700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-S06J472V R?
+U 1 1 5EF11DC1
+P 9050 10800
+F 0 "R?" H 8750 10800 50  0000 C CNN
+F 1 "ERJ-S06J472V" H 8900 10600 50  0001 L CNN
+F 2 "RESC2012X70N" H 8900 10500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-S06J472V.pdf" H 9250 10750 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 4.7Kohms 5% Anti-Sulfur" H 8900 10400 50  0001 L CNN "Description"
+F 5 "0.7" H 8900 10300 50  0001 L CNN "Height"
+F 6 "667-ERJ-S06J472V" H 8900 10200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-S06J472V" H 8900 10100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 8900 10000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-S06J472V" H 8900 9900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "4.7 k" H 9050 10800 50  0000 C CNN "Resistance"
+	1    9050 10800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

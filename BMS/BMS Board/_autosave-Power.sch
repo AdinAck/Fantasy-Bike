@@ -16,10 +16,10 @@ $EndDescr
 Text HLabel 3050 3950 0    50   Input ~ 0
 9v
 $Comp
-L power:GNDREF #PWR027
+L power:GNDREF #PWR026
 U 1 1 5EDC2FF4
 P 4350 3850
-F 0 "#PWR027" H 4350 3600 50  0001 C CNN
+F 0 "#PWR026" H 4350 3600 50  0001 C CNN
 F 1 "GNDREF" V 4355 3722 50  0000 R CNN
 F 2 "" H 4350 3850 50  0001 C CNN
 F 3 "" H 4350 3850 50  0001 C CNN
@@ -149,10 +149,10 @@ F 10 "100 uF" V 4395 5580 50  0000 L CNN "Capacitance"
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GNDREF #PWR028
+L power:GNDREF #PWR027
 U 1 1 5EDDA6C5
 P 4350 5700
-F 0 "#PWR028" H 4350 5450 50  0001 C CNN
+F 0 "#PWR027" H 4350 5450 50  0001 C CNN
 F 1 "GNDREF" H 4355 5527 50  0000 C CNN
 F 2 "" H 4350 5700 50  0001 C CNN
 F 3 "" H 4350 5700 50  0001 C CNN
@@ -339,8 +339,6 @@ Text GLabel 4700 6950 2    50   Input ~ 0
 C-
 Text GLabel 3050 8350 2    50   Input ~ 0
 C-
-Wire Wire Line
-	3050 7650 3050 7800
 Connection ~ 3050 7800
 Wire Wire Line
 	3050 7800 3050 7950
@@ -375,10 +373,10 @@ Wire Notes Line
 Text Notes 2550 3050 0    50   ~ 0
 Regulators
 $Comp
-L SamacSys_Parts:ERJ-S06F2002V R?
+L SamacSys_Parts:ERJ-S06F2002V R102
 U 1 1 5EEC9298
 P 4800 7850
-F 0 "R?" V 4754 7938 50  0000 L CNN
+F 0 "R102" V 4754 7938 50  0000 L CNN
 F 1 "ERJ-S06F2002V" H 4650 7550 50  0001 L CNN
 F 2 "RESC2012X70N" H 4650 7450 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C334-1314047.pdf" H 4650 7450 50  0001 L CNN
@@ -393,10 +391,10 @@ F 10 "20 k" V 4845 7938 50  0000 L CNN "Resistance"
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GNDREF #PWR?
+L power:GNDREF #PWR028
 U 1 1 5EECA02E
 P 4800 8200
-F 0 "#PWR?" H 4800 7950 50  0001 C CNN
+F 0 "#PWR028" H 4800 7950 50  0001 C CNN
 F 1 "GNDREF" H 4805 8027 50  0000 C CNN
 F 2 "" H 4800 8200 50  0001 C CNN
 F 3 "" H 4800 8200 50  0001 C CNN
@@ -406,10 +404,10 @@ $EndComp
 Text GLabel 3750 8500 3    50   Input ~ 0
 B-
 $Comp
-L SamacSys_Parts:S1G D?
+L SamacSys_Parts:S1G D2
 U 1 1 5EF4840C
 P 4050 6500
-F 0 "D?" H 4050 6765 50  0000 C CNN
+F 0 "D2" H 4050 6765 50  0000 C CNN
 F 1 "S1G" H 4050 6674 50  0000 C CNN
 F 2 "DIOM5227X250N" H 3750 6150 50  0001 L CNN
 F 3 "https://www.onsemi.com/pub/Collateral/S1M-D.pdf" H 3750 6050 50  0001 L CNN
@@ -435,4 +433,27 @@ Wire Wire Line
 Wire Wire Line
 	4700 6500 4700 6850
 Connection ~ 4700 6850
+$Comp
+L SamacSys_Parts:S1G D1
+U 1 1 5EF4C90F
+P 3400 8100
+F 0 "D1" V 3354 8228 50  0000 L CNN
+F 1 "S1G" V 3445 8228 50  0000 L CNN
+F 2 "DIOM5227X250N" H 3100 7750 50  0001 L CNN
+F 3 "https://www.onsemi.com/pub/Collateral/S1M-D.pdf" H 3100 7650 50  0001 L CNN
+F 4 "ON Semi 400V 1A, Diode, 2-Pin DO-214AC S1G" H 3100 7550 50  0001 L CNN "Description"
+F 5 "2.5" H 3100 7450 50  0001 L CNN "Height"
+F 6 "512-S1G" H 3100 7350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/ON-Semiconductor-Fairchild/S1G?qs=RJwZ8kJo1mjiLbqXClupXw%3D%3D" H 3100 7250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "ON Semiconductor" H 3100 7150 50  0001 L CNN "Manufacturer_Name"
+F 9 "S1G" H 3100 7050 50  0001 L CNN "Manufacturer_Part_Number"
+	1    3400 8100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3050 7650 3050 7800
+Wire Wire Line
+	3400 7800 3050 7800
+Text GLabel 3400 8400 3    50   Input ~ 0
+P-
 $EndSCHEMATC

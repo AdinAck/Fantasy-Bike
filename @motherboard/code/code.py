@@ -55,18 +55,22 @@ c = 0
 ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
 ui.Screen.setDisplay(d)
 
-test = ui.Screen()
-test.addButton(0,32-8,32,16,"Test",11)
+screen = ui.Screen()
+button = ui.Button(0,16,36,16,11,"Test")
+framerate = ui.Text(0,11,11,int(1/loopTime))
+cursorPos = ui.Text(32,11,11,ui.Screen.cursorPosition)
+screen.add(framerate)
+screen.add(cursorPos)
+screen.add(button)
 
-ui.Screen.current = test
+ui.Screen.current = screen
 
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
-    d.drawStr(0,11,str(int(1/loopTime)))
-    # d.drawStr(0,11,str(int(microcontroller.cpu.temperature)))
-    test.addLiveText(32,11,11,str(ui.Screen.cursorPosition))
+    framerate.text = int(1/loopTime)
+    cursorPos.text = ui.Screen.cursorPosition
     ui.update()
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
