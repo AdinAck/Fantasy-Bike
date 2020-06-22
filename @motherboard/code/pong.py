@@ -19,7 +19,7 @@ class Pong:
     def draw(self):
         self.d.drawRect(Pong.paddleX, Pong.paddleY, Pong.paddleWidth, Pong.paddleLength)
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
-        self.d.drawLine(128,0,128,10)
+        self.d.drawLine(128,0,128,12)
         textGap = 1
         score1Width = (len(str(Pong.score1)) - 3)*len(str(Pong.score1)) + textGap*(len(str(Pong.score1)) - 1)
         score1Pos = 118 - score1Width
@@ -43,12 +43,17 @@ class Pong:
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
 
-        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2 or Pong.ballPos[0] < 1:
-            Pong.ballSpeed[0] *= -1
+        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
+            Pong.score1 += 1
+        if Pong.ballPos[0] < 1:
+            Pong.score2 += 1
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
+
+
         if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
             Pong.ballSpeed[0] *= -1
+
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
         self.draw()
