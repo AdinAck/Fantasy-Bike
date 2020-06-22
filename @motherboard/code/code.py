@@ -28,7 +28,6 @@ a = Animation(d)
 # General setup
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
 print("CPU Frequency: "+str(microcontroller.cpu.frequency))
-
 # Using the configuration file:
 # from RegX import *
 
@@ -55,16 +54,15 @@ c = 0
 ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35), digitalio.DigitalInOut(board.D31))
 ui.Screen.setDisplay(d)
 
-screen = ui.Screen()
+screen = ui.Screen(True)
 # button = ui.Button(screen, 0,16,36,16,11,"Test")
 framerate = ui.Text(screen, 0,11,11,int(1/loopTime))
 cursorPos = ui.Text(screen, 32,11,11,ui.Screen.cursorPosition)
-num1 = ui.SingleDigitNumberSelector(screen, 116-24,32)
-num2 = ui.SingleDigitNumberSelector(screen, 116,32)
-num3 = ui.SingleDigitNumberSelector(screen, 140,32)
-num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
+num1 = ui.SingleDigitNumberSelector(screen, 116-24,32, True)
+num2 = ui.SingleDigitNumberSelector(screen, 116,32, True)
+num3 = ui.SingleDigitNumberSelector(screen, 140,32, True)
+num4 = ui.SingleDigitNumberSelector(screen, 140+24,32, True)
 
-ui.Screen.current = screen
 
 # Main Loop
 while True:

@@ -1,9 +1,11 @@
 import math
 import digitalio
+import microcontroller
 
 err = None
 
 class Screen:
+    memorySize = 0
     def setEncoder(encoder, button):
         Screen.e = encoder
         Screen.cursorPosition = Screen.e.position
@@ -19,7 +21,9 @@ class Screen:
     def setDisplay(display):
         Screen.d = display
 
-    def __init__(self):
+    def __init__(self,setCurrent=False):
+        if setCurrent:
+            Screen.current = self
         self.components = []
         self.selectable = []
 
@@ -30,6 +34,11 @@ class Screen:
         self.components.append(component)
         if type(component) in [Button, SingleDigitNumberSelector]:
             self.selectable.append(component)
+        try:
+            if component.saveValue:
+                Screen.memorySize += 1
+        except AttributeError:
+            pass
 
 class Button:
     def __init__(self, screen, xpos, ypos, sizex, sizey, textSize, text):
@@ -66,11 +75,15 @@ class Text:
         Screen.d.drawStr(self.xpos, self.ypos, str(self.wrapper.val))
 
 class SingleDigitNumberSelector:
-    def __init__(self, screen, xpos, ypos):
+    def __init__(self, screen, xpos, ypos, saveValue=False):
         screen.add(self)
         self.xpos = xpos
         self.ypos = ypos
-        self.val = 0
+        self.saveValue = saveValue
+        if self.saveValue:
+            self.val = microcontroller.nvm[Screen.current.selectable.index(self)]
+        else:
+            self.val = 0
         self.count1 = 0
         self.count2 = 0
         self.blinkCount = 20
@@ -174,7 +187,7 @@ def update():
     else:
         Screen.cursor = -1
         if Screen.current.selecting:
-            if Screen.current.index > -len(Screen.current.selectable):
+            if Screen.current.index > 0:
                 Screen.current.index -= 1
             else:
                 Screen.current.index = -1
@@ -191,6 +204,9 @@ def update():
             Screen.current.selecting = False
         elif Screen.button.value == 0 and not Screen.current.selecting:
             Screen.current.selecting = True
+            if Screen.focused.saveValue:
+                microcontroller.nvm[Screen.current.index] = Screen.focused.val
+                print("Saved",Screen.focused.val,"to memory address",Screen.memorySize+Screen.current.index)
         Screen.last_button_value = Screen.button.value
 
     if Screen.current.selecting:
