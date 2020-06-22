@@ -51,7 +51,7 @@ end = (200, 64-9)
 c = 0
 
 def func():
-    ui.Screen.current = screen2
+    ui.Screen.current = pong
 
 def func2():
     ui.Screen.current = screen
@@ -61,15 +61,15 @@ ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35), digitali
 ui.Screen.setDisplay(d)
 
 screen = ui.Screen(True)
-button = ui.Button(screen, 38,32,38,16,11,"Test", func)
+button = ui.Button(screen, 38,32,38,16,11,"Pong", func)
 framerate = ui.Text(screen, 0,8,8,int(1/loopTime))
 num1 = ui.SingleDigitNumberSelector(screen, 116-24,32)
 num2 = ui.SingleDigitNumberSelector(screen, 116,32)
 num3 = ui.SingleDigitNumberSelector(screen, 140,32)
 num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 
-screen2 = ui.Screen()
-back = ui.Button(screen2, 128, 32, 38, 16, 11, "Back", func2)
+pong = ui.Screen()
+back = ui.Button(pong, 128, 32, 38, 16, 11, "Back", func2)
 
 # Main Loop
 while True:
