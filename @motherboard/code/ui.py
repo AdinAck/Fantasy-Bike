@@ -178,6 +178,10 @@ class Wrapper:
         self.val = variable
 
 def update():
+    """
+    recieves what rotory encoder pos is and direction of movement
+    
+    """
     Screen.last_cursorPosition = Screen.cursorPosition
     Screen.cursorPosition = Screen.e.position
     if Screen.last_cursorPosition in [None, Screen.cursorPosition]:
@@ -200,7 +204,8 @@ def update():
         Screen.focused = Screen.current.selectable[Screen.current.index]
     except IndexError:
         Screen.current.selecting = False
-
+"""
+"""
     for component in Screen.current.components:
         component.draw()
 
