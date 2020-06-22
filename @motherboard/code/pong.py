@@ -29,7 +29,6 @@ class Pong:
     def checkPaddleCollision(self,paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
         return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
 
-
     def update(self):
         self.last_cursorPosition = self.cursorPosition
         self.cursorPosition = self.e.position
@@ -49,7 +48,6 @@ class Pong:
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
         if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
-
             Pong.ballSpeed[0] *= -1
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
