@@ -1,4 +1,4 @@
-
+import random
 class Pong:
 
 
@@ -10,7 +10,7 @@ class Pong:
         Pong.boardDimensions = [256, 64]
         Pong.ballPos = [128, 32]
 
-        Pong.ballSpeed = [1, 1]
+        Pong.ballSpeed = self.getRandomSpeed
         Pong.score1 = 0
         Pong.score2 = 0
         Pong.AiX = Pong.boardDimensions[0]-Pong.paddleX - Pong.paddleWidth
@@ -26,7 +26,14 @@ class Pong:
         Pong.reset()
 
     def getRandomSpeed(self):
-
+        out = [1,1]
+        r1 = random.randint(0,1)
+        r2 = random.randint(0,1)
+        if r1 == 0:
+            out[0]*=-1
+        if r2 == 0:
+            out[1]*=-1
+        return out
 
     def draw(self):
         self.d.drawRect(Pong.paddleX, Pong.paddleY, Pong.paddleWidth, Pong.paddleLength)
@@ -58,19 +65,21 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-
-        if Pong.ballPos[1] > Pong.AiY - Pong.paddleLength//2:
+            # - Pong.paddleLength//2
+        if Pong.ballPos[1] > Pong.AiY:
             Pong.AiY -= Pong.ballSpeed[0]
-        if Pong.ballPos[1] < Pong.AiY - Pong.paddleLength//2:
+        if Pong.ballPos[1] < Pong.AiY:
             Pong.AiY += Pong.ballSpeed[0]
         if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
             Pong.score1 += 1
             Pong.flashCount = 10
             Pong.ballPos = [128, 32]
+            Pong.ballSpeed = Pong.getRandomSpeed()
         if Pong.ballPos[0] < 1:
             Pong.score2 += 1
             Pong.flashCount = 10
             Pong.ballPos = [128, 32]
+            Pong.ballSpeed = Pong.getRandomSpeed()
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
 
