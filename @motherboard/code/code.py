@@ -84,7 +84,7 @@ while True:
     framerate.text = int(1/loopTime)
     ui.update()
     if ui.Screen.current == pong:
-        p.draw()
+        p.update()
         if ui.Screen.button.value == 0:
             pPress = True
         elif pPress == True:
