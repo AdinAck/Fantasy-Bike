@@ -43,10 +43,10 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-            
-        if Pong.ballPos[0] > Pong.boardDimensions[0] - 1 or Pong.ballPos[0] < 1:
+
+        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2 or Pong.ballPos[0] < 1:
             Pong.ballSpeed[0] *= -1
-        if Pong.ballPos[1] > Pong.boardDimensions[1] - 1 or Pong.ballPos[1] < 1:
+        if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
         if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
             Pong.ballSpeed[0] *= -1
