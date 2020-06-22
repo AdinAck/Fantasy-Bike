@@ -2,8 +2,6 @@ import math
 import digitalio
 import microcontroller
 
-err = None
-
 class Screen:
     memorySize = 0
     def setEncoder(encoder, button):
@@ -187,8 +185,6 @@ class Wrapper:
         self.val = variable
 
 def update():
-    global err
-
     Screen.last_cursorPosition = Screen.cursorPosition
     Screen.cursorPosition = Screen.e.position
     if Screen.last_cursorPosition in [None, Screen.cursorPosition]:
