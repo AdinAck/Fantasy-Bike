@@ -38,7 +38,7 @@ class Pong:
         score2Width = (len(str(Pong.score2)) - 3)*len(str(Pong.score2)) + textGap*(len(str(Pong.score2)) - 1)
         score1Pos = 118 - score1Width
         self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
-        self.d.drawStr(131, 11, 9, str(Pong.score1))
+        self.d.drawStr(131, 11, 9, str(Pong.score2))
         if Pong.flashCount != 0:
             self.d.drawRect(score1Pos-2,0,score2Width+(131-score1Pos),12)
 
@@ -53,7 +53,7 @@ class Pong:
         elif self.cursorPosition - self.last_cursorPosition > 0:
             self.cursor = 1
         else: self.cursor = -1
-        Pong.paddleY -= self.cursor*8
+        Pong.paddleY += self.cursor*8
         if Pong.paddleY < 0:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
@@ -63,12 +63,14 @@ class Pong:
             Pong.AiY -= Pong.ballSpeed[0]
         if Pong.ballPos[1] < Pong.AiY - Pong.paddleLength//2:
             Pong.AiY += Pong.ballSpeed[0]
-        if Pong.ballPos[0] > Pong.boardDimensions[0] - 3:
+        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
             Pong.score1 += 1
             Pong.flashCount = 10
+            Pong.ballPos = [128, 32]
         if Pong.ballPos[0] < 1:
             Pong.score2 += 1
             Pong.flashCount = 10
+            Pong.ballPos = [128, 32]
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
 
