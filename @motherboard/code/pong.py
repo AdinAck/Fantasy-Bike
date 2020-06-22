@@ -30,5 +30,5 @@ class Pong:
         if Pong.paddleY < 0:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
-            Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength -1    
+            Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
         self.draw()
