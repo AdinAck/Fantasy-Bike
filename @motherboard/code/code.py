@@ -14,7 +14,7 @@ from animation import Animation
 from supertime import*
 import rotaryio
 import ui
-import pong
+import pong as game
 
 # SerCom Setup
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -58,7 +58,9 @@ def func2():
     ui.Screen.current = screen
 
 # Set up UI
-ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35), digitalio.DigitalInOut(board.D31))
+encoder = rotaryio.IncrementalEncoder(board.D33, board.D35)
+button = digitalio.DigitalInOut(board.D31)
+ui.Screen.setEncoder(encoder, button)
 ui.Screen.setDisplay(d)
 
 screen = ui.Screen(True)
@@ -70,9 +72,10 @@ num3 = ui.SingleDigitNumberSelector(screen, 140,32)
 num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 
 pong = ui.Screen()
-back = ui.Button(pong, 128, 32, 38, 16, 11, "Back", func2)
+# back = ui.Button(pong, 128, 32, 38, 16, 11, "Back", func2)
 
-p = pong.Pong(d)
+p = game.Pong(d, )
+pPress = False
 
 # Main Loop
 while True:
@@ -82,5 +85,11 @@ while True:
     ui.update()
     if ui.Screen.current == pong:
         p.draw()
+        if ui.Screen.button.value == 0:
+            pPress = True
+        elif pPress == True:
+            ui.Screen.current = screen
+            ui.Screen.current.selecting = True
+            pPress = False
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
