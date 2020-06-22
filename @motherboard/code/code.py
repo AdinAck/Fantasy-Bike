@@ -14,6 +14,7 @@ from animation import Animation
 from supertime import*
 import rotaryio
 import ui
+import pong
 
 # SerCom Setup
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -71,11 +72,15 @@ num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 pong = ui.Screen()
 back = ui.Button(pong, 128, 32, 38, 16, 11, "Back", func2)
 
+p = pong.Pong(d)
+
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
     framerate.text = int(1/loopTime)
     ui.update()
+    if ui.Screen.current == pong:
+        p.draw()
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
