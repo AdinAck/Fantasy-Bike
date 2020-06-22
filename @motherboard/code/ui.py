@@ -41,22 +41,35 @@ class Screen:
             pass
 
 class Button:
-    def __init__(self, screen, xpos, ypos, sizex, sizey, textSize, text):
+    def __init__(self, screen, xpos, ypos, sizex, sizey, textSize, title, func):
         screen.add(self)
         self.xpos = xpos
         self.ypos = ypos
         self.sizex = sizex
         self.sizey = sizey
         self.textSize = textSize
-        self.text = text
-        self.wrapper = Wrapper(text)
-        self.xBound = 10
-        self.yBound = 10
+        self.title = title
+        if textSize <= 11:
+            textGap = 1
+        else:
+            textGap = 2
+        textWidth = (self.textSize - 4 + self.textSize % 2)*len(self.title) + textGap*(len(self.title) - 1)
+        self.textPos = self.xpos - textWidth//2, self.ypos + self.textSize//2
+        self.func = func
+        self.clicked = False
+        self.xBound = sizex + 4
+        self.yBound = sizey + 4
 
     def draw(self):
-        self.wrapper.val = self.text
-        Screen.d.drawRect(self.xpos, self.ypos, self.sizex, self.sizey)
-        Screen.d.drawStr(self.xpos, self.ypos+self.sizey-((self.sizey-self.textSize)//2), str(self.wrapper.val))
+        if Screen.focused == self and not Screen.button.value:
+            self.clicked = True
+        elif self.clicked and Screen.button.value:
+            self.func()
+            Screen.current.selecting = True
+            self.clicked = False
+
+        Screen.d.drawCenterRect(self.xpos, self.ypos, self.sizex, self.sizey)
+        Screen.d.drawStr(self.textPos[0], self.textPos[1], self.textSize, str(self.title))
 
 
 class Text:
@@ -72,7 +85,7 @@ class Text:
 
     def draw(self):
         self.wrapper.val = self.text
-        Screen.d.drawStr(self.xpos, self.ypos, str(self.wrapper.val))
+        Screen.d.drawStr(self.xpos, self.ypos, self.textSize, str(self.wrapper.val))
 
 class SingleDigitNumberSelector:
     def __init__(self, screen, xpos, ypos, saveValue=False):
@@ -83,6 +96,8 @@ class SingleDigitNumberSelector:
         if self.saveValue:
             index = Screen.current.selectable.index(self)
             self.val = microcontroller.nvm[index]
+            if self.val > 9 or self.val < 0:
+                self.val = 0
         else:
             self.val = 0
         self.count1 = 0
@@ -131,7 +146,7 @@ class SingleDigitNumberSelector:
                 self.transparent = False
         Screen.d.drawCenterHRect(self.xpos, self.ypos, 14, 17)
         if not self.transparent:
-            Screen.d.drawStr(self.xpos-4, self.ypos+6, str(self.val))
+            Screen.d.drawStr(self.xpos-4, self.ypos+6, 11, str(self.val))
 
 class Dial:
     def __init__(self, screen, xpos, ypos, radius, positionCount, minAngle=0, maxAngle=0):
@@ -205,9 +220,15 @@ def update():
             Screen.current.selecting = False
         elif Screen.button.value == 0 and not Screen.current.selecting:
             Screen.current.selecting = True
-            if Screen.focused.saveValue:
-                microcontroller.nvm[Screen.current.index] = Screen.focused.val
+            try:
+                if Screen.focused.saveValue:
+                    microcontroller.nvm[Screen.current.index] = Screen.focused.val
+            except AttributeError:
+                pass
         Screen.last_button_value = Screen.button.value
 
     if Screen.current.selecting:
-        Screen.d.drawCenterRect(Screen.focused.xpos,Screen.focused.ypos,Screen.focused.xBound,Screen.focused.yBound)
+        if type(Screen.focused) in [SingleDigitNumberSelector]:
+            Screen.d.drawCenterRect(Screen.focused.xpos,Screen.focused.ypos,Screen.focused.xBound,Screen.focused.yBound)
+        elif type(Screen.focused) in [Button]:
+            Screen.d.drawCenterHRect(Screen.focused.xpos,Screen.focused.ypos,Screen.focused.xBound,Screen.focused.yBound)
