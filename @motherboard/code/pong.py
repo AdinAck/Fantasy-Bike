@@ -10,7 +10,7 @@ class Pong:
         Pong.boardDimensions = [256, 64]
         Pong.ballPos = [128, 32]
 
-        Pong.ballSpeed = self.getRandomSpeed
+        Pong.ballSpeed = Pong.getRandomSpeed()
         Pong.score1 = 0
         Pong.score2 = 0
         Pong.AiX = Pong.boardDimensions[0]-Pong.paddleX - Pong.paddleWidth
@@ -25,7 +25,7 @@ class Pong:
         self.cursor = 0
         Pong.reset()
 
-    def getRandomSpeed(self):
+    def getRandomSpeed():
         out = [1,1]
         r1 = random.randint(0,1)
         r2 = random.randint(0,1)
