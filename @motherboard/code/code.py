@@ -62,7 +62,7 @@ ui.Screen.setDisplay(d)
 
 screen = ui.Screen(True)
 button = ui.Button(screen, 38,32,38,16,11,"Test", func)
-framerate = ui.Text(screen, 0,14,14,int(1/loopTime))
+framerate = ui.Text(screen, 0,8,8,int(1/loopTime))
 num1 = ui.SingleDigitNumberSelector(screen, 116-24,32, True)
 num2 = ui.SingleDigitNumberSelector(screen, 116,32, True)
 num3 = ui.SingleDigitNumberSelector(screen, 140,32, True)

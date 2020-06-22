@@ -53,7 +53,7 @@ class Button:
             textGap = 1
         else:
             textGap = 2
-        textWidth = (self.textSize - 4 + self.textSize % 2)*len(self.title) + textGap*(len(self.title) - 1)
+        textWidth = (self.textSize - 3)*len(self.title) + textGap*(len(self.title) - 1)
         self.textPos = self.xpos - textWidth//2, self.ypos + self.textSize//2
         self.func = func
         self.clicked = False
