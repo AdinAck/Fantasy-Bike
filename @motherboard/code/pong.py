@@ -5,7 +5,9 @@ class Pong:
     paddleX = 1
     boardDimensions = 256, 64
     ballPos = 128, 32
-    score = 0
+    ballSpeed = 1, 1
+    score1 = 0
+    score2 = 0
 
     def __init__(self, display, encoder):
         self.d = display
@@ -17,6 +19,16 @@ class Pong:
     def draw(self):
         self.d.drawRect(Pong.paddleX, Pong.paddleY, Pong.paddleWidth, Pong.paddleLength)
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
+        self.d.drawLine(128,0,128,10)
+        textGap = 1
+        score1Width = (len(str(Pong.score1)) - 3)*len(Pong.score1) + textGap*(len(Pong.score1) - 1)
+        score1Pos = 118 - score1Width
+        self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
+        self.d.drawStr(138, 11, 9, str(Pong.score1))
+
+    def checkPaddleCollision(paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
+        return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
+
 
     def update(self):
         self.last_cursorPosition = self.cursorPosition
@@ -30,5 +42,14 @@ class Pong:
         if Pong.paddleY < 0:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
-            Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength -1    
+            Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
+
+        if Pong.ballPos[0] > Pong.boardDimensions[0] - 1 or Pong.ballPos[0] < 1:
+            Pong.ballSpeed[0] *= -1
+        if Pong.ballPos[1] > Pong.boardDimensions[1] - 1 or Pong.ballPos[1] < 1:
+            Pong.ballSpeed[1] *= -1
+        if self.checkCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
+            Pong.ballSpeed[0] *= -1    
+        Pong.ballPos[0] += Pong.ballSpeed[0]
+        Pong.ballPos[1] += Pong.ballSpeed[1]
         self.draw()
