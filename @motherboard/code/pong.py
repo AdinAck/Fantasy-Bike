@@ -56,9 +56,9 @@ class Pong:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
 
         if Pong.ballPos[1] > Pong.AiY - Pong.paddleLength//2:
-            Pong.AiY -= ballSpeed[0]
+            Pong.AiY -= Pong.ballSpeed[0]
         if Pong.ballPos[1] < Pong.AiY - Pong.paddleLength//2:
-            Pong.AiY += ballSpeed[0]
+            Pong.AiY += Pong.ballSpeed[0]
         if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
             Pong.score1 += 1
             Pong.flashCount = 10
