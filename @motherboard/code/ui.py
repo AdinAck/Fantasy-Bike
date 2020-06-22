@@ -95,6 +95,29 @@ class SingleDigitNumberSelector:
     def draw(self):
         if Screen.focused == self:
             if not Screen.current.selecting:
+                """
+                if Screen.cursor == 0:
+                    if self.count1 == 0:
+                        Screen.d.drawTriangle(self.xpos-8,self.ypos-10, self.xpos,self.ypos-17, self.xpos+7,self.ypos-10)
+                        Screen.d.drawTriangle(self.xpos-6,self.ypos+11, self.xpos,self.ypos+17, self.xpos+6,self.ypos+11)
+                    elif self.count1>0:
+                        Screen.d.drawTriangle(self.xpos-8,self.ypos-10, self.xpos,self.ypos-17, self.xpos+7,self.ypos-10)
+                    elif self.count1<0:
+                        Screen.d.drawTriangle(self.xpos-6,self.ypos+11, self.xpos,self.ypos+17, self.xpos+6,self.ypos+11)
+                else:
+                    self.transparent = False
+                    self.blinkCount = 20
+                    self.val += Screen.cursor
+                    self.count1 = Screen.cursor*5
+
+                if self.count1 != 0:
+                    self.count1 += self.count1/abs(self.count1)
+
+                if self.val == 10:
+                    self.val = 0
+                elif self.val == -1:
+                    self.val = 9
+                """
                 if Screen.cursor == 1:
                     self.transparent = False
                     self.blinkCount = 20
@@ -174,7 +197,7 @@ class Wrapper:
 def update():
     """
     recieves what rotory encoder pos is and direction of movement
-    
+    gets the focused element from the selectable list
     """
     Screen.last_cursorPosition = Screen.cursorPosition
     Screen.cursorPosition = Screen.e.position
@@ -199,10 +222,13 @@ def update():
     except IndexError:
         Screen.current.selecting = False
 """
+draws the components
 """
     for component in Screen.current.components:
         component.draw()
-
+"""
+checks buttonPressed and makes selecting True or False alternate
+"""
     if Screen.last_button_value != Screen.button.value:
         if Screen.button.value == 0 and Screen.current.selecting:
             Screen.current.selecting = False
