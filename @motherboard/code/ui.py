@@ -81,7 +81,8 @@ class SingleDigitNumberSelector:
         self.ypos = ypos
         self.saveValue = saveValue
         if self.saveValue:
-            self.val = microcontroller.nvm[Screen.current.selectable.index(self)]
+            index = Screen.current.selectable.index(self)
+            self.val = microcontroller.nvm[index]
         else:
             self.val = 0
         self.count1 = 0
@@ -190,7 +191,7 @@ def update():
             if Screen.current.index > 0:
                 Screen.current.index -= 1
             else:
-                Screen.current.index = -1
+                Screen.current.index = len(Screen.current.selectable)-1
     try:
         Screen.focused = Screen.current.selectable[Screen.current.index]
     except IndexError:
@@ -206,7 +207,6 @@ def update():
             Screen.current.selecting = True
             if Screen.focused.saveValue:
                 microcontroller.nvm[Screen.current.index] = Screen.focused.val
-                print("Saved",Screen.focused.val,"to memory address",Screen.memorySize+Screen.current.index)
         Screen.last_button_value = Screen.button.value
 
     if Screen.current.selecting:

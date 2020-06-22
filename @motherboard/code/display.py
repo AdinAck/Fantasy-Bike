@@ -2,16 +2,16 @@ import board, busio
 class Display:
     def __init__(self,i2c,slaveAddress):
         self.slaveAddress = int(slaveAddress)
-        print("Establishing connection with display controller.")
+        print("[Display] Establishing connection with display controller.")
         self.bus = i2c
-        print("Attempting to lock I2C bus...")
+        print("[Display] Attempting to lock I2C bus...")
         while not self.bus.try_lock():
             pass
-        print("Success!")
+        print("[Display] Success!")
         busAddresses = [hex(i) for i in self.bus.scan()]
-        print("Detected adresses:", busAddresses)
+        print("[Display] Detected adresses:", busAddresses)
         if hex(self.slaveAddress) in busAddresses:
-            print("Display controller detected.")
+            print("[Display] Display controller detected.")
         else:
             raise Exception("Display controller not detected.")
 
