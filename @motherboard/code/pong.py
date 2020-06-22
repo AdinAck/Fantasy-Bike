@@ -43,6 +43,8 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
+<<<<<<< HEAD
+=======
 
         if Pong.ballPos[0] > Pong.boardDimensions[0] - 1 or Pong.ballPos[0] < 1:
             Pong.ballSpeed[0] *= -1
@@ -52,4 +54,5 @@ class Pong:
             Pong.ballSpeed[0] *= -1
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
+>>>>>>> 1bd1333e0f0d7aa5edefdf815d1f8f0984d0b46b
         self.draw()
