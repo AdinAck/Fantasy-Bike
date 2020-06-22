@@ -3,9 +3,9 @@ class Pong:
     paddleWidth = 4
     paddleY = 32-paddleLength//2
     paddleX = 1
-    boardDimensions = 256, 64
-    ballPos = 128, 32
-    ballSpeed = 1, 1
+    boardDimensions = [256, 64]
+    ballPos = [128, 32]
+    ballSpeed = [1, 1]
     score1 = 0
     score2 = 0
 
@@ -48,7 +48,11 @@ class Pong:
             Pong.ballSpeed[0] *= -1
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 1 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
+<<<<<<< HEAD
         if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
+=======
+        if self.checkCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
+>>>>>>> 5fc7a235c3bbb9a51b069e6edb9dc8188268d8c0
             Pong.ballSpeed[0] *= -1
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
