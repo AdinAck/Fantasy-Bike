@@ -3,7 +3,6 @@ import digitalio
 import microcontroller
 
 class Screen:
-    memorySize = 0
     def setEncoder(encoder, button):
         Screen.e = encoder
         Screen.cursorPosition = Screen.e.position
@@ -32,11 +31,6 @@ class Screen:
         self.components.append(component)
         if type(component) in [Button, SingleDigitNumberSelector]:
             self.selectable.append(component)
-        try:
-            if component.saveValue:
-                Screen.memorySize += 1
-        except AttributeError:
-            pass
 
 class Button:
     def __init__(self, screen, xpos, ypos, sizex, sizey, textSize, title, func):
