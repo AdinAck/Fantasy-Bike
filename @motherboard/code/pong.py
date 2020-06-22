@@ -27,5 +27,5 @@ class Pong:
             self.cursor = 1
         else:
             self.cursor = -1
-        paddleY += self.cursor*8
+        Pong.paddleY += self.cursor*8
         self.draw()
