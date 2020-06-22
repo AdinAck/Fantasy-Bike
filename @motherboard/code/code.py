@@ -70,14 +70,12 @@ num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 
 screen2 = ui.Screen()
 back = ui.Button(screen2, 128, 32, 38, 16, 11, "Back", func2)
-testText = ui.Text(screen2, 156, 32+17, 35, framerate.text)
 
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
     framerate.text = int(1/loopTime)
-    testText.text = framerate.text
     ui.update()
     d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).
