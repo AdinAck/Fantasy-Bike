@@ -19,4 +19,13 @@ class Pong:
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
 
     def update(self):
+        self.last_cursorPosition = self.cursorPosition
+        self.cursorPosition = self.e.position
+        if self.last_cursorPosition in [None, self.cursorPosition]:
+            self.cursor = 0
+        elif self.cursorPosition - self.last_cursorPosition > 0:
+            self.cursor = 1
+        else:
+            self.cursor = -1
+        paddleY += self.cursor*8
         self.draw()
