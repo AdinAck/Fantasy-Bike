@@ -74,7 +74,7 @@ num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 pong = ui.Screen()
 # back = ui.Button(pong, 128, 32, 38, 16, 11, "Back", func2)
 
-p = game.Pong(d, )
+p = game.Pong(d, encoder)
 pPress = False
 
 # Main Loop
