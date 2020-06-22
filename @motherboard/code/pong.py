@@ -26,7 +26,7 @@ class Pong:
         self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
         self.d.drawStr(138, 11, 9, str(Pong.score1))
 
-    def checkPaddleCollision(paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
+    def checkPaddleCollision(self,paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
         return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
 
 
@@ -43,16 +43,13 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-<<<<<<< HEAD
-=======
 
         if Pong.ballPos[0] > Pong.boardDimensions[0] - 1 or Pong.ballPos[0] < 1:
             Pong.ballSpeed[0] *= -1
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 1 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
-        if self.checkCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
-            Pong.ballSpeed[0] *= -1    
+        if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
+            Pong.ballSpeed[0] *= -1
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
->>>>>>> 1bd1333e0f0d7aa5edefdf815d1f8f0984d0b46b
         self.draw()
