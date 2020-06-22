@@ -52,18 +52,17 @@ end = (200, 64-9)
 c = 0
 
 # Set up UI
-ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35))
+ui.Screen.setEncoder(rotaryio.IncrementalEncoder(board.D33, board.D35), digitalio.DigitalInOut(board.D31))
 ui.Screen.setDisplay(d)
 
 screen = ui.Screen()
-button = ui.Button(0,16,36,16,11,"Test")
-framerate = ui.Text(0,11,11,int(1/loopTime))
-cursorPos = ui.Text(32,11,11,ui.Screen.cursorPosition)
-num = ui.SingleDigitNumberSelector(128,32)
-screen.add(framerate)
-screen.add(cursorPos)
-screen.add(button)
-screen.add(num)
+# button = ui.Button(screen, 0,16,36,16,11,"Test")
+framerate = ui.Text(screen, 0,11,11,int(1/loopTime))
+cursorPos = ui.Text(screen, 32,11,11,ui.Screen.cursorPosition)
+num1 = ui.SingleDigitNumberSelector(screen, 116-24,32)
+num2 = ui.SingleDigitNumberSelector(screen, 116,32)
+num3 = ui.SingleDigitNumberSelector(screen, 140,32)
+num4 = ui.SingleDigitNumberSelector(screen, 140+24,32)
 
 ui.Screen.current = screen
 

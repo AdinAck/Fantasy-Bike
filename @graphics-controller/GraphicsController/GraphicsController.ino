@@ -12,6 +12,7 @@ void setup() {
   u8g2.setDrawColor(2);
   Wire.begin(8);
   Wire.onReceive(receiveEvent);
+  Serial.begin(9600);
 }
 
 void loop() {
