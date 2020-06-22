@@ -38,9 +38,17 @@ class Display:
         c = int(0x12)
         self.bus.writeto(self.slaveAddress, bytearray([c,x,y,w,h]))
 
+    def drawCenterRect(self,x,y,w,h):
+        c = int(0x12)
+        self.bus.writeto(self.slaveAddress, bytearray([c,x-(w//2),y-(h//2),w,h]))
+
     def drawHRect(self,x,y,w,h):
         c = int(0x13)
         self.bus.writeto(self.slaveAddress, bytearray([c,x,y,w,h]))
+
+    def drawCenterHRect(self,x,y,w,h):
+        c = int(0x13)
+        self.bus.writeto(self.slaveAddress, bytearray([c,x-(w//2),y-(h//2),w,h]))
 
     def drawCircle(self,x,y,r):
         c = int(0x14)
@@ -49,6 +57,10 @@ class Display:
     def drawHCircle(self,x,y,r):
         c = int(0x15)
         self.bus.writeto(self.slaveAddress, bytearray([c,x,y,r]))
+
+    def drawTriangle(self,x0,y0,x1,y1,x2,y2):
+        c = int(0x16)
+        self.bus.writeto(self.slaveAddress, bytearray([c,x0,y0,x1,y1,x2,y2]))
 
     def drawStr(self,x,y,str):
         c = int(0x21)

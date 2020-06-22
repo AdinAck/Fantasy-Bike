@@ -59,9 +59,11 @@ screen = ui.Screen()
 button = ui.Button(0,16,36,16,11,"Test")
 framerate = ui.Text(0,11,11,int(1/loopTime))
 cursorPos = ui.Text(32,11,11,ui.Screen.cursorPosition)
+num = ui.SingleDigitNumberSelector(128,32)
 screen.add(framerate)
 screen.add(cursorPos)
 screen.add(button)
+screen.add(num)
 
 ui.Screen.current = screen
 

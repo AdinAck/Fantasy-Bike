@@ -44,6 +44,9 @@ void receiveEvent(int howMany) {
     if (c == 21) {
       hollowCircle();
     }
+    if (c == 22) {
+      triangle();
+    }
     if (c == 33) {
       Text();
     }
@@ -95,6 +98,16 @@ void hollowCircle() {
   int y = Wire.read();
   int r = Wire.read();
   u8g2.drawCircle(x,y,r,U8G2_DRAW_ALL);
+}
+
+void triangle() {
+  int x0 = Wire.read();
+  int y0 = Wire.read();
+  int x1 = Wire.read();
+  int y1 = Wire.read();
+  int x2 = Wire.read();
+  int y2 = Wire.read();
+  u8g2.drawTriangle(x0,y0,x1,y1,x2,y2);
 }
 
 void Text() {
