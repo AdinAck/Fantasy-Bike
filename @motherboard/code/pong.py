@@ -25,8 +25,12 @@ class Pong:
         self.cursor = 0
         Pong.reset()
 
+    def getRandomSpeed(self):
+
+
     def draw(self):
         self.d.drawRect(Pong.paddleX, Pong.paddleY, Pong.paddleWidth, Pong.paddleLength)
+        self.d.drawRect(Pong.AiX, Pong.AiY, Pong.paddleWidth, Pong.paddleLength)
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
         self.d.drawLine(128,0,128,12)
         textGap = 1
