@@ -1,13 +1,21 @@
+
 class Pong:
-    paddleLength = 8
-    paddleWidth = 4
-    paddleY = 32-paddleLength//2
-    paddleX = 1
-    boardDimensions = [256, 64]
-    ballPos = [128, 32]
-    ballSpeed = [1, 1]
-    score1 = 0
-    score2 = 0
+
+
+    def reset():
+        Pong.paddleLength = 8
+        Pong.paddleWidth = 4
+        Pong.paddleY = 32-Pong.paddleLength//2
+        Pong.paddleX = 1
+        Pong.boardDimensions = [256, 64]
+        Pong.ballPos = [128, 32]
+
+        Pong.ballSpeed = [1, 1]
+        Pong.score1 = 0
+        Pong.score2 = 0
+        Pong.AiX = Pong.boardDimensions[0]-Pong.paddleX - Pong.paddleWidth
+        Pong.AiY = Pong.paddleY
+        Pong.flashCount = 0
 
     def __init__(self, display, encoder):
         self.d = display
@@ -15,16 +23,20 @@ class Pong:
         self.cursorPosition = self.e.position
         self.last_cursorPosition = None
         self.cursor = 0
+        Pong.reset()
 
     def draw(self):
         self.d.drawRect(Pong.paddleX, Pong.paddleY, Pong.paddleWidth, Pong.paddleLength)
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
-        self.d.drawLine(128,0,128,10)
+        self.d.drawLine(128,0,128,12)
         textGap = 1
         score1Width = (len(str(Pong.score1)) - 3)*len(str(Pong.score1)) + textGap*(len(str(Pong.score1)) - 1)
+        score2Width = (len(str(Pong.score2)) - 3)*len(str(Pong.score2)) + textGap*(len(str(Pong.score2)) - 1)
         score1Pos = 118 - score1Width
         self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
         self.d.drawStr(131, 11, 9, str(Pong.score1))
+        if Pong.flashCount != 0:
+            self.d.drawRect(score1Pos-2,0,score2Width+(131-score1Pos),12)
 
     def checkPaddleCollision(self,paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
         return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
@@ -43,12 +55,30 @@ class Pong:
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
 
-        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2 or Pong.ballPos[0] < 1:
-            Pong.ballSpeed[0] *= -1
+        if Pong.ballPos[1] > Pong.AiY - Pong.paddleLength//2:
+            Pong.AiY -= ballSpeed[0]
+        if Pong.ballPos[1] < Pong.AiY - Pong.paddleLength//2:
+            Pong.AiY += ballSpeed[0]
+        if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
+            Pong.score1 += 1
+            Pong.flashCount = 10
+        if Pong.ballPos[0] < 1:
+            Pong.score2 += 1
+            Pong.flashCount = 10
         if Pong.ballPos[1] > Pong.boardDimensions[1] - 2 or Pong.ballPos[1] < 1:
             Pong.ballSpeed[1] *= -1
+
         if self.checkPaddleCollision(Pong.paddleX,Pong.paddleY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
             Pong.ballSpeed[0] *= -1
+        if self.checkPaddleCollision(Pong.AiX,Pong.AiY,Pong.paddleWidth,Pong.paddleLength,Pong.ballPos[0],Pong.ballPos[1]):
+            Pong.ballSpeed[0] *= -1
+
+
+
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
+
+        if Pong.flashCount != 0:
+            Pong.flashCount -= 1
+
         self.draw()
