@@ -68,7 +68,7 @@ class Pong:
             # - Pong.paddleLength//2
         if Pong.ballPos[1] > Pong.AiY:
             Pong.AiY -= Pong.ballSpeed[0]
-        if Pong.ballPos[1] < Pong.AiY:
+        if Pong.ballPos[1] < Pong.AiY + Pong.paddleLength:
             Pong.AiY += Pong.ballSpeed[0]
         if Pong.ballPos[0] > Pong.boardDimensions[0] - 2:
             Pong.score1 += 1
