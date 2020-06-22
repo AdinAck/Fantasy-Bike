@@ -41,10 +41,10 @@ class Pong:
         self.d.drawPixel(Pong.ballPos[0], Pong.ballPos[1])
         self.d.drawLine(128,0,128,12)
         textGap = 1
-        score1Width = (len(str(Pong.score1)) - 3)*len(str(Pong.score1)) + textGap*(len(str(Pong.score1)) - 1)
-        score2Width = (len(str(Pong.score2)) - 3)*len(str(Pong.score2)) + textGap*(len(str(Pong.score2)) - 1)
+        score1Width = (len(str(Pong.score1))-1)*5 + textGap*((len(str(Pong.score1))-1) - 1)
+        score2Width = (len(str(Pong.score2))-1)*5 + textGap*((len(str(Pong.score2))-1) - 1)
         score1Pos = 118 - score1Width
-        self.d.drawStr(score1Pos-score1Width, 11, 9, str(Pong.score1))
+        self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
         self.d.drawStr(131, 11, 9, str(Pong.score2))
         if Pong.flashCount != 0:
             self.d.drawRect(score1Pos-2,0,score2Width+(131-score1Pos),12)
