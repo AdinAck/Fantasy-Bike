@@ -86,18 +86,11 @@ class Text:
         Screen.d.drawStr(self.xpos, self.ypos, self.textSize, str(self.wrapper.val))
 
 class SingleDigitNumberSelector:
-    def __init__(self, screen, xpos, ypos, saveValue=False):
+    def __init__(self, screen, xpos, ypos):
         screen.add(self)
         self.xpos = xpos
         self.ypos = ypos
-        self.saveValue = saveValue
-        if self.saveValue:
-            index = Screen.current.selectable.index(self)
-            self.val = microcontroller.nvm[index]
-            if self.val > 9 or self.val < 0:
-                self.val = 0
-        else:
-            self.val = 0
+        self.val = 0
         self.count1 = 0
         self.count2 = 0
         self.blinkCount = 20
@@ -216,11 +209,6 @@ def update():
             Screen.current.selecting = False
         elif Screen.button.value == 0 and not Screen.current.selecting:
             Screen.current.selecting = True
-            try:
-                if Screen.focused.saveValue:
-                    microcontroller.nvm[Screen.current.index] = Screen.focused.val
-            except AttributeError:
-                pass
         Screen.last_button_value = Screen.button.value
 
     if Screen.current.selecting:

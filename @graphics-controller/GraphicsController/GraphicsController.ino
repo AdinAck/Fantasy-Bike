@@ -144,4 +144,7 @@ void Font() {
   if (f == 19) {
     u8g2.setFont(u8g2_font_profont29_mf);
   }
+  if (f == 35) {
+    u8g2.setFont(u8g2_font_fub35_tn);
+  }
 }
