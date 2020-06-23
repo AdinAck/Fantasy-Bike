@@ -16,6 +16,7 @@ class Pong:
         Pong.score2 = 0
         Pong.AiX = Pong.boardDimensions[0]-Pong.paddleX - Pong.paddleWidth
         Pong.AiY = Pong.paddleY
+        Pong.AiTarget = 32
         Pong.flashCount = 0
 
     def __init__(self, display, encoder):
@@ -66,10 +67,11 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-            #
-        if Pong.ballPos[1] > Pong.AiY + Pong.paddleLength//2-1:
+        if ballPos[0] == Pong.boardDimensions[0]//2-paddleWidth-paddleX:
+            Pong.AiTarget = ballPos[1]-paddleLength//2
+        if Pong.AiTarget > Pong.AiY + Pong.paddleLength//2-1:
             Pong.AiY += math.ceil(3/4)
-        if Pong.ballPos[1] < Pong.AiY + Pong.paddleLength//2+1:
+        if Pong.AiTarget < Pong.AiY + Pong.paddleLength//2+1:
             Pong.AiY -= math.ceil(3/4)
         if Pong.AiY <0:
             Pong.AiY = 0
