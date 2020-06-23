@@ -60,16 +60,16 @@ class Pong:
         elif self.cursorPosition - self.last_cursorPosition > 0:
             self.cursor = 1
         else: self.cursor = -1
-        Pong.paddleY += self.cursor*8
+        Pong.paddleY += self.cursor*4
         if Pong.paddleY < 0:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-            #Pong.ballSpeed[0]
+            #
         if Pong.ballPos[1] > Pong.AiY - Pong.paddleLength//2:
-            Pong.AiY += 1
+            Pong.AiY += 4*Pong.ballSpeed[0]
         if Pong.ballPos[1] < Pong.AiY - Pong.paddleLength//2:
-            Pong.AiY -= 1
+            Pong.AiY -= 4*Pong.ballSpeed[0]
         if Pong.AiY <0:
             Pong.AiY = 0
         if Pong.AiY + Pong.paddleLength > Pong.boardDimensions[1] - 1:
