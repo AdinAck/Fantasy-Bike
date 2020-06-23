@@ -67,9 +67,9 @@ class Pong:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
             #
         if Pong.ballPos[1] > Pong.AiY + Pong.paddleLength//2-1:
-            Pong.AiY += Pong.ballSpeed[0]*3//4
+            Pong.AiY += ceil(Pong.ballSpeed[0]*3/4)
         if Pong.ballPos[1] < Pong.AiY + Pong.paddleLength//2+1:
-            Pong.AiY -= Pong.ballSpeed[0]*3//4
+            Pong.AiY -= ceil(Pong.ballSpeed[0]*3/4)
         if Pong.AiY <0:
             Pong.AiY = 0
         if Pong.AiY + Pong.paddleLength > Pong.boardDimensions[1] - 1:
