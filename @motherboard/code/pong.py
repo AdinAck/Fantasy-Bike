@@ -67,7 +67,7 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-        if Pong.ballPos[0] == Pong.boardDimensions[0]//2-paddleWidth-paddleX:
+        if Pong.ballPos[0] == Pong.boardDimensions[0]//2-paddleWidth-paddleX+1:
             Pong.AiTarget = Pong.ballPos[1]-Pong.paddleLength//2
         if Pong.AiTarget > Pong.AiY + Pong.paddleLength//2-1:
             Pong.AiY += math.ceil(3/4)
