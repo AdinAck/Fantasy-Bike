@@ -10,7 +10,7 @@ class Pong:
         Pong.boardDimensions = [256, 64]
         Pong.ballPos = [128, 32]
 
-        Pong.ballSpeed = self.getRandomSpeed
+        Pong.ballSpeed = Pong.getRandomSpeed()
         Pong.score1 = 0
         Pong.score2 = 0
         Pong.AiX = Pong.boardDimensions[0]-Pong.paddleX - Pong.paddleWidth
@@ -25,7 +25,7 @@ class Pong:
         self.cursor = 0
         Pong.reset()
 
-    def getRandomSpeed(self):
+    def getRandomSpeed():
         out = [1,1]
         r1 = random.randint(0,1)
         r2 = random.randint(0,1)
@@ -43,11 +43,11 @@ class Pong:
         textGap = 1
         score1Width = (len(str(Pong.score1))-1)*5 + textGap*((len(str(Pong.score1))-1) - 1)
         score2Width = (len(str(Pong.score2))-1)*5 + textGap*((len(str(Pong.score2))-1) - 1)
-        score1Pos = 118 - score1Width
+        score1Pos = 119 - score1Width
         self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
         self.d.drawStr(131, 11, 9, str(Pong.score2))
         if Pong.flashCount != 0:
-            self.d.drawRect(score1Pos-2,0,score2Width+(131-score1Pos),12)
+            self.d.drawRect(score1Pos-2,0,score2Width+131-score1Pos,12)
 
     def checkPaddleCollision(self,paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
         return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
