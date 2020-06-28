@@ -52,9 +52,16 @@ end = (200, 64-9)
 c = 0
 
 def func():
+    ui.Screen.current = pmenu
+
+def pResume():
     ui.Screen.current = pong
 
-def func2():
+def pRestart():
+    game.Pong.reset()
+    pResume()
+
+def pExit():
     ui.Screen.current = screen
 
 # Set up UI
@@ -77,6 +84,11 @@ pong = ui.Screen()
 p = game.Pong(d, encoder)
 pPress = False
 
+pmenu = ui.Screen()
+resume = ui.Button(pmenu, 48, 32, 68, 16, 11, "Resume", pResume)
+restart = ui.Button(pmenu, 128, 32, 68, 16, 11, "Restart", pRestart)
+exit = ui.Button(pmenu, 256-48, 32, 68, 16, 11, "Exit", pExit)
+
 # Main Loop
 while True:
     d.clearBuffer() # Clear display buffer.
@@ -88,7 +100,7 @@ while True:
         if ui.Screen.button.value == 0:
             pPress = True
         elif pPress == True:
-            ui.Screen.current = screen
+            ui.Screen.current = pmenu
             ui.Screen.current.selecting = True
             pPress = False
     d.sendBuffer() # Send all display elements to display to be drawn.

@@ -195,6 +195,8 @@ def update():
     except IndexError:
         Screen.current.selecting = False
 
+    Screen.lastScreen = Screen.current
+
     for component in Screen.current.components:
         component.draw()
 
@@ -205,7 +207,7 @@ def update():
             Screen.current.selecting = True
         Screen.last_button_value = Screen.button.value
 
-    if Screen.current.selecting:
+    if Screen.current.selecting and len(Screen.current.selectable) != 0:
         if type(Screen.focused) in [SingleDigitNumberSelector]:
             Screen.d.drawCenterRect(Screen.focused.xpos,Screen.focused.ypos,Screen.focused.xBound,Screen.focused.yBound)
         elif type(Screen.focused) in [Button]:

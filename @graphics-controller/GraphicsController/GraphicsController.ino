@@ -21,38 +21,40 @@ void loop() {
 void receiveEvent(int howMany) {
   while (0 < Wire.available()) {
     int c = Wire.read();
-    if (c == 0) {
-      u8g2.clearBuffer();
-    }
-    if (c == 1) {
-      u8g2.sendBuffer();
-    }
-    if (c == 16) {
-      Pixel();
-    }
-    if (c == 17) {
-      Line();
-    }
-    if (c == 18) {
-      Rectangle();
-    }
-    if (c == 19) {
-    hollowRectangle();
-    }
-    if (c == 20) {
-      Circle();
-    }
-    if (c == 21) {
-      hollowCircle();
-    }
-    if (c == 22) {
-      triangle();
-    }
-    if (c == 33) {
-      Text();
-    }
-    if (c == 34) {
-      Font();
+    switch(c) {
+      case 0:
+        u8g2.clearBuffer();
+        break;
+      case 1:
+        u8g2.sendBuffer();
+        break;
+      case 16:
+        Pixel();
+        break;
+      case 17:
+        Line();
+        break;
+      case 18:
+        Rectangle();
+        break;
+      case 19:
+        hollowRectangle();
+        break;
+      case 20:
+        Circle();
+        break;
+      case 21:
+        hollowCircle();
+        break;
+      case 22:
+        triangle();
+        break;
+      case 33:
+        Text();
+        break;
+      case 34:
+        Font();
+        break;
     }
   }
 }

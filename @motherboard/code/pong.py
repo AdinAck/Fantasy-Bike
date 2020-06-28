@@ -28,7 +28,7 @@ class Pong:
         Pong.reset()
 
     def getRandomSpeed():
-        out = [1,1]
+        out = [2,1]
         r1 = random.randint(0,1)
         r2 = random.randint(0,1)
         if r1 == 0:
@@ -44,12 +44,12 @@ class Pong:
         self.d.drawLine(128,0,128,12)
         textGap = 1
         score1Width = (len(str(Pong.score1))-1)*7 + textGap*((len(str(Pong.score1))-1) - 1)
-        score2Width = (len(str(Pong.score2)))*7 + textGap*((len(str(Pong.score2))) - 1)
+        score2Width = (len(str(Pong.score2)))*7 + textGap*((len(str(Pong.score2)))-1)
         score1Pos = 119 - score1Width
         self.d.drawStr(score1Pos, 11, 9, str(Pong.score1))
         self.d.drawStr(131, 11, 9, str(Pong.score2))
         if Pong.flashCount != 0:
-            self.d.drawRect(score1Pos-1,0,score2Width+131-score1Pos+1,12)
+            self.d.drawRect(score1Pos-1,0,score2Width+131-score1Pos+1,13)
 
     def checkPaddleCollision(self,paddleX,paddleY,paddleWidth,paddleLength,ballX,ballY):
         return ballX >= paddleX and ballX <= paddleX + paddleWidth and ballY >= paddleY and ballY <= paddleY + paddleLength
@@ -67,12 +67,12 @@ class Pong:
             Pong.paddleY = 0
         elif Pong.paddleY > Pong.boardDimensions[1] - Pong.paddleLength - 1:
             Pong.paddleY = Pong.boardDimensions[1] - Pong.paddleLength - 1
-        if ballPos[0] == Pong.boardDimensions[0]//2-paddleWidth-paddleX:
-            Pong.AiTarget = ballPos[1]-paddleLength//2
+        if Pong.ballPos[0] >= Pong.boardDimensions[0]//2-4-Pong.paddleWidth-Pong.paddleX and Pong.ballPos[0] <= Pong.boardDimensions[0]//2+4-Pong.paddleWidth-Pong.paddleX:
+            Pong.AiTarget = Pong.ballPos[1]-Pong.paddleLength//2
         if Pong.AiTarget > Pong.AiY + Pong.paddleLength//2-1:
-            Pong.AiY += math.ceil(3/4)
+            Pong.AiY += 1
         if Pong.AiTarget < Pong.AiY + Pong.paddleLength//2+1:
-            Pong.AiY -= math.ceil(3/4)
+            Pong.AiY -= 1
         if Pong.AiY <0:
             Pong.AiY = 0
         if Pong.AiY + Pong.paddleLength > Pong.boardDimensions[1] - 1:
@@ -99,6 +99,7 @@ class Pong:
 
         Pong.ballPos[0] += Pong.ballSpeed[0]
         Pong.ballPos[1] += Pong.ballSpeed[1]
+        Pong.ballPos = [min([255, Pong.ballPos[0]]), min([63, Pong.ballPos[1]])]
 
         if Pong.flashCount != 0:
             Pong.flashCount -= 1

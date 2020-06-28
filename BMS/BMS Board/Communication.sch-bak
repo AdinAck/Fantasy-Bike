@@ -18,42 +18,6 @@ TX
 Text HLabel 2950 5750 0    50   Input ~ 0
 RX
 $Comp
-L SamacSys_Parts:ERJ-6ENF5600V R115
-U 1 1 5EEB44FF
-P 4900 5850
-F 0 "R115" H 4900 5950 50  0000 C CNN
-F 1 "ERJ-6ENF5600V" H 4750 5600 50  0001 L CNN
-F 2 "RESC2012X70N" H 4750 5500 50  0001 L CNN
-F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF5600V.pdf" H 5100 5800 50  0001 L CNN
-F 4 "Thick Film Resistors - SMD 0805 560ohms 1% AEC-Q200" H 4750 5400 50  0001 L CNN "Description"
-F 5 "0.7" H 4750 5300 50  0001 L CNN "Height"
-F 6 "667-ERJ-6ENF5600V" H 4750 5200 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF5600V" H 4750 5100 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Panasonic" H 4750 5000 50  0001 L CNN "Manufacturer_Name"
-F 9 "ERJ-6ENF5600V" H 4750 4900 50  0001 L CNN "Manufacturer_Part_Number"
-F 10 "560" H 4900 5850 50  0000 C CNN "Resistance"
-	1    4900 5850
-	1    0    0    -1  
-$EndComp
-$Comp
-L SamacSys_Parts:ERJ-6ENF5600V R114
-U 1 1 5EEB4D6E
-P 2600 4950
-F 0 "R114" H 2600 5050 50  0000 C CNN
-F 1 "ERJ-6ENF5600V" H 2450 4700 50  0001 L CNN
-F 2 "RESC2012X70N" H 2450 4600 50  0001 L CNN
-F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-6ENF5600V.pdf" H 2800 4900 50  0001 L CNN
-F 4 "Thick Film Resistors - SMD 0805 560ohms 1% AEC-Q200" H 2450 4500 50  0001 L CNN "Description"
-F 5 "0.7" H 2450 4400 50  0001 L CNN "Height"
-F 6 "667-ERJ-6ENF5600V" H 2450 4300 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-6ENF5600V" H 2450 4200 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Panasonic" H 2450 4100 50  0001 L CNN "Manufacturer_Name"
-F 9 "ERJ-6ENF5600V" H 2450 4000 50  0001 L CNN "Manufacturer_Part_Number"
-F 10 "560" H 2600 4950 50  0000 C CNN "Resistance"
-	1    2600 4950
-	1    0    0    -1  
-$EndComp
-$Comp
 L SamacSys_Parts:0805ZC104MAT2A C17
 U 1 1 5EEB7C3F
 P 4850 5150
@@ -249,7 +213,6 @@ Wire Wire Line
 	2950 5850 2950 6000
 Wire Wire Line
 	2950 6000 2400 6000
-Connection ~ 5250 5850
 Wire Wire Line
 	5500 5550 5500 6850
 Wire Wire Line
@@ -291,4 +254,41 @@ F 9 "TLP2766A(TP,E" H 3350 4550 50  0001 L CNN "Manufacturer_Part_Number"
 	-1   0    0    1   
 $EndComp
 Connection ~ 2950 5650
+$Comp
+L SamacSys_Parts:ERJ-P06F2200V R114
+U 1 1 5EF1FB3D
+P 2600 4950
+F 0 "R114" H 2600 5050 50  0000 C CNN
+F 1 "ERJ-P06F2200V" H 2450 4700 50  0001 L CNN
+F 2 "RESC2012X70N" H 2450 4600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-P06F2200V.pdf" H 2800 4900 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 220ohms 0.5W 1% AEC-Q200" H 2450 4500 50  0001 L CNN "Description"
+F 5 "0.7" H 2450 4400 50  0001 L CNN "Height"
+F 6 "667-ERJ-P06F2200V" H 2450 4300 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-P06F2200V" H 2450 4200 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 2450 4100 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-P06F2200V" H 2450 4000 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "220" H 2600 4950 50  0000 C CNN "Resistance"
+	1    2600 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:ERJ-P06F2200V R115
+U 1 1 5EF2060E
+P 4900 5850
+F 0 "R115" H 4900 5950 50  0000 C CNN
+F 1 "ERJ-P06F2200V" H 4750 5600 50  0001 L CNN
+F 2 "RESC2012X70N" H 4750 5500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-P06F2200V.pdf" H 5100 5800 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 220ohms 0.5W 1% AEC-Q200" H 4750 5400 50  0001 L CNN "Description"
+F 5 "0.7" H 4750 5300 50  0001 L CNN "Height"
+F 6 "667-ERJ-P06F2200V" H 4750 5200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-P06F2200V" H 4750 5100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 4750 5000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-P06F2200V" H 4750 4900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "220" H 4900 5850 50  0000 C CNN "Resistance"
+	1    4900 5850
+	1    0    0    -1  
+$EndComp
+Connection ~ 5250 5850
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-16991960320327937
+16998332203896808
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -51372,6 +51372,20 @@ Yellow 5381 Series LED
 0
 2
 2
+Logo
+Logo
+
+
+0
+0
+0
+Logo
+Logo Big
+
+
+0
+0
+0
 MUX509.
 SOP-16
 
@@ -68768,6 +68782,13 @@ Integrated Circuit
 3
 3
 SamacSys_Parts
+LEDC2012X80N
+HSMx-C170
+LED
+0
+2
+2
+SamacSys_Parts
 LEDC2012X90N
 c170
 LED
@@ -68872,6 +68893,13 @@ Integrated Circuit
 0
 4
 4
+SamacSys_Parts
+SSD1322
+
+
+0
+20
+20
 SamacSys_Parts
 STD13N60DM2
 DPAK (TO-252)_FFW_1

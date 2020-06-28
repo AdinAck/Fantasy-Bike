@@ -217,7 +217,7 @@ L SamacSys_Parts:STD12N60DM2AG Q1
 U 1 1 5EEA5745
 P 4000 7700
 F 0 "Q1" H 4180 7746 50  0000 L CNN
-F 1 "STD12N60DM2AG" H 4180 7655 50  0000 L CNN
+F 1 "STD12N60DM2AG" H 4180 7655 50  0001 L CNN
 F 2 "STD13N60DM2" H 3750 7050 50  0001 L CNN
 F 3 "https://www.st.com/resource/en/datasheet/std12n60dm2ag.pdf" H 3750 6950 50  0001 L CNN
 F 4 "Automotive-grade N-channel 600 V, 0.380  typ., 10 A MDmesh DM2 Power MOSFET in a DPAK package" H 3750 6850 50  0001 L CNN "Description"
@@ -313,7 +313,7 @@ F 3 "" H 2900 8950 50  0001 C CNN
 	1    2900 8550
 	-1   0    0    1   
 $EndComp
-Text HLabel 4800 7500 0    50   Input ~ 0
+Text HLabel 4500 7500 0    50   Input ~ 0
 C_SIG
 Text HLabel 3750 7800 0    50   Input ~ 0
 P_SIG
@@ -359,7 +359,7 @@ Power Pads
 Wire Notes Line
 	2550 6150 5800 6150
 Wire Notes Line
-	5800 8800 2550 8800
+	5800 9050 2550 9050
 Text Notes 2550 6150 0    50   ~ 0
 External Power Connections and Control
 Wire Notes Line
@@ -420,10 +420,6 @@ F 9 "S1G" H 3750 5450 50  0001 L CNN "Manufacturer_Part_Number"
 	1    4050 6500
 	1    0    0    -1  
 $EndComp
-Wire Notes Line
-	2550 8800 2550 6150
-Wire Notes Line
-	5800 6150 5800 8800
 Wire Wire Line
 	3750 6500 3400 6500
 Wire Wire Line
@@ -456,4 +452,57 @@ Wire Wire Line
 	3400 7800 3050 7800
 Text GLabel 3400 8400 3    50   Input ~ 0
 P-
+$Comp
+L SamacSys_Parts:ERJ-P06F2200V R143
+U 1 1 5EF455EC
+P 4500 7850
+F 0 "R143" V 4454 7938 50  0000 L CNN
+F 1 "ERJ-P06F2200V" H 4350 7600 50  0001 L CNN
+F 2 "RESC2012X70N" H 4350 7500 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/ERJ-P06F2200V.pdf" H 4700 7800 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 0805 220ohms 0.5W 1% AEC-Q200" H 4350 7400 50  0001 L CNN "Description"
+F 5 "0.7" H 4350 7300 50  0001 L CNN "Height"
+F 6 "667-ERJ-P06F2200V" H 4350 7200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.com/Search/Refine.aspx?Keyword=667-ERJ-P06F2200V" H 4350 7100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Panasonic" H 4350 7000 50  0001 L CNN "Manufacturer_Name"
+F 9 "ERJ-P06F2200V" H 4350 6900 50  0001 L CNN "Manufacturer_Part_Number"
+F 10 "220" V 4545 7938 50  0000 L CNN "Resistance"
+	1    4500 7850
+	0    1    1    0   
+$EndComp
+$Comp
+L SamacSys_Parts:HSMG-C170 LED3
+U 1 1 5EF477B4
+P 4500 8450
+F 0 "LED3" V 4496 8322 50  0000 R CNN
+F 1 "HSMG-C170" V 4405 8322 50  0000 R CNN
+F 2 "LEDC2012X80N" H 4250 8050 50  0001 L BNN
+F 3 "" H 4650 8500 50  0001 L BNN
+F 4 "Green LED, 15 mcd 170 , 2-pin 0805 SMD Package" H 4250 7950 50  0001 L BNN "Description"
+F 5 "0.8" H 4250 7850 50  0001 L BNN "Height"
+F 6 "630-HSMG-C170" H 4250 7750 50  0001 L BNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Broadcom-Avago/HSMG-C170?qs=YDL0qNrpDT4lm8ArMPkMEA%3D%3D" H 4250 7650 50  0001 L BNN "Mouser Price/Stock"
+F 8 "Avago Technologies" H 4250 7550 50  0001 L BNN "Manufacturer_Name"
+F 9 "HSMG-C170" H 4250 7450 50  0001 L BNN "Manufacturer_Part_Number"
+	1    4500 8450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GNDREF #PWR0155
+U 1 1 5EF48294
+P 4500 8800
+F 0 "#PWR0155" H 4500 8550 50  0001 C CNN
+F 1 "GNDREF" H 4505 8627 50  0000 C CNN
+F 2 "" H 4500 8800 50  0001 C CNN
+F 3 "" H 4500 8800 50  0001 C CNN
+	1    4500 8800
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	2550 9050 2550 6150
+Wire Notes Line
+	5800 6150 5800 9050
+Wire Wire Line
+	4500 7500 4800 7500
+Connection ~ 4800 7500
 $EndSCHEMATC
