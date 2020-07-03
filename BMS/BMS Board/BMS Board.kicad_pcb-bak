@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 50)
+    (drawings 51)
     (tracks 2595)
     (zones 0)
     (modules 262)
@@ -10340,6 +10340,9 @@
     )
   )
 
+  (gr_text Relay (at 193.9925 80.645) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_text Teo (at 204.47 90.4875) (layer F.SilkS)
     (effects (font (size 0.762 0.762) (thickness 0.1524)))
   )
