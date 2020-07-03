@@ -17,8 +17,13 @@ adc1 = ADS1248(board.D2, board.D12, 2.5)
 adc2 = ADS1248(board.D11, board.D10, 2.5)
 adc3 = ADS1248(board.D9, board.D7, 2.5)
 
-ADS1248.wakeupAll()
-ADS1248.wregAll(2,[0x40, 0x00])
+# ADS1248.verbose = True
+
+adc1.wakeup()
+adc1.wreg(2,[0x20, 0x00])
+
+print(adc1.rreg(0,15))
 
 while True:
-    print(ADS1248.fetchAll(3,[0,1,2,4,5,6,7]))
+    # print(ADS1248.fetchAll(3,[0,1,2,4,5,6,7]))
+    print(adc1.fetch(3,[0,1,2,4,5,6,7]))
