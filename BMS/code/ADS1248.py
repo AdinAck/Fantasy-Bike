@@ -84,9 +84,7 @@ class ADS1248:
         voltages = []
         for i in range(len(inputs)):
             ADS1248.start.value = True
-            for adc in ADS1248.list:
-                adc.wreg(0,[inputs[i]*8+ref])
-
+            ADS1248.wregAll(0,[inputs[i]*8+ref])
             ADS1248.start.value = False
             for adc in ADS1248.list:
                 if raw:
@@ -173,18 +171,20 @@ class ADS1248:
             if ADS1248.verbose:
                 print("[ADS1248] [{}] [FETCH] Waiting for ADC...".format(ADS1248.list.index(self)))
 
-        while self.drdy.value: # Wait until ADC conversion is completed
-            pass
+            while self.drdy.value: # Wait until ADC conversion is completed
+                pass
 
-        self.cs.value = False
-        recv = bytearray(3)
-        ADS1248.spi.readinto(recv,write_value=0xFF)
-        self.cs.value = True
-        if ADS1248.verbose:
-            print("[ADS1248] [{0}] [FETCH] {1} received.".format(ADS1248.list.index(self),recv))
-        result = [i for i in recv] # Convert to array of integers
-        result_int = result[0]*2**16+result[1]*2**8+result[2] # Convert to integer
-        result_bin = str(bin(result_int))[2:] # Convert to binary
-        if len(result_bin) == 24: # Test if negative
-            result_int = int(result_bin[1:], 2)-(2**23) # Convert to correct integer
-        return result_int
+            self.cs.value = False
+            recv = bytearray(3)
+            ADS1248.spi.readinto(recv,write_value=0xFF)
+            self.cs.value = True
+            if ADS1248.verbose:
+                print("[ADS1248] [{0}] [FETCH] {1} received.".format(ADS1248.list.index(self),recv))
+            result = [i for i in recv] # Convert to array of integers
+            result_int = result[0]*2**16+result[1]*2**8+result[2] # Convert to integer
+            result_bin = str(bin(result_int))[2:] # Convert to binary
+            if len(result_bin) == 24: # Test if negative
+                result_int = int(result_bin[1:], 2)-(2**23) # Convert to correct integer
+            return result_int
+        else:
+            print("[ADS1248] [{}] [ERROR] Unable to retreive data because ADC is either asleep or is not operating correctly.".format(ADS1248.list.index(self)))
