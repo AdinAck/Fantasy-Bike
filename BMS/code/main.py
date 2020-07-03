@@ -18,11 +18,12 @@ adc2 = ADS1248(board.D11, board.D10, 2.5)
 adc3 = ADS1248(board.D9, board.D7, 2.5)
 
 # ADS1248.verbose = True
-
+ADS1248.start.value = True
 adc1.wakeup()
 adc1.wreg(2,[0x20, 0x00])
 
 print(adc1.rreg(0,15))
+ADS1248.start.value = False
 
 while True:
     # print(ADS1248.fetchAll(3,[0,1,2,4,5,6,7]))
