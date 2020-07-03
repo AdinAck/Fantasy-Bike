@@ -60,7 +60,6 @@ class ADS1248:
 
         time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
         ADS1248.spi.write(bytes([0x06]))
-        self.cs.value = True
         time.sleep(.0006) # Wait before sending any more commands after reset
         for adc in ADS1248.list:
             adc.cs.value = True
