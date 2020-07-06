@@ -55,28 +55,29 @@ class BMS:
             return 3
 
     def update(self):
-        self.sendIO()
-        if self.verbose:
-            print("[INFO] Checking cells...")
-        cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
-        for i in range(20):
-            self.cells[i] = cellRead[self.cellPos[i]]
-        self.buz.value = False
-        for i in range(self.cellCount):
-            if self.cells[i] > self.maxVoltage:
-                self.buz.value = True
-                print("[ALARM] Cell_{0} is above maximum voltage of {1} at {2}!".format(i,self.maxVoltage, self.cells[i]))
-            elif self.cells[i] < self.minVoltage:
-                self.buz.value = True
-                print("[ALARM] Cell_{0} is below minimum voltage of {1} at {2}!".format(i,self.minVoltage, self.cells[i]))
+        if self.mode == 0 or self.mode == 1:
+            self.sendIO()
+            if self.verbose:
+                print("[INFO] Checking cells...")
+            cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
+            for i in range(20):
+                self.cells[i] = cellRead[self.cellPos[i]]
+            self.buz.value = False
+            for i in range(self.cellCount):
+                if self.cells[i] > self.maxVoltage:
+                    self.buz.value = True
+                    print("[ALARM] Cell_{0} is above maximum voltage of {1} at {2}!".format(i,self.maxVoltage, self.cells[i]))
+                elif self.cells[i] < self.minVoltage:
+                    self.buz.value = True
+                    print("[ALARM] Cell_{0} is below minimum voltage of {1} at {2}!".format(i,self.minVoltage, self.cells[i]))
 
-        self.minCell = min(self.cells)
-        self.maxCell = max(self.cells)
-        self.minCellIndex = self.cells.index(self.minCell)
-        self.maxCellindex = self.cells.index(self.maxCell)
-        if self.verbose:
-            print("[INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex+1,self.minCell))
-            print("[INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex+1,self.maxCell))
+            self.minCell = min(self.cells)
+            self.maxCell = max(self.cells)
+            self.minCellIndex = self.cells.index(self.minCell)
+            self.maxCellindex = self.cells.index(self.maxCell)
+            if self.verbose:
+                print("[INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex+1,self.minCell))
+                print("[INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex+1,self.maxCell))
 
         if self.mode == 1:
             if self.maxCell < self.targetVoltage - self.measureError:
@@ -97,5 +98,8 @@ class BMS:
                 time.sleep(5)
                 print("[CHARGE] Charging complete, switching mode to idle.")
                 self.mode = 0
+
         elif self.mode == 2:
-            pass
+            self.drain = [0]*len(self.drain)
+            self.sendIO()
+            ADS1248.sleepAll()
