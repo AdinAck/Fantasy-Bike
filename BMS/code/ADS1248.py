@@ -82,6 +82,23 @@ class ADS1248:
             adc.cs.value = True
         ADS1248.start.value = False
 
+    def selfOffsetAll():
+        if ADS1248.verbose:
+            print("[ADS1248] [ALL] Calibrating voltage offset internally...")
+        for adc in ADS1248.list:
+            adc.cs.value = False
+
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        ADS1248.spi.write(bytearray([0x62]))
+        for adc in ADS1248.list:
+            adc.cs.value = True
+
+        while [adc.drdy.value for adc in ADS1248.list] != [False,False,False]:
+            pass
+
+        if ADS1248.verbose:
+            print("[ADS1248] [ALL] Calibration complete.")
+
     def fetchAll(ref, inputs, raw=False):
         voltages = []
         for i in range(len(inputs)):
@@ -94,21 +111,6 @@ class ADS1248:
                     voltages.append(adc.vref/(2**23)*adc.receive()+adc.vref)
 
         return voltages
-
-    def selfOffsetAll():
-        print("[ADS1248] [ALL] Calibrating voltage offset internally...")
-        for adc in ADS1248.list:
-            adc.cs.value = False
-
-        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
-        ADS1248.spi.write(bytearray([0x62]))
-        for adc in ADS1248.list:
-            adc.cs.value = True
-
-        while [adc.drdy.value for adc in ADS1248.list] != [False,False,False]:
-            pass
-
-        print("[ADS1248] [ALL] Calibration complete.")
 
     def __init__(self, cs_pin, drdy_pin, vref=2.048):
         self.vref = vref
@@ -173,6 +175,20 @@ class ADS1248:
         ADS1248.start.value = False
         if ADS1248.verbose:
             print("[ADS1248] [{0}] [WREG] Wrote {1} to register {2}.".format(ADS1248.list.index(self),data,register))
+
+    def selfOffset(self):
+        if ADS1248.verbose:
+            print("[ADS1248] [{}] Calibrating voltage offset internally...".format(ADS1248.list.index(self)))
+        self.cs.value = False
+        time.sleep(1*10**(-8)) # t_CSSC wait time after CS is set to low before communication
+        ADS1248.spi.write(bytearray([0x62]))
+        self.cs.value = True
+
+        while self.drdy.value:
+            pass
+
+        if ADS1248.verbose:
+            print("[ADS1248] [{}] Calibration complete.".format(ADS1248.list.index(self)))
 
     def fetch(self, ref, inputs, raw=False):
         result = []

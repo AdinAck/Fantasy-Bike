@@ -2,21 +2,16 @@ import time
 from digitalio import Direction
 
 class BMS:
-    def __init__(self, ADS1248, mcp1, mcp2, mcp3, buzzer, relay):
+    def __init__(self, ADS1248, mcpArr, buzzer, relay):
         self.mode = 0 # 0 = idle, 1 = chg, 2 = dschg, 3 = storage, 4 = shutdown
         BMS.ADS1248 = ADS1248
         self.cellCount = 20
-        self.drain = [None]*self.cellCount
-        for i in range(self.cellCount):
-            if i < 8:
-                self.drain[i] = mcp1.get_pin(i)
-            elif i < 16:
-                self.drain[i] = mcp1.get_pin(i-8)
-            else:
-                self.drain[i] = mcp1.get_pin(i-16)
-            self.drain[i].direction = Direction.OUTPUT
-            self.drain[i].value = False
-            
+        self.drain = [0]*24
+
+        for mcp in mcpArr:
+            mcp.iodir([0]*8)
+            mcp.gpio([0]*8)
+
         self.balancing = False
 
         self.buz = buzzer
@@ -28,24 +23,31 @@ class BMS:
         self.maxVoltage = 4.096
 
         self.dV = .01
-        self.chgTime = 30
-        self.balTime = 8
+        self.chgTime = 60
+        self.balTime = 15
         self.measureError = .005
+        self.verbose = False
+
+    def sendIO(self):
+        for i in range(len(mcpArr)):
+            mcpArr[i].gpio(self.drain[8*i:8*(i+1)])
 
     def balance(self):
         if self.maxCell - self.minCell > self.dV and min(self.cells) > self.maxVoltage + self.measureError:
             self.balancing = True
-            print("[BALANCE] [INFO] Maximum cell voltage difference is {0} which exceeds {1}.".format(self.maxCell-self.minCell,self.dV))
-            print("[BALANCE] [INFO] Balancing...")
+            if self.verbose
+                print("[BALANCE] Maximum cell voltage difference is {0} which exceeds {1}.".format(self.maxCell-self.minCell,self.dV))
+            print("[BALANCE] Balancing...")
+            for i in range(self.cellCount):
+                if cells[i] > self.maxVoltage + self.measureError:
+                    self.drain[i] = 1
         else:
             self.balancing = False
 
-    def battCheck(self):
-        if self.mode == 1:
-            self.relay.value = False
-            print("[BATTCHECK] [CHARGE] Waiting for battery rebound...")
-            time.sleep(5)
-        print("[BATTCHECK] [INFO] Checking cells...")
+    def update(self):
+        self.sendIO()
+        if self.verbose:
+            print("[INFO] Checking cells...")
         cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
         for i in range(20):
             self.cells[i] = cellRead[self.cellPos[i]]
@@ -53,24 +55,31 @@ class BMS:
         for i in range(self.cellCount):
             if self.cells[i] > self.maxVoltage:
                 self.buz.value = True
-                print("[BATTCHECK] [ALARM] Cell_{0} is above maximum voltage of {1} at {2}!".format(i,self.maxVoltage, self.cells[i]))
+                print("[ALARM] Cell_{0} is above maximum voltage of {1} at {2}!".format(i,self.maxVoltage, self.cells[i]))
             elif self.cells[i] < self.minVoltage:
                 self.buz.value = True
-                print("[BATTCHECK] [ALARM] Cell_{0} is below minimum voltage of {1} at {2}!".format(i,self.minVoltage, self.cells[i]))
+                print("[ALARM] Cell_{0} is below minimum voltage of {1} at {2}!".format(i,self.minVoltage, self.cells[i]))
 
         self.minCell = min(self.cells)
         self.maxCell = max(self.cells)
         self.minCellIndex = self.cells.index(self.minCell)
         self.maxCellindex = self.cells.index(self.maxCell)
-        print("[BATTCHECK] [INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex+1,self.minCell))
-        print("[BATTCHECK] [INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex+1,self.maxCell))
+        if self.verbose:
+            print("[INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex+1,self.minCell))
+            print("[INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex+1,self.maxCell))
 
         if self.mode == 1:
             if self.maxCell < self.maxVoltage:
-                print("[BATTCHECK] [CHARGE] Charging for {} seconds...")
+                if self.verbose:
+                    print("[CHARGE] Charging for {} seconds...")
                 self.relay.value = True
                 time.sleep(self.chgTime)
             self.balance()
             if not self.balancing:
+                self.relay.value = False
+                if self.verbose:
+                    print("[CHARGE] Waiting for battery rebound...")
+                time.sleep(5)
+                print("[CHARGE] Charging complete, switching mode to idle.")
                 self.mode = 0
         elif self.mode == 2:

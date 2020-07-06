@@ -19,9 +19,9 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 # ADS1248
 ADS1248.setup(spi, board.D3, board.D4)
-adc1 = ADS1248(board.D2, board.D12, 2.5)
-adc2 = ADS1248(board.D11, board.D10, 2.5)
-adc3 = ADS1248(board.D9, board.D7, 2.5)
+adc0 = ADS1248(board.D2, board.D12, 2.5)
+adc1 = ADS1248(board.D11, board.D10, 2.5)
+adc2 = ADS1248(board.D9, board.D7, 2.5)
 
 # ADS1248.verbose = True
 ADS1248.wakeupAll()
@@ -29,14 +29,14 @@ ADS1248.wregAll(2,[0x40,0x01])
 # ADS1248.selfOffsetAll()
 
 # MCP23008
-mcp1 = MCP23008(i2c, address=0x20)
-mcp2 = MCP23008(i2c, address=0x21)
-mcp3 = MCP23008(i2c, address=0x22)
+mcp0 = MCP23008(i2c, address=0x20)
+mcp1 = MCP23008(i2c, address=0x21)
+mcp2 = MCP23008(i2c, address=0x22)
 
 # BMS
-bms = BMS(ADS1248, mcp1, mcp2, mcp3, buz, relay)
-
+bms = BMS(ADS1248, [mcp0, mcp1, mcp2], buz, relay)
+bms.verbose = True
 
 while True:
-    bms.battCheck()
+    bms.update()
     time.sleep(3)
