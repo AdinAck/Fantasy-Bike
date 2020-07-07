@@ -1,6 +1,8 @@
 import board
 import digitalio
+import analogio
 import busio
+import pulseio
 import time
 from adafruit_mcp230xx.mcp23008 import MCP23008
 from ADS1248 import ADS1248
@@ -25,7 +27,7 @@ adc2 = ADS1248(board.D9, board.D7, 2.5)
 
 # ADS1248.verbose = True
 ADS1248.wakeupAll()
-ADS1248.wregAll(2,[0x40,0x01])
+ADS1248.wregAll(2,[0x40,0x00])
 ADS1248.selfOffsetAll()
 
 # MCP23008
@@ -33,8 +35,17 @@ mcp0 = MCP23008(i2c, address=0x20)
 mcp1 = MCP23008(i2c, address=0x21)
 mcp2 = MCP23008(i2c, address=0x22)
 
+# Temp sensors
+tmp0 = analogio.AnalogIn(board.A0)
+tmp1 = analogio.AnalogIn(board.A1)
+tmp2 = analogio.AnalogIn(board.A2)
+tmp3 = analogio.AnalogIn(board.A3)
+
+# Fan
+# fan = pulseio.PWMOut(board.A5, frequency=5000, duty_cycle=0)
+
 # BMS
-bms = BMS(ADS1248, [mcp0, mcp1, mcp2], buz, relay)
+bms = BMS(ADS1248, [mcp0, mcp1, mcp2], [tmp0, tmp1, tmp2, tmp3], buz, relay)
 bms.verbose = True
 
 while True:
