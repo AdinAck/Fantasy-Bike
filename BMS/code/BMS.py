@@ -8,9 +8,10 @@ class BMS:
         self.cellCount = 20
         self.drain = [0]*24
 
-        for mcp in mcpArr:
-            mcp.iodir([0]*8)
-            mcp.gpio([0]*8)
+        self.mcpArr = mcpArr
+        for mcp in self.mcpArr:
+            mcp.iodir = 0x00
+            mcp.gpio = 0x00
 
         self.buz = buzzer
         self.relay = relay
@@ -28,8 +29,12 @@ class BMS:
         self.verbose = False
 
     def sendIO(self):
-        for i in range(len(mcpArr)):
-            mcpArr[i].gpio(self.drain[8*i:8*(i+1)])
+        for i in range(len(self.mcpArr)):
+            send = 0
+            for j in range(len(self.drain[8*i:8*(i+1)])):
+                if self.drain[8*i:8*(i+1)][j] == 1:
+                    send += 2**j
+            self.mcpArr[i].gpio = send
 
     def balance(self):
         print("[BALANCE] Balancing...")
@@ -81,23 +86,23 @@ class BMS:
 
         if self.mode == 1:
             if self.maxCell < self.targetVoltage - self.measureError:
-            status = self.balance()
-            if status == 0:
-                self.relay.value = False
-            elif status == 1:
-                self.relay.value = False
-            elif status == 2:
-                if self.verbose:
-                    print("[CHARGE] Charging for {} seconds...".format(self.chTime))
-                self.relay.value = True
-                time.sleep(self.chgTime)
-            else:
-                self.relay.value = False
-                if self.verbose:
-                    print("[CHARGE] Waiting for battery to settle...")
-                time.sleep(5)
-                print("[CHARGE] Charging complete, switching mode to idle.")
-                self.mode = 0
+                status = self.balance()
+                if status == 0:
+                    self.relay.value = False
+                elif status == 1:
+                    self.relay.value = False
+                elif status == 2:
+                    if self.verbose:
+                        print("[CHARGE] Charging for {} seconds...".format(self.chTime))
+                    self.relay.value = True
+                    time.sleep(self.chgTime)
+                else:
+                    self.relay.value = False
+                    if self.verbose:
+                        print("[CHARGE] Waiting for battery to settle...")
+                    time.sleep(5)
+                    print("[CHARGE] Charging complete, switching mode to idle.")
+                    self.mode = 0
 
         elif self.mode == 2:
             self.drain = [0]*len(self.drain)

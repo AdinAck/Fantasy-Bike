@@ -26,7 +26,7 @@ adc2 = ADS1248(board.D9, board.D7, 2.5)
 # ADS1248.verbose = True
 ADS1248.wakeupAll()
 ADS1248.wregAll(2,[0x40,0x01])
-# ADS1248.selfOffsetAll()
+ADS1248.selfOffsetAll()
 
 # MCP23008
 mcp0 = MCP23008(i2c, address=0x20)
