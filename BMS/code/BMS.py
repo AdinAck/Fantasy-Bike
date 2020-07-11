@@ -3,7 +3,7 @@ import time
 from digitalio import Direction
 
 class BMS:
-    def __init__(self, ADS1248, mcpArr, tmpArr, buzzer, relay):
+    def __init__(self, ADS1248, mcpArr, tmpArr, buzzer, relay, fan):
         self.mode = 0 # 0 = idle, 1 = chg/dschg/storage, 2 = shutdown
         BMS.ADS1248 = ADS1248
         self.cellCount = 20
@@ -17,7 +17,7 @@ class BMS:
         self.tmpArr = tmpArr
         self.temps = [0]*len(tmpArr)
         self.maxTemp = 70
-        # self.fan = fan
+        self.fan = fan
 
         self.buz = buzzer
         self.relay = relay
@@ -62,6 +62,10 @@ class BMS:
             if self.verbose:
                 print("[INFO] Minimum cell voltage is {}v more than target cell voltage.".format(self.minCell-self.targetVoltage))
             print("[INFO] Discharging...")
+            for i in range(self.cellCount):
+                if cells[i] > self.targetVoltage + self.measureError:
+                    self.drain[i] = 1
+                else: self.drain[i] = 0
             return 1
         elif self.maxCell < self.targetVoltage - self.measureError:
             if self.verbose:
@@ -104,11 +108,11 @@ class BMS:
 
             self.getTemps()
             if self.verbose:
-                print("[INFO] Board temperatures:")
-                for i in self.temps:
-                    print("\t"+str(i)+"C")
+                print("[INFO] Board temperatures:", [str(i)+"C" for i in self.temps])
             # duty = (65535/30)*(max(self.temps)-30)
             # self.fan.duty_cycle = 0 if duty < 0 else 65535 if duty > 65535 else duty
+            if max(self.temps) > 30:
+                self.fan.value = 1
             if max(self.temps) > self.maxTemp:
                 print("[ALARM] Thermal shutdown.")
                 self.buz.value = True
@@ -138,6 +142,6 @@ class BMS:
         elif self.mode == 2:
             self.buz.value = False
             self.relay.value = False
-            self.drain = [0]*len(self.drain)
+            self.drain = [0]*self.cellCount
             self.sendIO()
             BMS.ADS1248.sleepAll()

@@ -8,23 +8,33 @@ import os
 import sys
 import math
 import time
-from display import Display
-import animation
-from animation import Animation
+import displayio
+import adafruit_ssd1322
 from supertime import*
 import rotaryio
 import ui
 import pong as game
 
+displayio.release_displays()
+
 # SerCom Setup
-i2c = busio.I2C(board.SCL, board.SDA)
-spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+# i2c = busio.I2C(board.SCL, board.SDA)
+spi = busio.SPI(board.SCK, board.MOSI)
 
 # Class inits
 s = SuperTime()
 l = SuperTime()
-d = Display(i2c, "0x8")
-a = Animation(d)
+
+# Initialize screen
+d_cd = board.D10
+d_dc = board.D7
+d_rst = board.D9
+
+d_bus = displayio.FourWire(spi, command=d_dc, chip_select=d_cd,
+                                 reset=d_rst, baudrate=24000000)
+
+d = adafruit_ssd1322.SSD1322(d_bus, width=256, height=66, colstart=28)
+
 
 # General setup
 print("CPU Temp: "+str(microcontroller.cpu.temperature))
@@ -40,8 +50,6 @@ print("CPU Frequency: "+str(microcontroller.cpu.frequency))
 # cfg2.purge()
 
 # I/O Setup
-led = digitalio.DigitalInOut(board.D13)
-led.direction = digitalio.Direction.OUTPUT
 
 # Variables for Main Loop
 tick = 0
@@ -65,14 +73,14 @@ def pExit():
     ui.Screen.current = screen
 
 # Set up UI
-encoder = rotaryio.IncrementalEncoder(board.D33, board.D35)
-button = digitalio.DigitalInOut(board.D31)
+encoder = rotaryio.IncrementalEncoder(board.A5, board.A4)
+button = digitalio.DigitalInOut(board.A3)
 ui.Screen.setEncoder(encoder, button)
 ui.Screen.setDisplay(d)
 
 screen = ui.Screen(True)
-button = ui.Button(screen, 38,32,38,16,11,"Pong", func)
-framerate = ui.Text(screen, 0,8,8,int(1/loopTime))
+button = ui.Button(screen, 38,32,38,16,"Pong", func)
+framerate = ui.Text(screen, 0,8,int(1/loopTime),max_glyphs=3)
 num1 = ui.SingleDigitNumberSelector(screen, 116-24,32)
 num2 = ui.SingleDigitNumberSelector(screen, 116,32)
 num3 = ui.SingleDigitNumberSelector(screen, 140,32)
@@ -85,15 +93,14 @@ p = game.Pong(d, encoder)
 pPress = False
 
 pmenu = ui.Screen()
-resume = ui.Button(pmenu, 48, 32, 68, 16, 11, "Resume", pResume)
-restart = ui.Button(pmenu, 128, 32, 68, 16, 11, "Restart", pRestart)
-exit = ui.Button(pmenu, 256-48, 32, 68, 16, 11, "Exit", pExit)
+resume = ui.Button(pmenu, 48, 32, 68, 16, "Resume", pResume)
+restart = ui.Button(pmenu, 128, 32, 68, 16, "Restart", pRestart)
+exit = ui.Button(pmenu, 256-48, 32, 68, 16, "Exit", pExit)
 
 # Main Loop
 while True:
-    d.clearBuffer() # Clear display buffer.
     # d.setFont(11)
-    framerate.text = int(1/loopTime)
+    framerate.label.text = int(1/loopTime)
     ui.update()
     if ui.Screen.current == pong:
         p.update()
@@ -103,5 +110,4 @@ while True:
             ui.Screen.current = pmenu
             ui.Screen.current.selecting = True
             pPress = False
-    d.sendBuffer() # Send all display elements to display to be drawn.
     loopTime = s.getTime() # Gets duration of loop (to compare with desired).

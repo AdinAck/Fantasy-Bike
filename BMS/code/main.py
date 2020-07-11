@@ -43,9 +43,11 @@ tmp3 = analogio.AnalogIn(board.A3)
 
 # Fan
 # fan = pulseio.PWMOut(board.A5, frequency=5000, duty_cycle=0)
+fan = digitalio.DigitalInOut(board.A5)
+fan.direction = digitalio.Direction.OUTPUT
 
 # BMS
-bms = BMS(ADS1248, [mcp0, mcp1, mcp2], [tmp0, tmp1, tmp2, tmp3], buz, relay)
+bms = BMS(ADS1248, [mcp0, mcp1, mcp2], [tmp0, tmp1, tmp2, tmp3], buz, relay, fan)
 bms.verbose = True
 
 while True:
