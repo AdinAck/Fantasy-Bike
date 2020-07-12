@@ -235,7 +235,7 @@ def update():
         elif type(Screen.focused) in [Button]:
             Screen.current.selector.x = Screen.focused.xpos - 2
             Screen.current.selector.y = Screen.focused.ypos - 2
-            Screen.current.selector.width = Screen.focused.xBound + 4
-            Screen.current.selector.height = Screen.focused.yBound + 4
+            # Screen.current.selector.width = Screen.focused.xBound + 4
+            # Screen.current.selector.height = Screen.focused.yBound + 4
             Screen.current.selector.outline = 0xFFFFFF
     Screen.d.show(Screen.current.group)

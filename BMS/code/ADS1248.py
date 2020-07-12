@@ -108,7 +108,7 @@ class ADS1248:
             else:
                 print("[ADS1248] [ALL] [SELFOFFSET] An ADC did not complete calibration before timeout.")
                 print("\tCurrent DRDY values:",[adc.drdy.value for adc in ADS1248.list])
-                break
+                return
             time.sleep(.1)
 
         if ADS1248.verbose:
@@ -199,8 +199,15 @@ class ADS1248:
         ADS1248.spi.write(bytearray([0x62]))
         self.cs.value = True
 
+        counter = 0
         while self.drdy.value:
-            pass
+            if counter < 100:
+                counter += 1
+            else:
+                print("[ADS1248] [{}] [SELFOFFSET] ADC did not complete calibration before timeout.".format(ADS1248.list.index(self)))
+                print("\tCurrent DRDY values:", adc.drdy.value)
+                return
+            time.sleep(.1)
 
         if ADS1248.verbose:
             print("[ADS1248] [{}] [SELFOFFSET] Calibration complete.".format(ADS1248.list.index(self)))
@@ -220,8 +227,15 @@ class ADS1248:
             if ADS1248.verbose:
                 print("[ADS1248] [{}] [RECEIVE] Waiting for ADC...".format(ADS1248.list.index(self)))
 
-            while self.drdy.value: # Wait until ADC conversion is completed
-                pass
+            counter = 0
+            while self.drdy.value: # Wait until ADC conversion is completed.
+                if counter < 100:
+                    counter += 1
+                else:
+                    print("[ADS1248] [{}] [RECEIVE] ADC did not complete conversion before timeout.".format(ADS1248.list.index(self)))
+                    print("\tCurrent DRDY values:", adc.drdy.value)
+                    return
+                time.sleep(.1)
 
             self.cs.value = False
             recv = bytearray(3)
