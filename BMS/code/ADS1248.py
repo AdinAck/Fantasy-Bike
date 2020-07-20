@@ -219,7 +219,10 @@ class ADS1248:
             if raw:
                 result.append(self.receive())
             else:
-                result.append(self.vref/(2**23)*self.receive()+self.vref)
+                try:
+                    result.append(self.vref/(2**23)*self.receive()+self.vref)
+                except TypeError:
+                    result.append(None)
         return result
 
     def receive(self):
@@ -233,9 +236,9 @@ class ADS1248:
                     counter += 1
                 else:
                     print("[ADS1248] [{}] [RECEIVE] ADC did not complete conversion before timeout.".format(ADS1248.list.index(self)))
-                    print("\tCurrent DRDY values:", self.drdy.value)
-                    return 0
-                time.sleep(.1)
+                    print("\tCurrent DRDY value:", self.drdy.value)
+                    return
+                time.sleep(.05)
 
             self.cs.value = False
             recv = bytearray(3)
