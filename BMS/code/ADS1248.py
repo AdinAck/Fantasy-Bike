@@ -233,8 +233,8 @@ class ADS1248:
                     counter += 1
                 else:
                     print("[ADS1248] [{}] [RECEIVE] ADC did not complete conversion before timeout.".format(ADS1248.list.index(self)))
-                    print("\tCurrent DRDY values:", adc.drdy.value)
-                    return
+                    print("\tCurrent DRDY values:", self.drdy.value)
+                    return 0
                 time.sleep(.1)
 
             self.cs.value = False
