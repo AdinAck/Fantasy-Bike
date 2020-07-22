@@ -26,9 +26,6 @@ adc1 = ADS1248(board.D11, board.D10, 2.5)
 adc2 = ADS1248(board.D9, board.D7, 2.5)
 
 # ADS1248.verbose = True
-ADS1248.wakeupAll()
-ADS1248.wregAll(2,[0x40,0x00])
-ADS1248.selfOffsetAll()
 
 # MCP23008
 mcp0 = MCP23008(i2c, address=0x20)
@@ -52,4 +49,3 @@ bms.verbose = True
 
 while True:
     bms.update()
-    time.sleep(3)

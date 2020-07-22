@@ -6,6 +6,10 @@ class BMS:
     def __init__(self, ADS1248, mcpArr, tmpArr, buzzer, relay, fan):
         self.mode = 0 # 0 = idle, 1 = chg/dschg/storage, 2 = shutdown
         BMS.ADS1248 = ADS1248
+        ADS1248.wakeupAll()
+        ADS1248.wregAll(2,[0x40,0x00])
+        print("[INFO] Calibrating ADCs.")
+        ADS1248.selfOffsetAll()
         self.cellCount = 20
         self.drain = [0]*24
 
@@ -26,7 +30,7 @@ class BMS:
         self.cells = [0]*self.cellCount
         self.minVoltage = 3.5
         self.maxVoltage = 4.2
-        self.targetVoltage = 3.85
+        self.targetVoltage = 4
         self.dV = .01
         self.chgTime = 60
         self.balTime = 15
@@ -35,9 +39,11 @@ class BMS:
         self.verbose = False
 
     def getTemps(self):
+        self.temps = [None]*len(self.tmpArr)
         for i in range(len(self.tmpArr)):
             self.temps[i] = (150/1.5)*((self.tmpArr[i].value*3.3/65536)-.5)
         self.temps.append(microcontroller.cpu.temperature)
+        self.temps = [round(i,2) for i in self.temps]
 
     def sendIO(self):
         for i in range(len(self.mcpArr)):
@@ -54,7 +60,7 @@ class BMS:
                 print("[INFO] Maximum cell voltage delta is {0} which exceeds {1}.".format(self.maxCell-self.minCell,self.dV))
             print("[INFO] Balancing...")
             for i in range(self.cellCount):
-                if cells[i] > self.minCell + self.measureError:
+                if self.cells[i] > self.minCell + self.measureError:
                     self.drain[i] = 1
                 else: self.drain[i] = 0
             return 0
@@ -63,7 +69,7 @@ class BMS:
                 print("[INFO] Minimum cell voltage is {}v more than target cell voltage.".format(self.minCell-self.targetVoltage))
             print("[INFO] Discharging...")
             for i in range(self.cellCount):
-                if cells[i] > self.targetVoltage + self.measureError:
+                if self.cells[i] > self.targetVoltage + self.measureError:
                     self.drain[i] = 1
                 else: self.drain[i] = 0
             return 1
@@ -77,8 +83,6 @@ class BMS:
             return 3
 
     def update(self):
-        for mcp in self.mcpArr:
-            print(mcp.gpio)
         if self.mode == 0 or self.mode == 1:
             self.sendIO()
             if self.verbose:
@@ -86,6 +90,7 @@ class BMS:
             cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
             for i in range(20):
                 self.cells[i] = cellRead[self.cellPos[i]]
+            print(self.cells)
             self.buz.value = False
             for i in range(self.cellCount):
                 if self.cells[i] > self.maxVoltage:
@@ -111,7 +116,7 @@ class BMS:
                 print("[INFO] Board temperatures:", [str(i)+"C" for i in self.temps])
             # duty = (65535/30)*(max(self.temps)-30)
             # self.fan.duty_cycle = 0 if duty < 0 else 65535 if duty > 65535 else duty
-            if max(self.temps) > 30:
+            if max(self.temps) > 40:
                 self.fan.value = 1
             if max(self.temps) > self.maxTemp:
                 print("[ALARM] Thermal shutdown.")
@@ -120,12 +125,14 @@ class BMS:
                 return
 
         if self.mode == 1:
-            if self.maxCell < self.targetVoltage - self.measureError:
+            if self.maxCell - self.minCell > self.dV:
                 status = self.balance()
                 if status == 0:
                     self.relay.value = False
+                    time.sleep(self.balTime)
                 elif status == 1:
                     self.relay.value = False
+                    time.sleep(self.balTime)
                 elif status == 2:
                     if self.verbose:
                         print("[CHARGE] Charging for {} seconds...".format(self.chTime))
@@ -142,6 +149,6 @@ class BMS:
         elif self.mode == 2:
             self.buz.value = False
             self.relay.value = False
-            self.drain = [0]*self.cellCount
+            self.drain = [0]*len(self.drain)
             self.sendIO()
             BMS.ADS1248.sleepAll()
