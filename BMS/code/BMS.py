@@ -46,10 +46,10 @@ class BMS:
         self.targetVoltage = 3.85
         self.dV = .01
         self.chgTime = 60
-        self.balTime = 15
+        self.balTime = 32
         self.measureError = .005
 
-        self.log = open("battVoltages.log", "w")
+        # self.log = open("battVoltages.log", "w")
 
         self.verbose = False
 
@@ -66,7 +66,7 @@ class BMS:
         cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
         for i in range(20):
             self.cells[i] = cellRead[self.cellPos[i]]
-        self.log.write(self.cells)
+        # self.log.write(self.cells)
         self.battVoltage = sum(self.cells)
         self.capacity = round((100/(84-68))*(self.battVoltage-68))
 
@@ -152,7 +152,7 @@ class BMS:
             last = toDschg[0]
             if self.verbose:
                 print("[INFO] Discharging cells at following coordinates:")
-                print(self.cellCoords[last])
+                # print(self.cellCoords[last])
             dischging = [[False for i in range(4)] for i in range(5)]
             dischging[self.cellCoords[last][0]][self.cellCoords[last][1]] = True
             for i in range(1,len(toDschg)):
@@ -167,8 +167,8 @@ class BMS:
                 if not skip:
                     self.drain[toDschg[i]] = 1
                     dischging[self.cellCoords[toDschg[i]][0]][self.cellCoords[toDschg[i]][1]] = True
-                    if self.verbose:
-                        print(self.cellCoords[toDschg[i]])
+                    # if self.verbose:
+                    #     print(self.cellCoords[toDschg[i]])
                     last = toDschg[i]
             if self.verbose:
                 for i in range(len(dischging)):
@@ -179,7 +179,7 @@ class BMS:
             self.sendIO()
             # Monitor temperature while discharging
             for i in range(self.balTime//8):
-                self.getTemps():
+                self.getTemps()
                 if max(self.temps) > self.maxTemp:
                     print("[INFO] Temperature exceeded maximum permitted temperature while balancing.")
                     break
@@ -207,7 +207,7 @@ class BMS:
                        \n\t To avoid possible damage the BMS will shut down.")
                 microcontroller.nvm[0] = 1
                 self.mode = 2
-            elif min(dCells) < -.5:
+            elif min(dCells) < -.1:
                 self.buz.value = True
                 print("[ALERT] Cell voltage decreased rapidly between measurements.\
                        \n\t This could be due to a faulty measurement, or a severe battery issue.\
@@ -215,8 +215,7 @@ class BMS:
                 microcontroller.nvm[0] = 1
                 self.mode = 2
 
-            if self.mode == 2:
-                print("[INFO] Change in voltage per cell:",dCells)
+            print("[INFO] Change in voltage per cell:",dCells)
 
             self.lastCells = list(self.cells)
             print("[INFO] All cell voltages:\n",self.cells)
