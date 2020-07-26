@@ -49,10 +49,13 @@ class BMS:
         self.balTime = 15
         self.measureError = .005
 
+        self.log = open("battVoltages.log", "w")
+
         self.verbose = False
 
         if microcontroller.nvm[0] == 1:
             print("[ALERT] A measurement error or severe battery error occured during previous operation.")
+            microcontroller.nvm[0] = 0
 
         self.getCells()
         self.lastCells = list(self.cells)
@@ -63,6 +66,9 @@ class BMS:
         cellRead = BMS.ADS1248.fetchAll(3,[0,1,2,4,5,6,7])
         for i in range(20):
             self.cells[i] = cellRead[self.cellPos[i]]
+        self.log.write(self.cells)
+        self.battVoltage = sum(self.cells)
+        self.capacity = round((100/(84-68))*(self.battVoltage-68))
 
     def getTemps(self):
         self.temps = [None]*len(self.tmpArr)
@@ -201,7 +207,6 @@ class BMS:
                        \n\t To avoid possible damage the BMS will shut down.")
                 microcontroller.nvm[0] = 1
                 self.mode = 2
-                time.sleep(1)
             elif min(dCells) < -.5:
                 self.buz.value = True
                 print("[ALERT] Cell voltage decreased rapidly between measurements.\
@@ -209,14 +214,16 @@ class BMS:
                        \n\t To avoid possible damage the BMS will shut down.")
                 microcontroller.nvm[0] = 1
                 self.mode = 2
-                time.sleep(1)
-
 
             if self.mode == 2:
                 print("[INFO] Change in voltage per cell:",dCells)
 
             self.lastCells = list(self.cells)
             print("[INFO] All cell voltages:\n",self.cells)
+            print("[INFO] Battery voltage:",self.battVoltage)
+            print("[INFO] Battery capacity:",self.capacity)
+            if self.mode == 2:
+                return
             self.buz.value = False
             for i in range(self.cellCount):
                 if self.cells[i] > self.maxVoltage:
