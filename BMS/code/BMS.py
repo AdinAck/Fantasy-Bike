@@ -17,7 +17,7 @@ class BMS:
         self.mode = 0 # 0 = idle, 1 = chg/dschg/storage, 2 = shutdown
         BMS.ADS1248 = ADS1248
         ADS1248.wakeupAll()
-        ADS1248.wregAll(2,[0x40,0x00])
+        ADS1248.wregAll(2,[0x40,0x03])
         print("[INFO] Calibrating ADCs.")
         ADS1248.selfOffsetAll()
         self.cellCount = 20
@@ -124,8 +124,6 @@ class BMS:
                     self.mode = 2
                     return
                 time.sleep(8)
-        elif max(self.temps) > self.maxTemp:
-            print("[INFO] Temperature is too high for balancing.")
         # If cells are not balanced or are above target voltage
         elif (self.maxCell - self.minCell > self.dV or self.minCell > self.targetVoltage + self.measureError) and self.minCell > self.minVoltage:
             self.relay.value = False # Make sure charger is disconnected
@@ -194,33 +192,29 @@ class BMS:
         if self.mode == 0 or self.mode == 1:
             self.sendIO()
             if self.mode == 1:
-                print("[INFO] Allowing cells to settle...")
+                if self.verbose:
+                    print("[INFO] Allowing cells to settle...")
                 time.sleep(5)
             self.getCells()
             dCells = []
             for i in range(self.cellCount):
                 dCells.append(self.cells[i]-self.lastCells[i])
-            if max(dCells) > .1:
+            if max(dCells) > .1 or min(dCells) < -.1:
                 self.buz.value = True
-                print("[ALERT] Cell voltage increased rapidly between measurements.\
-                       \n\t This could be due to a faulty measurement, or a severe battery issue.\
-                       \n\t To avoid possible damage the BMS will shut down.")
                 microcontroller.nvm[0] = 1
                 self.mode = 2
-            elif min(dCells) < -.1:
-                self.buz.value = True
-                print("[ALERT] Cell voltage decreased rapidly between measurements.\
+                print("[ALERT] Cell voltage changed rapidly between measurements.\
                        \n\t This could be due to a faulty measurement, or a severe battery issue.\
                        \n\t To avoid possible damage the BMS will shut down.")
-                microcontroller.nvm[0] = 1
-                self.mode = 2
 
-            print("[INFO] Change in voltage per cell:",dCells)
+            if self.verbose:
+                print("[INFO] Change in voltage per cell:",dCells)
 
             self.lastCells = list(self.cells)
-            print("[INFO] All cell voltages:\n",self.cells)
-            print("[INFO] Battery voltage:",self.battVoltage)
-            print("[INFO] Battery capacity:",self.capacity)
+            if self.verbose:
+                print("[INFO] All cell voltages:\n",self.cells)
+                print("[INFO] Battery voltage:",self.battVoltage)
+                print("[INFO] Battery capacity:",self.capacity)
             if self.mode == 2:
                 return
             self.buz.value = False

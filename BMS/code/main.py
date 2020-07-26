@@ -51,6 +51,7 @@ try:
     while True:
         bms.update()
 except:
+    buz.value = True
     print("[INFO] An exception occured.")
     print("[INFO] Wrapping things up...")
     for mcp in [mcp0, mcp1, mcp2]:
