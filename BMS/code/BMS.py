@@ -15,8 +15,6 @@ from digitalio import Direction
 class BMS:
     def __init__(self, ADS1248, mcpArr, tmpArr, buzzer, relay, fan):
         self.mode = 0 # 0 = idle, 1 = chg/dschg/storage, 2 = shutdown
-        self.lastMode = 0
-        self.switchedModes = False
         BMS.ADS1248 = ADS1248
         ADS1248.wakeupAll()
         ADS1248.wregAll(2,[0x40,0x00])
@@ -47,7 +45,6 @@ class BMS:
         self.maxVoltage = 4.2
         self.targetVoltage = 3.85
         self.dV = .01
-        self.minDischg = self.minVoltage
         self.chgTime = 60
         self.balTime = 15
         self.measureError = .005
@@ -73,6 +70,21 @@ class BMS:
             self.temps[i] = (150/1.5)*((self.tmpArr[i].value*3.3/65536)-.5)
         self.temps.append(microcontroller.cpu.temperature)
         self.temps = [round(i,2) for i in self.temps]
+        if self.verbose:
+            print("[INFO] Board temperatures:", [str(i)+"C" for i in self.temps])
+        # duty = (65535/30)*(max(self.temps)-30)
+        # self.fan.duty_cycle = 0 if duty < 0 else 65535 if duty > 65535 else duty
+        if max(self.temps) > 40:
+            self.fan.value = True
+        else:
+            self.fan.value = False
+        if max(self.temps) > self.maxTemp + 20:
+            print("[ALERT] Thermal shutdown.")
+            self.buz.value = True
+            self.mode = 2
+            return True
+        else:
+            return False
 
     def sendIO(self):
         for i in range(len(self.mcpArr)):
@@ -83,8 +95,7 @@ class BMS:
             self.mcpArr[i].gpio = send
 
     def balance(self):
-        if self.switchedModes:
-            self.minDischg = self.minCell
+        # Target voltage is within min and max voltage
         if self.targetVoltage < self.minVoltage or self.targetVoltage > self.maxVoltage:
             print("[ALERT] Target voltage exceeds acceptable voltage range, terminating charge/balance cycle.")
             self.buz.value = True
@@ -94,6 +105,21 @@ class BMS:
             self.sendIO()
             time.sleep(1)
             return
+        # Lowest cell is below minimum voltage or highest cell is below target voltage and not too close (to reduce overshooting)
+        elif self.minCell < self.minVoltage or self.maxCell < self.targetVoltage - self.dV:
+            if self.verbose:
+                print("[INFO] Maximum cell voltage is {}v less than target cell voltage.".format(self.targetVoltage-self.maxCell))
+            print("[INFO] Charging...")
+            self.relay.value = True
+            for i in range(self.chgTime//8):
+                if self.getTemps():
+                    print("[ALERT] Possible MOSFET failure while charging. Shutting down.")
+                    self.buz.value = True
+                    self.mode = 2
+                    return
+                time.sleep(8)
+        elif max(self.temps) > self.maxTemp:
+            print("[INFO] Temperature is too high for balancing.")
         # If cells are not balanced or are above target voltage
         elif (self.maxCell - self.minCell > self.dV or self.minCell > self.targetVoltage + self.measureError) and self.minCell > self.minVoltage:
             self.relay.value = False # Make sure charger is disconnected
@@ -143,26 +169,23 @@ class BMS:
                     for j in range(len(dischging[i])):
                         print(int(dischging[i][j]),end=" ")
                     print()
+            # Now that cells have been selected for discharging, send drain array to IO expanders
             self.sendIO()
-            time.sleep(self.balTime)
+            # Monitor temperature while discharging
+            for i in range(self.balTime//8):
+                self.getTemps():
+                if max(self.temps) > self.maxTemp:
+                    print("[INFO] Temperature exceeded maximum permitted temperature while balancing.")
+                    break
+                time.sleep(8)
+            # Clear drain for next update
             self.drain = [0]*self.cellCount
-
-        elif self.maxCell < self.targetVoltage - self.measureError: # Cells are below target voltage
-            if self.verbose:
-                print("[INFO] Maximum cell voltage is {}v less than target cell voltage.".format(self.targetVoltage-self.maxCell))
-            print("[INFO] Charging...")
-            self.relay.value = True
-            time.sleep(self.chgTime)
         else:
             print("[INFO] Charge/balance complete.")
             self.mode = 0
 
     def update(self):
         if self.mode == 0 or self.mode == 1:
-            if self.mode != self.lastMode:
-                self.switchedModes = True
-            else:
-                self.switchedModes = False
             self.sendIO()
             if self.mode == 1:
                 print("[INFO] Allowing cells to settle...")
@@ -215,19 +238,7 @@ class BMS:
                 print("[INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex,self.minCell))
                 print("[INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex,self.maxCell))
 
-            self.getTemps()
-            if self.verbose:
-                print("[INFO] Board temperatures:", [str(i)+"C" for i in self.temps])
-            # duty = (65535/30)*(max(self.temps)-30)
-            # self.fan.duty_cycle = 0 if duty < 0 else 65535 if duty > 65535 else duty
-            if max(self.temps) > 40:
-                self.fan.value = True
-            else:
-                self.fan.value = False
-            if max(self.temps) > self.maxTemp + 30:
-                print("[ALERT] Thermal shutdown.")
-                self.buz.value = True
-                self.mode = 2
+            if self.getTemps():
                 return
 
         if self.mode == 1:
@@ -237,7 +248,6 @@ class BMS:
                 print("[INFO] Unable to charge/balance due to high temperatures.")
 
         elif self.mode == 2:
-            self.buz.value = False
             self.relay.value = False
             self.drain = [0]*self.cellCount
             self.sendIO()
