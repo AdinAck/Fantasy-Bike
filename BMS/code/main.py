@@ -52,15 +52,17 @@ try:
         bms.update()
 except:
     buz.value = True
+    time.sleep(.1)
+    bms.relay.value = False
     print("[INFO] An exception occured.")
     print("[INFO] Wrapping things up...")
     for mcp in [mcp0, mcp1, mcp2]:
         mcp.gpio = 0
     print("[INFO] MCP23008s disabled.")
-    bms.relay.value = False
     print("[INFO] Charger disconnected.")
     ADS1248.sleepAll()
     print("[INFO] ADCs put to sleep.")
+    buz.value = False
     print("[INFO] Cooling down...")
     while max(bms.temps) > 40:
         bms.getTemps()
