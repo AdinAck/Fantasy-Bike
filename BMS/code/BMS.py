@@ -8,9 +8,11 @@
 # 0x0: 0 if measurement/battery fault has not been detected
 #      1 if measurement/battery fault has been detected
 
+import board
 import microcontroller
 import time
 from digitalio import Direction
+import adafruit_dotstar as dotstar
 
 class BMS:
     def __init__(self, ADS1248, mcpArr, tmpArr, buzzer, relay, fan):
@@ -30,7 +32,7 @@ class BMS:
 
         self.tmpArr = tmpArr
         self.temps = [0]*len(tmpArr)
-        self.maxTemp = 70
+        self.maxTemp = 80
         self.fanTrigger = 40
         self.fan = fan
 
@@ -39,12 +41,14 @@ class BMS:
 
         self.cellPos = [18, 15, 12, 6, 3, 9, 0, 7, 16, 13, 10, 19, 1, 4, 20, 17, 11, 5, 2, 14]
         self.cells = [0]*self.cellCount
-        self.minVoltage = 3.5
-        self.maxVoltage = 4.2
+        self.minVoltage = 3.4
+        self.maxVoltage = 4.25
         self.targetVoltage = 3.85
         self.dV = .01
         self.balTime = 32
-        self.measureError = .0005
+        self.testBalCount = 0
+
+        self.dot = dotstar.DotStar(board.APA102_SCK, board.APA102_MOSI, 1, brightness=0.1)
 
         # self.log = open("battVoltages.log", "w")
 
@@ -65,7 +69,9 @@ class BMS:
             self.cells[i] = cellRead[self.cellPos[i]]
         # self.log.write(self.cells)
         self.battVoltage = sum(self.cells)
-        self.capacity = round((100/(84-68))*(self.battVoltage-68))
+        self.capacity = min(max(round((100/(84-68))*(self.battVoltage-68)),0),100)
+        self.meanVoltage = sum(self.cells)/self.cellCount
+        self.dot.fill((int((-255/100)*self.capacity+255),int((255/100)*self.capacity),0))
 
     def getTemps(self):
         self.temps = [None]*len(self.tmpArr)
@@ -108,32 +114,33 @@ class BMS:
             self.sendIO()
             time.sleep(1)
             return
-        # Lowest cell is below minimum voltage or highest cell is below target voltage and not too close (to reduce overshooting)
-        if self.minCell < self.minVoltage or self.maxCell < self.targetVoltage - self.dV/2:
+        # Lowest cell is below minimum voltage or avg voltage is below target voltage
+        if (self.minCell < self.minVoltage or self.meanVoltage < self.targetVoltage - self.dV/2) and self.maxCell < self.maxVoltage-.05:
             self.charging = True
             if self.verbose:
-                print("[INFO] Maximum cell voltage is {}v less than target cell voltage.".format(self.targetVoltage-self.maxCell))
+                print("[INFO] Mean cell voltage is {0}v less than target cell voltage of {1}v.".format(self.targetVoltage-self.meanVoltage, self.targetVoltage))
             print("[INFO] Charging...")
             self.relay.value = True
         else:
             self.charging = False
         # If cells are not balanced or are above target voltage
-        if (self.maxCell - self.minCell > self.dV or self.minCell > self.targetVoltage + self.measureError) and self.minCell > self.minVoltage:
+        if (self.maxCell - self.minCell > self.dV or self.meanVoltage > self.targetVoltage + self.dV/2) and self.minCell > self.minVoltage:
             self.balancing = True
+            self.testBalCount = 0
             if self.maxCell - self.minCell > self.dV: # If cells are not balanced set target to minimum cell
-                target = self.minCell
+                target = self.minCell + self.dV/2
                 if self.verbose:
-                    print("[INFO] Maximum cell voltage delta is {0} which exceeds {1}.".format(self.maxCell-target,self.dV))
+                    print("[INFO] Cell voltage range is {0}v more than {1}v.".format(self.maxCell-self.minCell-self.dV,self.dV))
                 print("[INFO] Balancing...")
-            elif self.minCell > self.targetVoltage + self.measureError: # Elif cells are above target voltage, set target to target voltage
+            elif self.meanVoltage > self.targetVoltage: # Elif cells are above target voltage, set target to target voltage
                 target = self.targetVoltage
                 if self.verbose:
-                    print("[INFO] Minimum cell voltage is {}v more than target cell voltage.".format(self.minCell-self.targetVoltage))
+                    print("[INFO] Mean cell voltage is {0}v more than target cell voltage of {1}v.".format(self.meanVoltage-self.targetVoltage, self.targetVoltage))
                 print("[INFO] Discharging...")
 
             toDschg = []
             for i in range(self.cellCount):
-                if self.cells[i] > target + self.measureError:
+                if self.cells[i] > target:
                     toDschg.append(i)
                 else: self.drain[i] = 0
             toDschg = sorted(toDschg,key=lambda x: self.cells[x],reverse=True)
@@ -150,20 +157,34 @@ class BMS:
         else:
             self.balancing = False
 
-        # Monitor temperature
-        for i in range(self.balTime//8):
-            self.getTemps()
-            if max(self.temps) > self.maxTemp:
-                print("[INFO] Temperature exceeded maximum permitted temperature while balancing.")
-                break
-            time.sleep(8)
-        # Clear drain and disconnect charger for next update
-        self.drain = [0]*self.cellCount
-        self.relay.value = False
-
         if not self.balancing and not self.charging:
-            print("[INFO] Charge/balance complete.")
-            self.mode = 0
+            if self.testBalCount < 4:
+                print("[INFO] Confirming successful charge/balance [{}]...".format(self.testBalCount))
+                self.testBalCount += 1
+                time.sleep(8)
+                return
+            else:
+                print("\n[INFO] Charge/balance complete!\n")
+                print("[INFO] All cells:",self.cells)
+                for i in range(2):
+                    self.buz.value = True
+                    time.sleep(.1)
+                    self.buz.value = False
+                    time.sleep(.1)
+                print("[INFO] Switching to idle.")
+                self.mode = 0
+                self.testBalCount = 0
+        else:
+            # Monitor temperature
+            for i in range(self.balTime//8):
+                self.getTemps()
+                if max(self.temps) > self.maxTemp:
+                    print("[INFO] Temperature exceeded maximum permitted temperature while balancing.")
+                    break
+                time.sleep(8)
+            # Clear drain and disconnect charger for next update
+            self.drain = [0]*self.cellCount
+            self.relay.value = False
 
     def update(self):
         if self.mode == 0 or self.mode == 1:
@@ -193,26 +214,27 @@ class BMS:
                        \n\t To avoid possible damage the BMS will shut down.")
 
             if self.verbose:
-                print("[INFO] Change in voltage per cell:",dCells)
+                print("[INFO] Mean change in voltage per cell:",sum(dCells)/self.cellCount)
 
             self.lastCells = list(self.cells)
             if self.verbose:
-                print("[INFO] All cell voltages:\n",self.cells)
-                print("[INFO] Battery voltage:",self.battVoltage)
-                print("[INFO] Battery capacity:",self.capacity)
+                # print("[INFO] All cell voltages:\n",self.cells)
+                print("[INFO] Battery voltage: {}v".format(self.battVoltage))
+                print("[INFO] Battery capacity: {}%".format(self.capacity))
             if self.mode == 2:
                 return
             self.buz.value = False
             for i in range(self.cellCount):
                 if self.cells[i] > self.maxVoltage:
-                    self.buz.value = True
                     print("\n[ALERT] Cell_{0} is above maximum voltage of {1} at {2}!\n".format(i,self.maxVoltage, self.cells[i]))
                     self.mode = 2
                 elif self.cells[i] < self.minVoltage:
-                    self.buz.value = True
                     print("\n[ALERT] Cell_{0} is below minimum voltage of {1} at {2}!\n".format(i,self.minVoltage, self.cells[i]))
                     self.mode = 2
             if self.mode == 2:
+                self.buz.value = True
+                time.sleep(1)
+                self.buz.value = False
                 return
 
             self.minCell = min(self.cells)
@@ -220,8 +242,10 @@ class BMS:
             self.minCellIndex = self.cells.index(self.minCell)
             self.maxCellindex = self.cells.index(self.maxCell)
             if self.verbose:
-                print("[INFO] Minimum cell is Cell_{0} with voltage of {1}.".format(self.minCellIndex,self.minCell))
-                print("[INFO] Maximum cell is Cell_{0} with voltage of {1}.".format(self.maxCellindex,self.maxCell))
+                print("[INFO] Minimum cell is Cell_{0} with voltage of {1}v.".format(self.minCellIndex,self.minCell))
+                print("[INFO] Maximum cell is Cell_{0} with voltage of {1}v.".format(self.maxCellindex,self.maxCell))
+                print("[INFO] Mean cell voltage: {}v".format(self.meanVoltage))
+                print("[INFO] Cell voltage range: {}v".format(self.maxCell-self.minCell))
 
             if self.getTemps():
                 return
@@ -233,6 +257,7 @@ class BMS:
                 print("[INFO] Unable to charge/balance due to high temperatures.")
 
         elif self.mode == 2:
+            self.buz.value = False
             self.relay.value = False
             self.drain = [0]*self.cellCount
             self.sendIO()

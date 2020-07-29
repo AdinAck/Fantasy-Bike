@@ -123,8 +123,10 @@ class ADS1248:
                 if raw:
                     voltages.append(adc.receive())
                 else:
-                    voltages.append(adc.vref/(2**23)*adc.receive()+adc.vref)
-
+                    try:
+                        voltages.append(adc.vref/(2**23)*adc.receive()+adc.vref)
+                    except TypeError:
+                        voltages.append(None)
         return voltages
 
     def __init__(self, cs_pin, drdy_pin, vref=2.048):
