@@ -8,7 +8,52 @@
 # 0x0: 0 if measurement/battery fault has not been detected
 #      1 if measurement/battery fault has been detected
 
+# SERCOM usage:
+# Writing:
+
+# 1xxxxxxx + xxxxxxxx + ...
+# Instruction + Data (up to 63 bytes)
+
+# Receive:
+# 11111111 If successful
+
+
+
+# Reading:
+# 0xxxxxxx
+# Instruction
+
+# Receive:
+# xxxxxxxx + ...
+# Data
+
+
+
+# SERCOM Instructions:
+# Writing:
+# Bits     | Description                                    | Value type
+# ===========================================================================
+# 10000000 = Mode                                             Integer 0,1,2
+# 10000001 = Maximum temperature                              Float / Integer
+# 10000010 = Fan trigger temperature                          Float / Integer
+# 10000011 = Minimum cell voltage                             Float / Integer
+# 10000100 = Maximum cell voltage                             Float / Integer
+# 10000101 = Target cell voltage                              Float / Integer
+# 10000110 = Maximum cell voltage difference (for balancing)  Float / Integer
+# 10000111 = Time for charge/balance between measurements     Integer
+# 10001000 = Verbosity                                        Boolean
+
+# Reading:
+# Bits     | Description                  | Value type
+# 00000001 = Total battery voltage          Float
+# 00000010 = Battery capacity (percentage)  Integer
+# 00000011 = Mean cell voltage              Float
+# 00000100 = All cell voltages              List of floats
+# 00000101 = Board temperatures             List of floats
+# 00000110 = Status (Error or not)          Boolean
+
 import board
+import busio
 import microcontroller
 import time
 from digitalio import Direction
@@ -29,6 +74,8 @@ class BMS:
         for mcp in self.mcpArr:
             mcp.iodir = 0x00
             mcp.gpio = 0x00
+
+        self.uart = busio.UART(board.TX, board.RX, baudrate=9600)
 
         self.tmpArr = tmpArr
         self.temps = [0]*len(tmpArr)
@@ -187,6 +234,91 @@ class BMS:
             self.relay.value = False
 
     def update(self):
+        # Sercom
+        self.uartError = False
+        recv = self.uart.read()
+        if recv != None:
+            command = int(recv[0],2)
+            data = ''.join([chr(i) for i in recv[1:]])
+            if command >= 128: # Writing information to BMS
+                if command == 128: # Mode
+                    try:
+                        with int(data[0]) as mode:
+                            if mode == 0:
+                                self.mode = 0
+                            elif mode == 1:
+                                self.mode = 1
+                            elif mode == 2:
+                                self.mode = 2
+                            else:
+                                self.uartError = True
+                    except ValueError:
+                        self.uartError = True
+                elif command == 133: # Target cell voltage
+                    try:
+                        self.targetVoltage = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 129: # Maximum temperature
+                    try:
+                        self.maxTemp = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 130: # Fan trigger temperature
+                    try:
+                        self.fanTrigger = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 131: # Minimum cell voltage
+                    try:
+                        self.minVoltage = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 132: # Maximum cell voltage
+                    try:
+                        self.maxVoltage = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 134: # Maximum cell voltage difference (for balancing)
+                    try:
+                        self.dV = float(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 135: # Time for charge/balance between measurements
+                    try:
+                        self.balTime = int(data)
+                    except ValueError:
+                        self.uartError = True
+                elif command == 136: # Verbosity
+                    try:
+                        self.verbose = bool(data)
+                    except ValueError:
+                        self.uartError = True
+
+
+            elif command < 128: # Requesting information from BMS
+                if command == 1:
+                    self.uart.write(bytes(str(self.battVoltage),'utf-8'))
+                elif command == 2:
+                    self.uart.write(bytes(str(self.capacity),'utf-8'))
+                elif command == 3:
+                    self.uart.write(bytes(str(self.meanVoltage),'utf-8'))
+                elif command == 4:
+                    for cell in self.cells:
+                        self.uart.write(bytes(str(cell),'utf-8'))
+                elif command == 5:
+                    for temp in self.temps:
+                        self.uart.write(bytes(str(temp),'utf-8'))
+                elif command == 6:
+                    if self.mode == 2:
+                        self.uart.write(bytes("True", 'utf-8'))
+                    else:
+                        self.uart.write(bytes("False", 'utf-8'))
+
+            if not self.uartError:
+                self.uart.write(bytes(255))
+
+        # All the stuff
         if self.mode == 0 or self.mode == 1:
             self.sendIO()
             if self.mode == 1:
@@ -198,13 +330,14 @@ class BMS:
                 dCells = []
                 for i in range(self.cellCount):
                     dCells.append(self.cells[i]-self.lastCells[i])
-                if max(dCells) > .05 or min(dCells) < -.05:
-                    if self.verbose:
-                        print("[INFO] Measure error, trying again...")
-                    self.error = True
-                else:
-                    self.error = False
-                    break
+                if self.mode == 1:
+                    if max(dCells) > .05 or min(dCells) < -.05:
+                        if self.verbose:
+                            print("[INFO] Measure error, trying again...")
+                        self.error = True
+                    else:
+                        self.error = False
+                        break
             if self.error:
                 self.buz.value = True
                 microcontroller.nvm[0] = 1

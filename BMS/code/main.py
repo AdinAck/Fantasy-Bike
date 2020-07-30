@@ -51,6 +51,7 @@ try:
     while True:
         bms.update()
 except:
+    bms.uart.write(bytes("Error"), 'utf-8')
     buz.value = True
     time.sleep(.1)
     bms.relay.value = False
