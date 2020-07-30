@@ -46,16 +46,16 @@ fan.direction = digitalio.Direction.OUTPUT
 # BMS
 bms = BMS(ADS1248, [mcp0, mcp1, mcp2], [tmp0, tmp1, tmp2, tmp3], buz, relay, fan)
 bms.verbose = True
-bms.mode = 1
+bms.mode = 0
 try:
     while True:
         bms.update()
-except:
-    bms.uart.write(bytes("Error"), 'utf-8')
+except (Exception, KeyboardInterrupt) as e:
     buz.value = True
     time.sleep(.1)
     bms.relay.value = False
-    print("[INFO] An exception occured.")
+    print("[INFO] An exception occured:")
+    print(e)
     print("[INFO] Wrapping things up...")
     for mcp in [mcp0, mcp1, mcp2]:
         mcp.gpio = 0
@@ -64,6 +64,7 @@ except:
     ADS1248.sleepAll()
     print("[INFO] ADCs put to sleep.")
     buz.value = False
+    bms.uart.write(bytes("Error", 'utf-8'))
     print("[INFO] Cooling down...")
     while max(bms.temps) > 40:
         bms.getTemps()

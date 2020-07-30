@@ -94,6 +94,7 @@ class BMS:
         self.dV = .01
         self.balTime = 32
         self.testBalCount = 0
+        self.error = False
 
         self.dot = dotstar.DotStar(board.APA102_SCK, board.APA102_MOSI, 1, brightness=0.1)
 
@@ -238,12 +239,14 @@ class BMS:
         self.uartError = False
         recv = self.uart.read()
         if recv != None:
-            command = int(recv[0],2)
-            data = ''.join([chr(i) for i in recv[1:]])
+            command = recv[0]
+            data = recv[1:].decode()
+            print(command)
+            print(recv[1:].decode())
             if command >= 128: # Writing information to BMS
                 if command == 128: # Mode
                     try:
-                        with int(data[0]) as mode:
+                        with int(data) as mode:
                             if mode == 0:
                                 self.mode = 0
                             elif mode == 1:
@@ -252,6 +255,7 @@ class BMS:
                                 self.mode = 2
                             else:
                                 self.uartError = True
+                            print("[INFO] Changed mode to",self.mode)
                     except ValueError:
                         self.uartError = True
                 elif command == 133: # Target cell voltage
@@ -338,6 +342,8 @@ class BMS:
                     else:
                         self.error = False
                         break
+                else:
+                    break
             if self.error:
                 self.buz.value = True
                 microcontroller.nvm[0] = 1
